@@ -37,6 +37,19 @@ export default function Page() {
         </p>
       </section>
       <hr className="border-muted" />
+      <section className="space-y-3">
+        <H2>Contact</H2>
+        <ul className="list-inside list-disc space-y-1">
+          <li>
+            <a
+              href="https://www.linkedin.com/in/akshatsaladi/"
+              className="text-primary hover:underline"
+            >
+              LinkedIn
+            </a>
+          </li>
+        </ul>
+      </section>
     </section>
   );
 }

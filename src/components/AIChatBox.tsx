@@ -1,13 +1,15 @@
 import { cn } from "@/lib/utils";
-import { useChat, Message } from "ai/react";
-import { Bot, SendHorizonal, Trash, XCircle } from "lucide-react";
-import ReactMarkdown from "react-markdown";
+import { Message, useChat } from "ai/react";
+import { Bot, SendHorizontal, Trash, XCircle } from "lucide-react";
 import Link from "next/link";
-import { use, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
+
 interface AIChatBoxProps {
   open: boolean;
   onClose: () => void;
 }
+
 export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   const {
     messages,
@@ -23,13 +25,13 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if(scrollRef.current) {
+    if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages]);
 
   useEffect(() => {
-    if(open) {
+    if (open) {
       inputRef.current?.focus();
     }
   }, [open]);
@@ -47,9 +49,9 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
         <XCircle size={30} className="rounded-full bg-background" />
       </button>
       <div className="flex h-[600px] flex-col rounded border bg-background shadow-xl">
-        <div className="mt-3 h-full overflow-auto px-3" ref={scrollRef}>
+        <div className="mt-3 h-full overflow-y-auto px-3" ref={scrollRef}>
           {messages.map((message) => (
-            <ChatMessage key={message.id} message={message} />
+            <ChatMessage message={message} key={message.id} />
           ))}
           {isLoading && lastMessageIsUser && (
             <ChatMessage
@@ -65,7 +67,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
               message={{
                 id: "error",
                 role: "assistant",
-                content: "Something went wrong. Please try again later.",
+                content: "Something went wrong. Please try again!",
               }}
             />
           )}
@@ -73,20 +75,23 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             <div className="mx-8 flex h-full flex-col items-center justify-center gap-3 text-center">
               <Bot size={28} />
               <p className="text-lg font-medium">
-                Send a message to the AI and see the magic happen!
+                Send a message to start the AI chat!
               </p>
               <p>
-                You can ask the chatbot anything about me and it will find the
-                relevant information for you.
+                You can ask the chatbot any question about me and it will find
+                the relevant information on this website.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Powered by the new gpt-4o-mini model from OpenAI.
               </p>
             </div>
           )}
         </div>
         <form onSubmit={handleSubmit} className="m-3 flex gap-1">
           <button
-            type="submit"
+            type="button"
             className="flex w-10 flex-none items-center justify-center"
-            title="Clear chat history"
+            title="Clear chat"
             onClick={() => setMessages([])}
           >
             <Trash size={24} />
@@ -94,28 +99,31 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           <input
             value={input}
             onChange={handleInputChange}
-            placeholder="Ask me anything..."
+            placeholder="Say something..."
             className="grow rounded border bg-background px-3 py-2"
             ref={inputRef}
           />
           <button
-            disabled={isLoading || input.length === 0}
             type="submit"
-            title="Submit message"
             className="flex w-10 flex-none items-center justify-center disabled:opacity-50"
+            disabled={input.length === 0}
+            title="Submit message"
           >
-            <SendHorizonal size={24} />
+            <SendHorizontal size={24} />
           </button>
         </form>
       </div>
     </div>
   );
 }
+
 interface ChatMessageProps {
   message: Message;
 }
+
 function ChatMessage({ message: { role, content } }: ChatMessageProps) {
   const isAiMessage = role === "assistant";
+
   return (
     <div
       className={cn(
