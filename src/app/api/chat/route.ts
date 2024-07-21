@@ -42,13 +42,13 @@ export async function POST(req: Request) {
       modelName: "gpt-4o-mini",
       streaming: true,
       callbacks: [handlers],
-      verbose: true,
+      // verbose: true,
       cache
     });
 
     const rephrasingModel = new ChatOpenAI({
       modelName: "gpt-4o-mini",
-      verbose: true,
+      // verbose: true,
       cache
     });
 
