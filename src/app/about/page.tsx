@@ -27,16 +27,17 @@ export default function Page() {
         </p>
         <H2>What drives me?</H2>
         <p>
-          One thing that you won't see on my resume is my ability to help other
-          people in need. Especially in the context and in the world of tech
-          when you are given the opportunity and the gift of working on some
-          exciting and innovative projects it makes it even more rewarding when
-          a feature might be able to directly help someone struggling with
+          One thing that you won&apos;t see on my resume is my ability to help
+          other people in need. Especially in the context and in the world of
+          tech when you are given the opportunity and the gift of working on
+          some exciting and innovative projects it makes it even more rewarding
+          when a feature might be able to directly help someone struggling with
           something in their daily life. My backbone purpose behind performing
-          technical projects whether it's individual or in the workplace is "How
-          can I create something that'll streamline or solve someone's problems
-          throughout their normal days?" I believe that is a great definition of
-          a software engineer at the end of the day.
+          technical projects whether it&apos;s individual or in the workplace is
+          &quot;How can I create something that&apos;ll streamline or solve
+          someone&apos;s problems throughout their normal days?&quot; I believe
+          that is a great definition of a software engineer at the end of the
+          day.
         </p>
       </section>
       <hr className="border-muted" />
