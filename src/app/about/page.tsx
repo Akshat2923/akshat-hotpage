@@ -1,5 +1,6 @@
 import { H1 } from "@/components/ui/H1";
 import { H2 } from "@/components/ui/H2";
+import { H3 } from "@/components/ui/H3";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,17 +25,51 @@ export default function Page() {
           am eager to learn more from others around me and help others along the
           way!
         </p>
+        <H2>What drives me?</H2>
         <p>
-          I am currently seeking a SWE focused full time roles for the after
-          spring 2025.
+          One thing that you won't see on my resume is my ability to help other
+          people in need. Especially in the context and in the world of tech
+          when you are given the opportunity and the gift of working on some
+          exciting and innovative projects it makes it even more rewarding when
+          a feature might be able to directly help someone struggling with
+          something in their daily life. My backbone purpose behind performing
+          technical projects whether it's individual or in the workplace is "How
+          can I create something that'll streamline or solve someone's problems
+          throughout their normal days?" I believe that is a great definition of
+          a software engineer at the end of the day.
         </p>
       </section>
       <hr className="border-muted" />
       <section className="space-y-3">
         <H2>Skills</H2>
-        <p>
-          <strong>React Native</strong>
-        </p>
+        <H3>Languages</H3>
+        <ul className="list-inside list-disc space-y-1">
+          <li>Java</li>
+          <li>TypeScript/JavaScript</li>
+          <li>Python</li>
+          <li>C++</li>
+          <li>C</li>
+          <li>R</li>
+          <li>Ruby</li>
+          <li>SQL</li>
+          <li>HTML/CSS</li>
+        </ul>
+        <H3>Frameworks</H3>
+        <ul className="list-inside list-disc space-y-1">
+          <li>React Native</li>
+          <li>Next.js</li>
+          <li>Vue.js</li>
+          <li>Ruby on Rails</li>
+          <li>Shiny</li>
+        </ul>
+        <H3>Soft Skills</H3>
+        <ul className="list-inside list-disc space-y-1">
+          <li>Adaptable</li>
+          <li>Communicator</li>
+          <li>Collaboritve Learner</li>
+          <li>Problem Solver</li>
+          <li>Creative</li>
+        </ul>
       </section>
       <hr className="border-muted" />
       <section className="space-y-3">
@@ -46,6 +81,14 @@ export default function Page() {
               className="text-primary hover:underline"
             >
               LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/Akshat2923"
+              className="text-primary hover:underline"
+            >
+              GitHub
             </a>
           </li>
         </ul>

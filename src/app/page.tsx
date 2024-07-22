@@ -19,12 +19,12 @@ export default function Home() {
       <section className="grid-col-1 grid items-center gap-8 sm:grid-cols-2">
         <div className="space-y-3">
           <H1 className="text-center sm:text-start">
-            Hi, I&apos;m Akshat Saladi 👋
+            Hey, I&apos;m Akshat Saladi 👋
           </H1>
           <p className="text-center sm:text-start">
-            My name is Akshat Saladi and welcome to my Hot Page. This
-            website is a personal portfolio of mine where I showcase my work and
-            skills. Click the links above in the navigation bar to learn more about me!
+            Welcome to my Hot Page. This
+            website is a smart personal portfolio where I showcase my work and
+            skills. Click the links top bar to learn more about me!
           </p>
         </div>
         <div className="flex justify-center">
@@ -38,9 +38,9 @@ export default function Home() {
         </div>
       </section>
       <section className="space-y-3 text-center">
-        <H2>Ask the chatbot anything</H2>
+        <H2>...Or ask the chatbot anything</H2>
         <p>
-          Click the little <Bot className="inline pb-1" /> icon in the top bar
+          Click the <Bot className="inline pb-1" /> icon in the top bar
           to active the chatbot. You can ask it anything you want about me!
         </p>
       </section>
