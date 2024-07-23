@@ -4,6 +4,19 @@ import { Bot, SendHorizontal, Trash, XCircle } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
+import {
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+} from "@/components/ui/drawer";
+import { Button } from "@/components/ui/button";
+
+export function ButtonOutline() {
+  return <Button variant="outline">Outline</Button>;
+}
 
 interface AIChatBoxProps {
   open: boolean;
@@ -39,81 +52,75 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   const lastMessageIsUser = messages[messages.length - 1]?.role === "user";
 
   return (
-    <div
-      className={cn(
-        "bottom-0 right-0 z-50 w-full max-w-[500px] p-1 xl:right-36",
-        open ? "fixed" : "hidden",
-      )}
-    >
-      <button onClick={onClose} className="mb-1 ms-auto block">
-        <XCircle size={30} className="rounded-full bg-background" />
-      </button>
-      <div className="flex h-[600px] flex-col rounded border bg-background shadow-xl">
-        <div className="mt-3 h-full overflow-y-auto px-3" ref={scrollRef}>
-          {messages.map((message) => (
-            <ChatMessage message={message} key={message.id} />
-          ))}
-          {isLoading && lastMessageIsUser && (
-            <ChatMessage
-              message={{
-                id: "loading",
-                role: "assistant",
-                content: "Thinking...",
-              }}
-            />
-          )}
-          {error && (
-            <ChatMessage
-              message={{
-                id: "error",
-                role: "assistant",
-                content: "Something went wrong. Please try again!",
-              }}
-            />
-          )}
-          {!error && messages.length === 0 && (
-            <div className="mx-8 flex h-full flex-col items-center justify-center gap-3 text-center">
-              <Bot size={28} />
-              <p className="text-lg font-medium">
-                Send a message to start the AI chat!
-              </p>
-              <p>
-                You can ask the chatbot any question about me and it will find
-                the relevant information on this website.
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Powered by the new gpt-4o-mini model from OpenAI.
-              </p>
-            </div>
-          )}
-        </div>
-        <form onSubmit={handleSubmit} className="m-3 flex gap-1">
-          <button
+    <DrawerContent className="flex h-[70vh] flex-col max-w-2xl mx-auto w-full">
+      <DrawerHeader>
+        <DrawerTitle>AI Chat</DrawerTitle>
+        <DrawerDescription>
+          Ask me anything about the website!
+        </DrawerDescription>
+      </DrawerHeader>
+      <div className="flex-1 overflow-y-auto p-4" ref={scrollRef}>
+        {messages.map((message) => (
+          <ChatMessage message={message} key={message.id} />
+        ))}
+        {isLoading && lastMessageIsUser && (
+          <ChatMessage
+            message={{
+              id: "loading",
+              role: "assistant",
+              content: "Thinking...",
+            }}
+          />
+        )}
+        {error && (
+          <ChatMessage
+            message={{
+              id: "error",
+              role: "assistant",
+              content: "Something went wrong. Please try again!",
+            }}
+          />
+        )}
+        {!error && messages.length === 0 && (
+          <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
+            <Bot size={28} />
+            <p className="text-lg font-medium">
+              Send a message to start the AI chat!
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Powered by the new gpt-4o-mini model from OpenAI.
+            </p>
+          </div>
+        )}
+      </div>
+      <DrawerFooter>
+        <form onSubmit={handleSubmit} className="flex gap-2">
+          <Button
             type="button"
-            className="flex w-10 flex-none items-center justify-center"
-            title="Clear chat"
+            variant="outline"
+            size="icon"
             onClick={() => setMessages([])}
           >
-            <Trash size={24} />
-          </button>
+            <Trash className="h-4 w-4" />
+          </Button>
           <input
             value={input}
             onChange={handleInputChange}
             placeholder="Say something..."
-            className="grow rounded border bg-background px-3 py-2"
+            className="flex-1 rounded-md border bg-background px-3 py-2"
             ref={inputRef}
           />
-          <button
-            type="submit"
-            className="flex w-10 flex-none items-center justify-center disabled:opacity-50"
-            disabled={input.length === 0}
-            title="Submit message"
-          >
-            <SendHorizontal size={24} />
-          </button>
+          <Button type="submit" disabled={input.length === 0}>
+            <SendHorizontal className="h-4 w-4" />
+          </Button>
         </form>
-      </div>
-    </div>
+        <DrawerClose asChild>
+          <Button variant="outline" onClick={onClose}>
+            Close
+          </Button>
+        </DrawerClose>
+      </DrawerFooter>
+    </DrawerContent>
   );
 }
 
