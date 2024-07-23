@@ -24,7 +24,7 @@ export default function Home() {
           <p className="text-center sm:text-start">
             Welcome to my Hot Page. This
             website is a smart personal portfolio where I showcase my work and
-            skills. Click the links top bar to learn more about me!
+            skills. Click the top bar links to learn more about me!
           </p>
         </div>
         <div className="flex justify-center">
