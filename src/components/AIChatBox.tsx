@@ -13,6 +13,8 @@ import {
   DrawerClose,
 } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+
 
 export function ButtonOutline() {
   return <Button variant="outline">Outline</Button>;
@@ -148,11 +150,13 @@ function ChatMessage({ message: { role, content } }: ChatMessageProps) {
         <ReactMarkdown
           components={{
             a: ({ node, ref, ...props }) => (
+              <Badge variant="outline" >
               <Link
                 {...props}
                 href={props.href ?? ""}
                 className="text-primary hover:underline"
               />
+              </Badge>
             ),
             p: ({ node, ...props }) => (
               <p {...props} className="mt-3 first:mt-0" />

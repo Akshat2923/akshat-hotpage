@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import PageTransition from "@/components/PageTransition";
 
 const inter = Noto_Sans({ subsets: ["latin"] });
 
@@ -22,13 +23,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <Navbar />
-          <main className="mx-auto max-w-3xl px-3 py-10">{children}</main>
-          <Footer />
+          <div className="light-background dark:hidden" />
+          <div className="dark-background hidden dark:block" />
+          <div className="relative z-10 min-h-screen flex flex-col">
+            <Navbar />
+            <PageTransition>
+              <main className="flex-grow mx-auto max-w-3xl px-3 py-10">{children}</main>
+            </PageTransition>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

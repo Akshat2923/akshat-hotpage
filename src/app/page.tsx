@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="space-y-16 bg-[url('/background.png')] bg-cover bg-center bg-no-repeat px-1 py-8"
+      className="space-y-16 px-1 py-8"
     >
       <section className="grid-col-1 grid items-center gap-8 sm:grid-cols-2">
         <div className="space-y-3">

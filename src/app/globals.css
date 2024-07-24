@@ -60,10 +60,54 @@
 }
 
 @layer base {
+  :root {
+    /* Your existing light mode variables */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    /* ... other variables ... */
+  }
+
+  .dark {
+    /* Your existing dark mode variables */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    /* ... other variables ... */
+  }
+}
+
+@layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+  }
+}
+
+/* Animated background for light mode */
+.light-background {
+  @apply fixed inset-0 z-[-1];
+  background: linear-gradient(-45deg, #ffffff, #b3e0ff, #66c2ff, #e6f3ff);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+}
+
+/* Animated background for dark mode */
+.dark-background {
+  @apply fixed inset-0 z-[-1];
+  background: linear-gradient(-45deg, #000000, #000d1a, #001a33, #000000);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

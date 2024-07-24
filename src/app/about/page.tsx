@@ -2,40 +2,24 @@
 import { H1 } from "@/components/ui/H1";
 import { H2 } from "@/components/ui/H2";
 import { H3 } from "@/components/ui/H3";
-import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 export default function Page() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false }),
   );
 
-  const softSkills = [
-    "Adaptable",
-    "Communicator",
-    "Collaborative Learner",
-    "Problem Solver",
-    "Creative",
-  ];
   return (
     <section className="space-y-6">
       <H1>About Me</H1>
@@ -78,8 +62,9 @@ export default function Page() {
       <hr className="border-muted" />
       <section className="space-y-3">
         <H2>Skills</H2>
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="space-y-3">
+            <H3>Languages</H3>
             <div className="flex flex-wrap gap-2">
               <Badge>Java</Badge>
               <Badge>TypeScript/JavaScript</Badge>
@@ -91,18 +76,29 @@ export default function Page() {
               <Badge>SQL</Badge>
               <Badge>HTML/CSS</Badge>
             </div>
+            <H3>Frameworks</H3>
             <div className="flex flex-wrap gap-2">
               <Badge>React Native</Badge>
+              <Badge>Expo</Badge>
               <Badge>Next.js</Badge>
               <Badge>Vue.js</Badge>
               <Badge>Ruby on Rails</Badge>
               <Badge>Shiny</Badge>
             </div>
+            <H3>Tools</H3>
+            <div className="flex flex-wrap gap-2">
+              <Badge>Git</Badge>
+              <Badge>Arduino</Badge>
+              <Badge>Jira</Badge>
+              <Badge>Agile Methodologies</Badge>
+              <Badge>VSCode</Badge>
+              <Badge>Docker</Badge>
+            </div>
           </div>
           <div className="space-y-3">
             <Carousel
               plugins={[plugin.current]}
-              className="w-full max-w-xs"
+              className="w-full max-w-xs md:w-auto"
               onMouseEnter={plugin.current.stop}
               onMouseLeave={plugin.current.reset}
             >
@@ -166,24 +162,26 @@ export default function Page() {
       <hr className="border-muted" />
       <section className="space-y-3">
         <H2>Contact</H2>
-        <ul className="list-inside list-disc space-y-1">
-          <li>
+        <div className="flex flex-wrap gap-2">
+          <Badge variant="outline">
+            <a
+              href="https://github.com/Akshat2923"
+              className="text-primary hover:underline p-1"
+            >
+              Github
+            </a>
+            <GitHubIcon className="h-4 w-4" />
+          </Badge>
+          <Badge variant="outline">
             <a
               href="https://www.linkedin.com/in/akshatsaladi/"
-              className="text-primary hover:underline"
+              className="text-primary hover:underline p-1"
             >
               LinkedIn
             </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/Akshat2923"
-              className="text-primary hover:underline"
-            >
-              GitHub
-            </a>
-          </li>
-        </ul>
+            <LinkedInIcon className="h-4 w-4" />
+          </Badge>
+        </div>
       </section>
     </section>
   );
