@@ -112,11 +112,10 @@ export default function Page() {
                         This experience has been uniquely rewarding in several
                         ways. The opportunity to work in a small, team allows
                         for close collaboration . The progress we make each week
-                        is satisfying. The anticipation of launching our
-                        app adds excitement to the work. Overall, the
-                        combination of teamwork, consistent progress, and the
-                        prospect of launching our app is making this experience
-                        rewarding.
+                        is satisfying. The anticipation of launching our app
+                        adds excitement to the work. Overall, the combination of
+                        teamwork, consistent progress, and the prospect of
+                        launching our app is making this experience rewarding.
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
@@ -236,10 +235,10 @@ export default function Page() {
               <CardTitle>Indoor Navigation Assistant (HackOHI/O)</CardTitle>
               <CardDescription>
                 Developed a full-stack Android application. Utilizes the
-                device's rear camera to pinpoint the user’s precise location
+                device's rear camera to pinpoint the user&apos;s precise location
                 within indoor spaces. Uses reference key points from a realtime
                 database of over 50 photos to determine the shortest path to the
-                user’s selected destination.
+                user&apos;s selected destination.
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
