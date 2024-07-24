@@ -9,7 +9,8 @@ import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
-import { H3 } from "@/components/ui/H3";
+import blok from "@/assets/images/icon.png";
+import aep from "@/assets/images/AEP logo.svg.png";
 import {
   Card,
   CardContent,
@@ -58,10 +59,18 @@ export default function Page() {
                   <CardTitle>Full Stack Developer</CardTitle>
                   <CardDescription>
                     <a
+                      target="_blank"
                       href="https://www.theblokapp.com/"
-                      className="text-primary hover:underline"
+                      className="flex items-center gap-2 hover:text-primary hover:underline"
                     >
                       The BLOK App
+                      <Image
+                        src={blok}
+                        alt="a picture of the BLOK app logo"
+                        width={20}
+                        height={20}
+                        className="rounded-full"
+                      />
                     </a>
                   </CardDescription>
                 </CardHeader>
@@ -132,11 +141,23 @@ export default function Page() {
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
-              <Card className="w-full sm:w-[350px]">
+              <Card className="w-full sm:w-[350px] text-left">
                 <CardHeader>
                   <CardTitle>Solution Engineer Intern</CardTitle>
                   <CardDescription>
-                    American Electric Power (AEP)
+                    <a
+                      target="_blank"
+                      href="https://www.aep.com/"
+                      className="flex items-center gap-2 hover:text-primary hover:underline"
+                    >
+                      <span>American Electric Power (AEP)</span>
+                      <Image
+                        src={aep}
+                        alt="a picture of the AEP logo"
+                        width={20}
+                        height={20}
+                      />
+                    </a>
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -184,7 +205,7 @@ export default function Page() {
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3">
-                      <AccordionTrigger>What did I learn?</AccordionTrigger>
+                      <AccordionTrigger className="text-left">What did I learn?</AccordionTrigger>
                       <AccordionContent className="flex flex-wrap gap-2">
                         <Badge>Shiny Framework</Badge>
                         <Badge>SQL</Badge>
@@ -216,8 +237,18 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
-              <a href="https://github.com/Akshat2923/akshat-hotpage">
-                <GitHubIcon fontSize="large" />
+              <a
+                target="_blank"
+                href="https://github.com/Akshat2923/akshat-hotpage"
+              >
+                <GitHubIcon
+                  fontSize="large"
+                  sx={{
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                />
               </a>
             </CardContent>
             <CardFooter className="flex flex-wrap gap-2">
@@ -242,11 +273,31 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
-              <a href="https://github.com/Akshat2923/akshat_nAvii">
-                <GitHubIcon fontSize="large" />
+              <a
+                target="_blank"
+                href="https://github.com/Akshat2923/akshat_nAvii"
+              >
+                <GitHubIcon
+                  fontSize="large"
+                  sx={{
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                />
               </a>
-              <a href="https://buckeyemailosu-my.sharepoint.com/:v:/g/personal/saladi_4_buckeyemail_osu_edu/EZ1Jvype4eBBpjJs5v_noRsB-pdTNE6Dhimh-AqbRrYhng?e=8fO6PJ&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D">
-                <YouTubeIcon fontSize="large" />
+              <a
+                target="_blank"
+                href="https://buckeyemailosu-my.sharepoint.com/:v:/g/personal/saladi_4_buckeyemail_osu_edu/EZ1Jvype4eBBpjJs5v_noRsB-pdTNE6Dhimh-AqbRrYhng?e=8fO6PJ&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+              >
+                <YouTubeIcon
+                  fontSize="large"
+                  sx={{
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                />
               </a>
             </CardContent>
             <CardFooter className="flex flex-wrap gap-2">
@@ -266,17 +317,34 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
-              <a href="https://buckeyemailosu-my.sharepoint.com/:v:/g/personal/saladi_4_buckeyemail_osu_edu/EXGnVKlRiotAmqd7Myp0TRoB7KvU6mkhhF7bAoMZEJDS2g?e=arvF9H&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D">
-                <YouTubeIcon fontSize="large" />
+              <a
+                target="_blank"
+                href="https://buckeyemailosu-my.sharepoint.com/:v:/g/personal/saladi_4_buckeyemail_osu_edu/EXGnVKlRiotAmqd7Myp0TRoB7KvU6mkhhF7bAoMZEJDS2g?e=arvF9H&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+              >
+                <YouTubeIcon
+                  fontSize="large"
+                  sx={{
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                />
               </a>
               <Dialog>
                 <DialogTrigger asChild>
-                  <PhotoIcon fontSize="large" />
+                  <PhotoIcon
+                    fontSize="large"
+                    sx={{
+                      "&:hover": {
+                        color: "primary.main",
+                      },
+                    }}
+                  />
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                   <Image
                     src={simonsays}
-                    alt="a photo of me"
+                    alt="a photo of the arduino board simon says layout"
                     width={300}
                     height={300}
                     className="rounded-md"
@@ -302,8 +370,18 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
-              <a href="https://buckeyemailosu-my.sharepoint.com/:v:/g/personal/saladi_4_buckeyemail_osu_edu/EXGnVKlRiotAmqd7Myp0TRoB7KvU6mkhhF7bAoMZEJDS2g?e=arvF9H&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D">
-                <YouTubeIcon fontSize="large" />
+              <a
+                target="_blank"
+                href="https://buckeyemailosu-my.sharepoint.com/:v:/g/personal/saladi_4_buckeyemail_osu_edu/EXGnVKlRiotAmqd7Myp0TRoB7KvU6mkhhF7bAoMZEJDS2g?e=arvF9H&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+              >
+                <YouTubeIcon
+                  fontSize="large"
+                  sx={{
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                />
               </a>
             </CardContent>
             <CardFooter className="flex flex-wrap gap-2">

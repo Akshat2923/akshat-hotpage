@@ -1,5 +1,6 @@
 "use client";
 import { H1 } from "@/components/ui/H1";
+import Image from "next/image";
 import { H2 } from "@/components/ui/H2";
 import { H3 } from "@/components/ui/H3";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -15,6 +16,7 @@ import {
 } from "@/components/ui/carousel";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import osu from "@/assets/images/Ohio State Logo.png";
 export default function Page() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false }),
@@ -29,13 +31,28 @@ export default function Page() {
           <AlertTitle>Who am I?</AlertTitle>
           <AlertDescription>
             <p>
-              My name is Akshat Saladi and I am a fourth-year student at the
-              Ohio State University studying computer science and engineering.
-            </p>
-            <p>
-              I am very passionate about front-end development/mobile
-              development. I am eager to learn more from others around me and
-              help others along the way!
+              My name is Akshat Saladi and I am a fourth-year student at{" "}
+              <strong>
+                <a
+                  target="_blank"
+                  href="https://www.aep.com/"
+                  className="flex items-center gap-2 hover:text-primary hover:underline"
+                >
+                  The Ohio State University studying Computer science and
+                  Engineering
+                  <Image
+                    src={osu}
+                    alt="a picture of the AEP logo"
+                    width={20}
+                    height={20}
+                  />
+                .
+                </a>
+              </strong>
+               I am very passionate about{" "}
+              <strong>front-end development/mobile development. </strong>I am
+              eager to learn more from others around me and help others along
+              the way!
             </p>
           </AlertDescription>
         </Alert>
@@ -51,10 +68,14 @@ export default function Page() {
               more rewarding when a feature might be able to directly help
               someone struggling with something in their daily life. My backbone
               purpose behind performing technical projects whether it&apos;s
-              individual or in the workplace is &quot;How can I create something
-              that&apos;ll streamline or solve someone&apos;s problems
-              throughout their normal days?&quot; I believe that is a great
-              definition of a software engineer at the end of the day.
+              individual or in the workplace is{" "}
+              <strong>
+                &quot;How can I create something that&apos;ll streamline or
+                solve someone&apos;s problems throughout their normal
+                days?&quot;
+              </strong>{" "}
+              I believe that is a great definition of a software engineer at the
+              end of the day.
             </p>
           </AlertDescription>
         </Alert>
@@ -166,7 +187,7 @@ export default function Page() {
           <Badge variant="outline">
             <a
               href="https://github.com/Akshat2923"
-              className="text-primary hover:underline p-1"
+              className="p-1 text-primary hover:underline"
             >
               Github
             </a>
@@ -175,7 +196,7 @@ export default function Page() {
           <Badge variant="outline">
             <a
               href="https://www.linkedin.com/in/akshatsaladi/"
-              className="text-primary hover:underline p-1"
+              className="p-1 text-primary hover:underline"
             >
               LinkedIn
             </a>
