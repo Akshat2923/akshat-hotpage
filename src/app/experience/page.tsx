@@ -235,7 +235,7 @@ export default function Page() {
               <CardTitle>Indoor Navigation Assistant (HackOHI/O)</CardTitle>
               <CardDescription>
                 Developed a full-stack Android application. Utilizes the
-                device's rear camera to pinpoint the user&apos;s precise location
+                device&apos;s rear camera to pinpoint the user&apos;s precise
                 within indoor spaces. Uses reference key points from a realtime
                 database of over 50 photos to determine the shortest path to the
                 user&apos;s selected destination.
