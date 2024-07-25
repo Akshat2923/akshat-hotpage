@@ -26,53 +26,50 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import computer from "@/assets/images/comp.png";
 import think from "@/assets/images/think.png";
 import ponder from "@/assets/images/ponder.png";
-import osu from "@/assets/images/Ohio State Logo.png";
+import osu from "@/assets/images/OSU Logo.png";
+
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { AccordionHeader } from "@radix-ui/react-accordion";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 export default function Page() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false }),
   );
-  const aboutPlugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true }),
-  );
-  const [isAccordionOpen1, setIsAccordionOpen1] = useState(false);
-  const [isAccordionOpen2, setIsAccordionOpen2] = useState(false);
 
   return (
     <section className="space-y-6">
       <section className="space-y-3">
-        <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:min-h-screen lg:grid-cols-4 lg:grid-rows-3">
-          <Card className="col-span-1 flex sm:col-span-1 lg:col-span-1 lg:row-span-1">
+        <div className="lg:min-h-screen-md grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 lg:grid-rows-1">
+          <Card className="col-span-1  flex transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800 sm:col-span-1 lg:col-span-1 lg:row-span-1 lg:row-start-1">
             <CardHeader>
               <CardTitle>School</CardTitle>
               <CardDescription>
-                <Image
-                  src={osu}
-                  alt="a picture of a ponder"
-                  width={300}
-                  height={300}
-                />
+                <a href="https://cse.osu.edu/" target="_blank">
+                  <Image
+                    src={osu}
+                    alt="a picture of a ponder"
+                    className="mt-6 w-full"
+                  />
+                </a>
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="col-span-1 flex sm:col-span-1 lg:col-span-1 lg:row-span-1">
+          <Card className="col-span-1 flex sm:col-span-1 lg:col-span-1 lg:row-span-1 lg:row-start-1">
             <CardHeader>
               <CardTitle>Major</CardTitle>
               <CardDescription>
                 I am currently in my final year of pursuing a{" "}
-                <strong>B.S. in Computer Science and Engineering.</strong>
+                <strong>B.S. in Computer Science and Engineering,</strong>
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="col-span-2 sm:col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1">
+          <Card className="col-span-2 sm:col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:row-start-1">
             <CardHeader>
               <CardTitle>Passion</CardTitle>
               <CardDescription>
@@ -83,38 +80,44 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="sm:col-span- col-span-2 md:col-span-2 lg:col-span-1 lg:row-span-2">
+          <Card className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-2">
             <CardHeader>
               <CardTitle>Courses</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                <Badge>DS & Algos</Badge>
-                <Badge>Databases</Badge>
-                <Badge>Web Apps</Badge>
-                <Badge>Networking</Badge>
-                <Badge>Operating Sys</Badge>
-                <Badge>Computer Org</Badge>
-                <Badge>Software Dev & Design</Badge>
-                <Badge>Linear Algebra</Badge>
-                <Badge>Electronics</Badge>
-                <Badge>Statistics</Badge>
-              </div>
+            <CardContent className="flex flex-wrap gap-2 text-xs">
+              <Badge variant="secondary" className="px-2 py-0.5">
+                DS & Algos
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-0.5">
+                Databases
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-0.5">
+                Web Apps
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-0.5">
+                Networking
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-0.5">
+                Operating Sys
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-0.5">
+                Computer Org
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-0.5">
+                Software Dev
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-0.5">
+                Linear Algebra
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-0.5">
+                Electronics
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-0.5">
+                Statistics
+              </Badge>
             </CardContent>
           </Card>
-          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:row-span-1">
-            <CardHeader>
-              <CardTitle>Free Time?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                <Badge>Learn new skills</Badge>
-                <Badge>Working out</Badge>
-                <Badge>Basketball</Badge>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:row-span-1">
+          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-2">
             <CardHeader>
               <CardTitle>Favorite language?</CardTitle>
               <CardDescription>
@@ -123,9 +126,19 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
+          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-3">
+            <CardHeader className="pb-2">
+              <CardTitle>Free Time?</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-wrap gap-2 text-xs">
+              <Badge className="px-2 py-0.5">Learn new skills</Badge>
+              <Badge className="px-2 py-0.5">Working out</Badge>
+              <Badge className="px-2 py-0.5">Basketball</Badge>
+            </CardContent>
+          </Card>
           <Card className="order-first col-span-2 flex items-center justify-center bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2">
             <CardHeader>
-              <CardTitle className="flex flex-col items-center text-center">
+              <CardTitle className="flex flex-col items-center text-cente text-3xl font-bold tracking-tight sm:text-4xl">
                 <Image
                   src={ponder}
                   alt="a picture of a ponder"
@@ -177,6 +190,13 @@ export default function Page() {
                 height={100}
                 className="mx-auto"
               />
+              <DialogFooter className="sm:justify-start">
+                <DialogClose asChild>
+                  <Button type="button" variant="secondary">
+                    Close
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
             </DialogContent>
           </Dialog>
 
@@ -223,6 +243,13 @@ export default function Page() {
                 height={100}
                 className="mx-auto"
               />
+              <DialogFooter className="sm:justify-start">
+                <DialogClose asChild>
+                  <Button type="button" variant="secondary">
+                    Close
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
             </DialogContent>
           </Dialog>
         </div>
@@ -267,13 +294,11 @@ export default function Page() {
             <Carousel
               plugins={[plugin.current]}
               className="w-full max-w-xs md:w-auto"
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
             >
               <CarouselContent>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card>
+                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <span className="text-xl font-semibold">Adaptable</span>
                       </CardContent>
@@ -282,7 +307,7 @@ export default function Page() {
                 </CarouselItem>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card>
+                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <span className="text-xl font-semibold">
                           Communicator
@@ -293,7 +318,7 @@ export default function Page() {
                 </CarouselItem>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card>
+                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <span className="text-xl font-semibold">
                           Collaborative Learner
@@ -304,7 +329,7 @@ export default function Page() {
                 </CarouselItem>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card>
+                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <span className="text-xl font-semibold">
                           Problem Solver
@@ -315,7 +340,7 @@ export default function Page() {
                 </CarouselItem>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card>
+                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <span className="text-xl font-semibold">Creative</span>
                       </CardContent>

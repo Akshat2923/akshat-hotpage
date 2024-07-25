@@ -54,7 +54,7 @@ export default function Page() {
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
-              <Card className="w-full sm:w-[350px]">
+              <Card className="w-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner sm:w-[350px]">
                 <CardHeader>
                   <CardTitle>Full Stack Developer</CardTitle>
                   <CardDescription>
@@ -141,7 +141,7 @@ export default function Page() {
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
-              <Card className="w-full sm:w-[350px] text-left">
+              <Card className="w-full text-left transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner sm:w-[350px]">
                 <CardHeader>
                   <CardTitle>Solution Engineer Intern</CardTitle>
                   <CardDescription>
@@ -190,7 +190,7 @@ export default function Page() {
                       <AccordionTrigger className="text-left">
                         What is a technical achievements you are most proud of?
                       </AccordionTrigger>
-                      <AccordionContent className="text-left">
+                      <AccordionContent className="text-left text-muted-foreground">
                         My role was a Solution Engineer on the Data Science
                         team. During the onboarding process I realized I was not
                         familiar with the tech stack the team used which was
@@ -205,7 +205,9 @@ export default function Page() {
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3">
-                      <AccordionTrigger className="text-left">What did I learn?</AccordionTrigger>
+                      <AccordionTrigger className="text-left">
+                        What did I learn?
+                      </AccordionTrigger>
                       <AccordionContent className="flex flex-wrap gap-2">
                         <Badge>Shiny Framework</Badge>
                         <Badge>SQL</Badge>
@@ -227,7 +229,32 @@ export default function Page() {
       <section className="space-y-3">
         <H2>Side Projects</H2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <Card className="w-[350px]">
+          <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
+            <CardHeader>
+              <CardTitle>Project Code "CP"</CardTitle>
+              <CardDescription>Coming Soon...</CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-wrap gap-2">
+              {/* <a
+                target="_blank"
+                href="https://github.com/Akshat2923/akshat-hotpage"
+              >
+                <GitHubIcon
+                  fontSize="large"
+                  sx={{
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                />
+              </a> */}
+            </CardContent>
+            <CardFooter className="flex flex-wrap gap-2">
+              <Badge>iOS</Badge>
+              <Badge>Swift</Badge>
+            </CardFooter>
+          </Card>
+          <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
             <CardHeader>
               <CardTitle>Smart Portfolio Website</CardTitle>
               <CardDescription>
@@ -261,7 +288,7 @@ export default function Page() {
             </CardFooter>
           </Card>
 
-          <Card className="w-[350px]">
+          <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
             <CardHeader>
               <CardTitle>Indoor Navigation Assistant (HackOHI/O)</CardTitle>
               <CardDescription>
@@ -300,14 +327,14 @@ export default function Page() {
                 />
               </a>
             </CardContent>
-            <CardFooter className="flex flex-wrap gap-2">
+            <CardFooter className="flex flex-wrap gap-2 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
               <Badge>Kotlin</Badge>
               <Badge>Android Studio</Badge>
               <Badge>Firebase</Badge>
               <Badge>team-setting</Badge>
             </CardFooter>
           </Card>
-          <Card className="w-[350px]">
+          <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
             <CardHeader>
               <CardTitle>Simon Says</CardTitle>
               <CardDescription>
