@@ -231,7 +231,7 @@ export default function Page() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
             <CardHeader>
-              <CardTitle>Project Code "CP"</CardTitle>
+              <CardTitle>Project Code &quot;CP&quot;</CardTitle>
               <CardDescription>Coming Soon...</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">

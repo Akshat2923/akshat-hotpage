@@ -12,7 +12,10 @@ export default function AIChatButton() {
     <Drawer open={chatBoxOpen} onOpenChange={setChatBoxOpen}>
       <DrawerTrigger asChild>
         <button onClick={() => setChatBoxOpen(true)}>
-          <Bot size={24} />
+          <Bot
+            size={24}
+            className="transition-all duration-300 hover:-translate-y-0.5 active:scale-95 active:shadow-inner "
+          />
         </button>
       </DrawerTrigger>
       <AIChatBox open={chatBoxOpen} onClose={() => setChatBoxOpen(false)} />

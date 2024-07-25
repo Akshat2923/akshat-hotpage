@@ -23,7 +23,7 @@ export default function Home() {
               alt="a picture of me"
               width={50}
               height={50}
-              className="ml-2 inline-block aspect-square rounded-full object-cover align-text-bottom"
+              className="ml-2 inline-block aspect-square rounded-full object-cover align-text-bottom transition-all duration-300 hover:-translate-y-1.5 active:scale-95 active:shadow-inner "
             />
           </H1>
           <p className="text-center sm:text-start">

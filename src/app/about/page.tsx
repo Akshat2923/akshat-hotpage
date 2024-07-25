@@ -36,10 +36,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 export default function Page() {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: false }),
+    Autoplay({ delay: 2000, stopOnInteraction: true }),
   );
 
   return (
@@ -138,7 +138,7 @@ export default function Page() {
           </Card>
           <Card className="order-first col-span-2 flex items-center justify-center bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2">
             <CardHeader>
-              <CardTitle className="flex flex-col items-center text-cente text-3xl font-bold tracking-tight sm:text-4xl">
+              <CardTitle className="text-cente flex flex-col items-center text-3xl font-bold tracking-tight sm:text-4xl">
                 <Image
                   src={ponder}
                   alt="a picture of a ponder"
@@ -294,6 +294,8 @@ export default function Page() {
             <Carousel
               plugins={[plugin.current]}
               className="w-full max-w-xs md:w-auto"
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
             >
               <CarouselContent>
                 <CarouselItem>
@@ -379,3 +381,4 @@ export default function Page() {
     </section>
   );
 }
+
