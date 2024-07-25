@@ -81,20 +81,19 @@ export default function Page() {
           <Card className="sm:col-span- col-span-2 md:col-span-2 lg:col-span-1 lg:row-span-2">
             <CardHeader>
               <CardTitle>Courses</CardTitle>
-              
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-2">
-              <Badge>DS & Algos</Badge>
-                  <Badge>Databases</Badge>
-                  <Badge>Web Apps</Badge>
-                  <Badge>Networking</Badge>
-                  <Badge>Operating Sys</Badge>
-                  <Badge>Computer Org</Badge>
-                  <Badge>Software Dev & Design</Badge>
-                  <Badge>Linear Algebra</Badge>
-                  <Badge>Electronics</Badge>
-                  <Badge>Statistics</Badge>
+                <Badge>DS & Algos</Badge>
+                <Badge>Databases</Badge>
+                <Badge>Web Apps</Badge>
+                <Badge>Networking</Badge>
+                <Badge>Operating Sys</Badge>
+                <Badge>Computer Org</Badge>
+                <Badge>Software Dev & Design</Badge>
+                <Badge>Linear Algebra</Badge>
+                <Badge>Electronics</Badge>
+                <Badge>Statistics</Badge>
               </div>
             </CardContent>
           </Card>
@@ -187,8 +186,8 @@ export default function Page() {
                       introduced to Swift and XCode, sparking my interest in the
                       field, also a little inspiration for the styling of this
                       page :). However nothing is easy in life. The challenges
-                      that I've faced throughout my undergrad have been nothing
-                      I could've imagined. But I believe that this adversity
+                      that I&apos;ve faced throughout my undergrad have been
+                      I could&apos;ve imagined. But I believe that this
                       will make you the best of people in the world, and my
                       ability to pursue a STEM degree alongside these hardships
                       will better me as a person.
