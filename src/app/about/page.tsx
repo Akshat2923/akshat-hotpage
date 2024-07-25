@@ -33,6 +33,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useState } from "react";
+import { AccordionHeader } from "@radix-ui/react-accordion";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 export default function Page() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false }),
@@ -40,159 +43,189 @@ export default function Page() {
   const aboutPlugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true }),
   );
+  const [isAccordionOpen1, setIsAccordionOpen1] = useState(false);
+  const [isAccordionOpen2, setIsAccordionOpen2] = useState(false);
 
   return (
     <section className="space-y-6">
       <section className="space-y-3">
-      <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 lg:grid-rows-4 lg:auto-rows-min lg:min-h-screen">
-  {/* School Card */}
-  <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:row-span-1 flex flex-col">
-    <CardHeader className="flex-grow">
-      <CardTitle>School</CardTitle>
-      <CardDescription className="flex justify-center items-center h-full">
-        <Image
-          src={osu}
-          alt="a picture of OSU"
-          width={300}
-          height={300}
-          className="max-w-full max-h-full object-contain"
-        />
-      </CardDescription>
-    </CardHeader>
-  </Card>
+        <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:min-h-screen lg:grid-cols-4 lg:grid-rows-3">
+          <Card className="col-span-1 flex sm:col-span-1 lg:col-span-1 lg:row-span-1">
+            <CardHeader>
+              <CardTitle>School</CardTitle>
+              <CardDescription>
+                <Image
+                  src={osu}
+                  alt="a picture of a ponder"
+                  width={300}
+                  height={300}
+                />
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="col-span-1 flex sm:col-span-1 lg:col-span-1 lg:row-span-1">
+            <CardHeader>
+              <CardTitle>Major</CardTitle>
+              <CardDescription>
+                I am currently in my final year of pursuing a{" "}
+                <strong>B.S. in Computer Science and Engineering.</strong>
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="col-span-2 sm:col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1">
+            <CardHeader>
+              <CardTitle>Passion</CardTitle>
+              <CardDescription>
+                I am very passionate about{" "}
+                <strong>front-end development/mobile development. </strong>I am
+                eager to learn more from others around me and help others along
+                the way!
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="sm:col-span- col-span-2 md:col-span-2 lg:col-span-1 lg:row-span-2">
+            <CardHeader>
+              <CardTitle>Courses</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap gap-2">
+                <Badge>DS & Algos</Badge>
+                <Badge>Databases</Badge>
+                <Badge>Web Apps</Badge>
+                <Badge>Networking</Badge>
+                <Badge>Operating Sys</Badge>
+                <Badge>Computer Org</Badge>
+                <Badge>Software Dev & Design</Badge>
+                <Badge>Linear Algebra</Badge>
+                <Badge>Electronics</Badge>
+                <Badge>Statistics</Badge>
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:row-span-1">
+            <CardHeader>
+              <CardTitle>Free Time?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap gap-2">
+                <Badge>Learn new skills</Badge>
+                <Badge>Working out</Badge>
+                <Badge>Basketball</Badge>
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:row-span-1">
+            <CardHeader>
+              <CardTitle>Favorite language?</CardTitle>
+              <CardDescription>
+                Currently I am really enjoying <strong>TypeScript</strong>. I
+                much prefer its type safety over js.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="order-first col-span-2 flex items-center justify-center bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2">
+            <CardHeader>
+              <CardTitle className="flex flex-col items-center text-center">
+                <Image
+                  src={ponder}
+                  alt="a picture of a ponder"
+                  width={250}
+                  height={250}
+                  className="mb-4"
+                />
+                <span>Get to Know Me!</span>
+              </CardTitle>
+            </CardHeader>
+          </Card>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Card className="col-span-2 flex flex-col transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-1">
+                <CardHeader>
+                  <CardTitle className="text-center">
+                    What Drives Me?{" "}
+                    <Image
+                      src={think}
+                      alt="a picture of a thinking"
+                      width={100}
+                      height={100}
+                      className="mx-auto"
+                    />
+                  </CardTitle>
+                </CardHeader>
+              </Card>
+            </DialogTrigger>
+            <DialogContent className="text-muted-foreground">
+              One thing that you won&apos;t see on my resume is my ability to
+              help other people in need. Especially in the context and in the
+              world of tech when you are given the opportunity and the gift of
+              working on some exciting and innovative projects it makes it even
+              more rewarding when a feature might be able to directly help
+              someone struggling with something in their daily life. My backbone
+              purpose behind performing technical projects whether it&apos;s
+              individual or in the workplace is{" "}
+              <strong>
+                &quot;How can I create something that&apos;ll streamline or
+                solve someone&apos;s problems throughout their normal
+                days?&quot;
+              </strong>{" "}
+              I believe that is a great definition of a software engineer at the
+              end of the day.{" "}
+              <Image
+                src={think}
+                alt="a picture of a thinking"
+                width={100}
+                height={100}
+                className="mx-auto"
+              />
+            </DialogContent>
+          </Dialog>
 
-  {/* Major Card */}
-  <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:row-span-1 flex flex-col">
-    <CardHeader className="flex-grow">
-      <CardTitle>Major</CardTitle>
-      <CardDescription className="overflow-auto">
-        I am currently in my final year of pursuing a{" "}
-        <strong>B.S. in Computer Science and Engineering.</strong>
-      </CardDescription>
-    </CardHeader>
-  </Card>
-
-  {/* Passion Card */}
-  <Card className="col-span-2 sm:col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 flex flex-col">
-    <CardHeader className="flex-grow">
-      <CardTitle>Passion</CardTitle>
-      <CardDescription className="overflow-auto">
-        I am very passionate about{" "}
-        <strong>front-end development/mobile development. </strong>I am
-        eager to learn more from others around me and help others along
-        the way!
-      </CardDescription>
-    </CardHeader>
-  </Card>
-
-  {/* Courses Card */}
-  <Card className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1 lg:row-span-2 flex flex-col">
-    <CardHeader>
-      <CardTitle>Courses</CardTitle>
-    </CardHeader>
-    <CardContent className="flex-grow overflow-auto">
-      <div className="flex flex-wrap gap-2">
-        <Badge>DS & Algos</Badge>
-        <Badge>Databases</Badge>
-        <Badge>Web Apps</Badge>
-        <Badge>Networking</Badge>
-        <Badge>Operating Sys</Badge>
-        <Badge>Computer Org</Badge>
-        <Badge>Software Dev & Design</Badge>
-        <Badge>Linear Algebra</Badge>
-        <Badge>Electronics</Badge>
-        <Badge>Statistics</Badge>
-      </div>
-    </CardContent>
-  </Card>
-
-  {/* Free Time Card */}
-  <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:row-span-1 flex flex-col">
-    <CardHeader>
-      <CardTitle>Free Time?</CardTitle>
-    </CardHeader>
-    <CardContent className="flex-grow overflow-auto">
-      <div className="flex flex-wrap gap-2">
-        <Badge>Learn new skills</Badge>
-        <Badge>Working out</Badge>
-        <Badge>Basketball</Badge>
-      </div>
-    </CardContent>
-  </Card>
-
-  {/* Favorite Language Card */}
-  <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:row-span-1 flex flex-col">
-    <CardHeader className="flex-grow">
-      <CardTitle>Favorite language?</CardTitle>
-      <CardDescription className="overflow-auto">
-        Currently I am really enjoying <strong>TypeScript</strong>. I
-        much prefer its type safety over js.
-      </CardDescription>
-    </CardHeader>
-  </Card>
-
-  {/* Get to Know Me Card */}
-  <Card className="order-first col-span-2 bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2 flex flex-col">
-    <CardHeader className="flex-grow flex flex-col items-center justify-center">
-      <CardTitle className="text-center">
-        <Image
-          src={ponder}
-          alt="a picture of a ponder"
-          width={300}
-          height={300}
-          className="max-w-full max-h-full object-contain"
-        />
-        Get to Know Me!
-      </CardTitle>
-    </CardHeader>
-  </Card>
-
-  {/* What Drives Me Card */}
-  <Card className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-1 flex flex-col">
-    <CardHeader className="flex-grow">
-      <CardTitle>
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>What Drives Me?</AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground overflow-auto max-h-40">
-              {/* Content here */}
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-        <Image
-          src={think}
-          alt="a picture of thinking"
-          width={100}
-          height={100}
-          className="mx-auto mt-2"
-        />
-      </CardTitle>
-    </CardHeader>
-  </Card>
-
-  {/* Why Computer Science Card */}
-  <Card className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-1 flex flex-col">
-    <CardHeader className="flex-grow">
-      <CardTitle>
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>Why Computer Science?</AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground overflow-auto max-h-40">
-              {/* Content here */}
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-        <Image
-          src={computer}
-          alt="a picture of a computer"
-          width={100}
-          height={100}
-          className="mx-auto mt-2"
-        />
-      </CardTitle>
-    </CardHeader>
-  </Card>
-</div>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Card className="col-span-2 flex flex-col transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-1">
+                <CardHeader>
+                  <CardTitle className="text-center">
+                    Why Computer Science?{" "}
+                    <Image
+                      src={computer}
+                      alt="a picture of a thinking"
+                      width={100}
+                      height={100}
+                      className="mx-auto"
+                    />
+                  </CardTitle>
+                </CardHeader>
+              </Card>
+            </DialogTrigger>
+            <DialogContent className="text-muted-foreground">
+              Computer Science is a beautiful degree because of its modularity
+              and impact.{" "}
+              <strong>
+                This field allows people to make small changes in software that
+                can affect people on a broader scale.
+              </strong>{" "}
+              Every year since 6th grade, I would always look forward to each of
+              Apple&apos;s Worldwide Developers Conference (WWDC) and product
+              launches live, ecstatic to hear about the newest features coming
+              to the next iOS because at the end of the day this affects people
+              on a day-to-day basis. It was at WWDC that I was first introduced
+              to Swift and XCode, sparking my interest in the field, also a
+              little inspiration for the styling of this page :). However
+              nothing is easy in life. The challenges that I&apos;ve faced
+              throughout my undergrad have been I could&apos;ve imagined. But I
+              believe that this will make you the best of people in the world,
+              and my ability to pursue a Computer Science alongside these
+              hardships will better me as a person.
+              <Image
+                src={computer}
+                alt="a picture of a thinking"
+                width={100}
+                height={100}
+                className="mx-auto"
+              />
+            </DialogContent>
+          </Dialog>
+        </div>
       </section>
       <hr className="border-muted" />
       <section className="space-y-3">
