@@ -178,7 +178,7 @@ export default function Page() {
                       modularity and impact. This field allows people to make
                       small changes in software that can affect people on a
                       broader scale. Every year since 6th grade, I would always
-                      look forward to each of Apple's Worldwide Developers
+                      look forward to each of Apple&apos;s Worldwide Developers
                       Conference (WWDC) and product launches live, ecstatic to
                       hear about the newest features coming to the next iOS
                       because at the end of the day this affects people on a
@@ -186,11 +186,11 @@ export default function Page() {
                       introduced to Swift and XCode, sparking my interest in the
                       field, also a little inspiration for the styling of this
                       page :). However nothing is easy in life. The challenges
-                      that I&apos;ve faced throughout my undergrad have been
-                      I could&apos;ve imagined. But I believe that this
-                      will make you the best of people in the world, and my
-                      ability to pursue a STEM degree alongside these hardships
-                      will better me as a person.
+                      that I&apos;ve faced throughout my undergrad have been I
+                      could&apos;ve imagined. But I believe that this will make
+                      you the best of people in the world, and my ability to
+                      pursue a STEM degree alongside these hardships will better
+                      me as a person.
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
