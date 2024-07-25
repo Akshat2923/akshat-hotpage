@@ -237,7 +237,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
-              <a
+              {/* <a
                 target="_blank"
                 href="https://github.com/Akshat2923/akshat-hotpage"
               >
@@ -249,7 +249,7 @@ export default function Page() {
                     },
                   }}
                 />
-              </a>
+              </a> */}
             </CardContent>
             <CardFooter className="flex flex-wrap gap-2">
               <Badge>Next.js 14</Badge>

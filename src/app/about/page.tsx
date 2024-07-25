@@ -35,7 +35,7 @@ export default function Page() {
               <strong>
                 <a
                   target="_blank"
-                  href="https://www.aep.com/"
+                  href="https://cse.osu.edu/"
                   className="flex items-center gap-2 hover:text-primary hover:underline"
                 >
                   The Ohio State University studying Computer science and
