@@ -137,7 +137,7 @@ export default function Page() {
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="item-1">
                     <AccordionTrigger>What Drives Me?</AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionContent className="text-sm text-muted-foreground">
                       One thing that you won&apos;t see on my resume is my
                       ability to help other people in need. Especially in the
                       context and in the world of tech when you are given the
@@ -173,7 +173,7 @@ export default function Page() {
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="item-1">
                     <AccordionTrigger>Why Computer Science?</AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionContent className="text-sm text-muted-foreground">
                       Computer Science is a beautiful degree because of its
                       modularity and impact. This field allows people to make
                       small changes in software that can affect people on a

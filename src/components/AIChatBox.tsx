@@ -63,7 +63,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
       </DrawerHeader>
       <div className="flex-1 overflow-y-auto p-4" ref={scrollRef}>
         {messages.map((message) => (
-          <ChatMessage message={message} key={message.id} />
+          <ChatMessage message={message} key={message.id} onClose={onClose} />
         ))}
         {isLoading && lastMessageIsUser && (
           <ChatMessage
@@ -72,6 +72,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
               role: "assistant",
               content: "Thinking...",
             }}
+            onClose={onClose}
           />
         )}
         {error && (
@@ -81,6 +82,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
               role: "assistant",
               content: "Something went wrong. Please try again!",
             }}
+            onClose={onClose}
           />
         )}
         {!error && messages.length === 0 && (
@@ -128,9 +130,10 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
 
 interface ChatMessageProps {
   message: Message;
+  onClose: () => void;
 }
 
-function ChatMessage({ message: { role, content } }: ChatMessageProps) {
+function ChatMessage({ message: { role, content }, onClose }: ChatMessageProps) {
   const isAiMessage = role === "assistant";
 
   return (
@@ -155,6 +158,9 @@ function ChatMessage({ message: { role, content } }: ChatMessageProps) {
                 {...props}
                 href={props.href ?? ""}
                 className="text-primary hover:underline"
+                onClick={(e) => {
+                  onClose();
+                }}
               />
               </Badge>
             ),
