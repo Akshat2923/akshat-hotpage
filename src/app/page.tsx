@@ -46,7 +46,7 @@ export default function Home() {
         <H2>...Or ask the chatbot anything</H2>
         <p>
           Click the <Bot className="inline pb-1" /> icon in the top bar to
-          active the chatbot. You can ask it anything you want about me!
+          open the chatbot. You can ask it anything you want about me!
         </p>
       </section>
     </section>

@@ -1,13 +1,13 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
-const config: Config = {
+const config = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
   prefix: "",
   theme: {
     container: {
@@ -18,18 +18,6 @@ const config: Config = {
       },
     },
     extend: {
-      perspective: {
-        "1000": "1000px",
-      },
-      rotate: {
-        "y-180": "180deg",
-      },
-      transformStyle: {
-        "preserve-3d": "preserve-3d",
-      },
-      backfaceVisibility: {
-        hidden: "hidden",
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -86,23 +74,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    function ({ addUtilities }) {
-      const newUtilities = {
-        ".backface-hidden": {
-          "backface-visibility": "hidden",
-        },
-        ".perspective-1000": {
-          perspective: "1000px",
-        },
-        ".transform-style-preserve-3d": {
-          "transform-style": "preserve-3d",
-        },
-      };
-      addUtilities(newUtilities, ["responsive", "hover"]);
-    },
-  ],
-};
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
 
-export default config;
+export default config
