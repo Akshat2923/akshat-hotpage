@@ -65,7 +65,11 @@ export default function Page() {
               <CardTitle>Major</CardTitle>
               <CardDescription>
                 <strong>B.S. in Computer Science & Engineering. </strong>
-                Expected graduation date of <strong>May 2025<SchoolIcon fontSize="small"/>.</strong>
+                Expected graduation date of{" "}
+                <strong>
+                  May 2025
+                  <SchoolIcon fontSize="small" />.
+                </strong>
               </CardDescription>
             </CardHeader>
           </Card>
@@ -167,7 +171,7 @@ export default function Page() {
                 </CardHeader>
               </Card>
             </DialogTrigger>
-            <DialogContent className="text-muted-foreground">
+            <DialogContent className="text-muted-foreground sm:max-w-[425px] lg:max-w-[700px]">
               One thing that you won&apos;t see on my resume is my ability to
               help other people in need. Especially in the context and in the
               world of tech when you are given the opportunity and the gift of
@@ -217,7 +221,7 @@ export default function Page() {
                 </CardHeader>
               </Card>
             </DialogTrigger>
-            <DialogContent className="text-muted-foreground">
+            <DialogContent className="text-muted-foreground sm:max-w-[425px] lg:max-w-[700px]">
               Computer Science is a beautiful degree because of its modularity
               and impact.{" "}
               <strong>

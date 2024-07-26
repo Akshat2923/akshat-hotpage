@@ -53,7 +53,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   const lastMessageIsUser = messages[messages.length - 1]?.role === "user";
 
   return (
-    <DrawerContent className="mx-auto flex h-[80vh] w-full max-w-2xl flex-col rounded-2xl">
+    <DrawerContent className="mx-auto flex h-[75vh] w-full max-w-2xl flex-col rounded-t-2xl">
       <DrawerHeader>
         <DrawerTitle>AI Chat</DrawerTitle>
         <DrawerDescription>
@@ -118,16 +118,16 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           </Button>
         </form>
         <DrawerClose asChild>
-        <div className="flex justify-center w-full mt-4">
-          <Button
-            type="button"
-            variant="secondary"
-            className="max-w-[200px]"
-            onClick={onClose}
-          >
-            Close
-          </Button>
-        </div>
+          <div className="mt-4 flex w-full justify-center">
+            <Button
+              type="button"
+              variant="secondary"
+              className="max-w-[200px]"
+              onClick={onClose}
+            >
+              Close
+            </Button>
+          </div>
         </DrawerClose>
       </DrawerFooter>
     </DrawerContent>
