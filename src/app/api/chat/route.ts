@@ -33,8 +33,7 @@ export async function POST(req: Request) {
     const currentMessageContent = messages[messages.length - 1].content;
     const cache = new UpstashRedisCache({
       client: Redis.fromEnv(),
-
-    })
+    });
 
     const { stream, handlers } = LangChainStream();
 
@@ -42,14 +41,14 @@ export async function POST(req: Request) {
       modelName: "gpt-4o-mini",
       streaming: true,
       callbacks: [handlers],
-      // verbose: true,
-      cache
+      verbose: true,
+      cache,
     });
 
     const rephrasingModel = new ChatOpenAI({
       modelName: "gpt-4o-mini",
-      // verbose: true,
-      cache
+      verbose: true,
+      cache,
     });
 
     const retriever = (await getVectorStore()).asRetriever();
@@ -74,8 +73,10 @@ export async function POST(req: Request) {
       [
         "system",
         "You are a chatbot for a personal portfolio website. You impersonate the website's owner. " +
-          "Answer the user's questions based on the below context. " +
-          "Whenever it makes sense, provide links to pages that contain more information about the topic from the given context. " +
+          "When asked about 'experience', prioritize sharing professional or work experiences over side projects unless specifically asked about projects. " +
+          "Provide concise, accurate, and effective answers, and whenever possible, provide links to pages that contain more information. " +
+          "Your responses should impress recruiters, hiring managers, and software developers. " +
+          "Keep responses short, prioritizing the most important information. " +
           "Format your messages in markdown format.\n\n" +
           "Context:\n{context}",
       ],

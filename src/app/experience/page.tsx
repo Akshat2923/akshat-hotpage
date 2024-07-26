@@ -81,15 +81,15 @@ export default function Page() {
                         What tech stack does this app use?
                       </AccordionTrigger>
                       <AccordionContent className="flex flex-wrap gap-2">
-                        <Badge>T3 Turborepo</Badge>
-                        <Badge>Expo</Badge>
-                        <Badge>React Native</Badge>
-                        <Badge>Tailwind CSS</Badge>
-                        <Badge>TypeScript</Badge>
-                        <Badge>tRPC</Badge>
-                        <Badge>Next.js</Badge>
-                        <Badge>Drizzle</Badge>
-                        <Badge>Supabase</Badge>
+                        <Badge variant="secondary">T3 Turborepo</Badge>
+                        <Badge variant="secondary">Expo</Badge>
+                        <Badge variant="secondary">React Native</Badge>
+                        <Badge variant="secondary">Tailwind CSS</Badge>
+                        <Badge variant="secondary">TypeScript</Badge>
+                        <Badge variant="secondary">tRPC</Badge>
+                        <Badge variant="secondary">Next.js</Badge>
+                        <Badge variant="secondary">Drizzle</Badge>
+                        <Badge variant="secondary">Supabase</Badge>
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
@@ -97,27 +97,33 @@ export default function Page() {
                         What features have you built?
                       </AccordionTrigger>
                       <AccordionContent>
-                        <ul className="list-inside list-disc space-y-1">
-                          <li>
+                        <div className="space-y-2 text-muted-foreground">
+                          <div>
+                            <span role="img" aria-label="design">
+                              🎨
+                            </span>{" "}
                             Collaborating with team members to translate Figma
                             designs such as a create event modal, a
                             comprehensive search feature, user privacy states,
                             and a calendar view.
-                          </li>
-                          <li>
+                          </div>
+                          <div>
+                            <span role="img" aria-label="connection">
+                              🔗
+                            </span>{" "}
                             Connected the frontend and backend, allowing for
                             features like user search, profile viewing, and
                             follow requests to be updated in real-time in the
                             database and reflected in the frontend.
-                          </li>
-                        </ul>
+                          </div>
+                        </div>
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3">
                       <AccordionTrigger>
                         How had this experience been unique?
                       </AccordionTrigger>
-                      <AccordionContent>
+                      <AccordionContent className="text-muted-foreground">
                         This experience has been uniquely rewarding in several
                         ways. The opportunity to work in a small, team allows
                         for close collaboration . The progress we make each week
@@ -167,23 +173,29 @@ export default function Page() {
                         What did I work on and its impact?
                       </AccordionTrigger>
                       <AccordionContent className="text-left">
-                        <ul className="list-inside list-disc space-y-1">
-                          <li>
+                        <div className="space-y-2 text-muted-foreground">
+                          <div>
+                            <span role="img" aria-label="drone">
+                              🚁
+                            </span>{" "}
                             Built a Python Shiny app from scratch, incorporating
                             the OpenCV2 computer vision library to analyze drone
                             image data. Explores potential improvements in
                             maintenance efficiency and worker safety by reducing
                             the need for unnecessary fieldwork.
-                          </li>
-                          <li>
+                          </div>
+                          <div>
+                            <span role="img" aria-label="battery">
+                              🔋
+                            </span>{" "}
                             Redesigned the front end of a production R Shiny app
                             that determines optimal battery placement,
                             transforming a cluttered tab-based layout into a
                             streamlined drop-down menu system. Significantly
                             improving user experience and longterm
                             maintainability.
-                          </li>
-                        </ul>
+                          </div>
+                        </div>
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
@@ -209,13 +221,13 @@ export default function Page() {
                         What did I learn?
                       </AccordionTrigger>
                       <AccordionContent className="flex flex-wrap gap-2">
-                        <Badge>Shiny Framework</Badge>
-                        <Badge>SQL</Badge>
-                        <Badge>Databases</Badge>
-                        <Badge>Docker</Badge>
-                        <Badge>Git & Github Actions</Badge>
-                        <Badge>Adaptability</Badge>
-                        <Badge>Communication</Badge>
+                        <Badge variant="secondary">Shiny Framework</Badge>
+                        <Badge variant="secondary">SQL</Badge>
+                        <Badge variant="secondary">Databases</Badge>
+                        <Badge variant="secondary">Docker</Badge>
+                        <Badge variant="secondary">Git & Github Actions</Badge>
+                        <Badge variant="secondary">Adaptability</Badge>
+                        <Badge variant="secondary">Communication</Badge>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>

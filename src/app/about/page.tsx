@@ -53,7 +53,7 @@ export default function Page() {
                 <a href="https://cse.osu.edu/" target="_blank">
                   <Image
                     src={osu}
-                    alt="a picture of a ponder"
+                    alt="a picture OSU Logo"
                     className="mt-6 w-full"
                   />
                 </a>
@@ -125,8 +125,7 @@ export default function Page() {
             <CardHeader>
               <CardTitle>Favorite language?</CardTitle>
               <CardDescription>
-                Currently I am really enjoying <strong>TypeScript</strong>. I
-                much prefer its type safety over js.
+                Currently I am really enjoying <strong>TypeScript</strong> because I prefer its type safety and code maintainability.
               </CardDescription>
             </CardHeader>
           </Card>
@@ -145,12 +144,12 @@ export default function Page() {
               <CardTitle className="text-cente flex flex-col items-center text-3xl font-bold tracking-tight sm:text-4xl">
                 <Image
                   src={ponder}
-                  alt="a picture of a ponder"
+                  alt="a picture of me pondering"
                   width={250}
                   height={250}
                   className="animate-float mb-4"
                 />
-                <span>Get to Know Me!</span>
+                <span>About Me</span>
               </CardTitle>
             </CardHeader>
           </Card>
@@ -162,7 +161,7 @@ export default function Page() {
                     What Drives Me?{" "}
                     <Image
                       src={think}
-                      alt="a picture of a thinking"
+                      alt="a picture of me thinking"
                       width={100}
                       height={100}
                       className="mx-auto"
