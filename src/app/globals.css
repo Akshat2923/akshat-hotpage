@@ -111,3 +111,14 @@
     background-position: 0% 50%;
   }
 }
+/* Remove the default focus outline */
+button:focus,
+input:focus {
+  outline: none;
+}
+
+/* Custom focus style */
+button:focus-visible,
+input:focus-visible {
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Custom shadow or border */
+}

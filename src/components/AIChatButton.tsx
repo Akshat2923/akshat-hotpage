@@ -9,9 +9,9 @@ export default function AIChatButton() {
   const [chatBoxOpen, setChatBoxOpen] = useState(false);
 
   return (
-    <Drawer open={chatBoxOpen} onOpenChange={setChatBoxOpen}>
+    <Drawer open={chatBoxOpen} onOpenChange={setChatBoxOpen} >
       <DrawerTrigger asChild>
-        <button onClick={() => setChatBoxOpen(true)}>
+        <button onClick={() => setChatBoxOpen(true)} className="custom-button-class">
           <Bot
             size={24}
             className="transition-all duration-300 hover:-translate-y-0.5 active:scale-95 active:shadow-inner "
