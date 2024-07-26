@@ -144,8 +144,8 @@ export default function Page() {
                   alt="a picture of a ponder"
                   width={250}
                   height={250}
-                  className="mb-4"
-                />
+                  className="mb-4 animate-float"
+                  />
                 <span>Get to Know Me!</span>
               </CardTitle>
             </CardHeader>
