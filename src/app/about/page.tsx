@@ -360,6 +360,7 @@ export default function Page() {
         <div className="flex flex-wrap gap-2">
           <Badge variant="outline">
             <a
+              target="_blank"
               href="https://github.com/Akshat2923"
               className="p-1 text-primary hover:underline"
             >
@@ -369,6 +370,7 @@ export default function Page() {
           </Badge>
           <Badge variant="outline">
             <a
+              target="_blank"
               href="https://www.linkedin.com/in/akshatsaladi/"
               className="p-1 text-primary hover:underline"
             >
