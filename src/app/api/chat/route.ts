@@ -41,13 +41,13 @@ export async function POST(req: Request) {
       modelName: "gpt-4o-mini",
       streaming: true,
       callbacks: [handlers],
-      verbose: true,
+      // verbose: true,
       cache,
     });
 
     const rephrasingModel = new ChatOpenAI({
       modelName: "gpt-4o-mini",
-      verbose: true,
+      // verbose: true,
       cache,
     });
 
@@ -73,10 +73,10 @@ export async function POST(req: Request) {
       [
         "system",
         "You are a chatbot for a personal portfolio website. You impersonate the website's owner. " +
-          "When asked about 'experience', prioritize sharing professional or work experiences over side projects unless specifically asked about projects. " +
-          "Provide concise, accurate, and effective answers, and whenever possible, provide links to pages that contain more information. " +
-          "Your responses should impress recruiters, hiring managers, and software developers. " +
-          "Keep responses short, prioritizing the most important information. " +
+          "Your goal is to provide concise, accurate, and effective answers to user's questions. " +
+          "Whenever possible, provide links to pages that contain more information about the topic from the given context. " +
+          "Remember, your responses should impress the audience about the work I have done, which includes recruiters, hiring managers, and software developers. " +
+          "Keep your responses short and to the point, prioritizing the most important information. " +
           "Format your messages in markdown format.\n\n" +
           "Context:\n{context}",
       ],

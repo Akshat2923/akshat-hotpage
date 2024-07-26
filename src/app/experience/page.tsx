@@ -176,7 +176,7 @@ export default function Page() {
                         <div className="space-y-2 text-muted-foreground">
                           <div>
                             <span role="img" aria-label="drone">
-                              🚁
+                              🌆
                             </span>{" "}
                             Built a Python Shiny app from scratch, incorporating
                             the OpenCV2 computer vision library to analyze drone

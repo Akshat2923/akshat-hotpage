@@ -238,7 +238,7 @@ export default function Page() {
               nothing is easy in life. The challenges that I&apos;ve faced
               throughout my undergrad have been I could&apos;ve imagined. But I
               believe that this will make you the best of people in the world,
-              and my ability to pursue a Computer Science alongside these
+              and my ability to pursue Computer Science alongside these
               hardships will better me as a person.
               <Image
                 src={computer}
