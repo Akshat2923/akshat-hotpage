@@ -36,10 +36,10 @@ import {
 import { Button } from "@/components/ui/button";
 import SchoolIcon from "@mui/icons-material/School";
 import EmailIcon from "@mui/icons-material/Email";
-import DescriptionIcon from '@mui/icons-material/Description';
+import DescriptionIcon from "@mui/icons-material/Description";
 export default function Page() {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true }),
+    Autoplay({ delay: 2000, stopOnInteraction: false }),
   );
 
   return (
@@ -304,7 +304,7 @@ export default function Page() {
               <CarouselContent>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
+                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <span className="text-xl font-semibold">Adaptable</span>
                       </CardContent>
@@ -313,7 +313,7 @@ export default function Page() {
                 </CarouselItem>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
+                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner ">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <span className="text-xl font-semibold">
                           Communicator
@@ -324,7 +324,7 @@ export default function Page() {
                 </CarouselItem>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
+                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <span className="text-xl font-semibold">
                           Collaborative Learner
@@ -335,7 +335,7 @@ export default function Page() {
                 </CarouselItem>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
+                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <span className="text-xl font-semibold">
                           Problem Solver
@@ -346,7 +346,7 @@ export default function Page() {
                 </CarouselItem>
                 <CarouselItem>
                   <div className="p-1">
-                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
+                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <span className="text-xl font-semibold">Creative</span>
                       </CardContent>
