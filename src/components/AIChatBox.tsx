@@ -15,7 +15,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
-
 export function ButtonOutline() {
   return <Button variant="outline">Outline</Button>;
 }
@@ -54,7 +53,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   const lastMessageIsUser = messages[messages.length - 1]?.role === "user";
 
   return (
-    <DrawerContent className="flex h-[70vh] flex-col max-w-2xl mx-auto w-full">
+    <DrawerContent className="mx-auto flex h-[80vh] w-full max-w-2xl flex-col rounded-2xl">
       <DrawerHeader>
         <DrawerTitle>AI Chat</DrawerTitle>
         <DrawerDescription>
@@ -111,7 +110,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             value={input}
             onChange={handleInputChange}
             placeholder="Say something..."
-            className="flex-1 rounded-md border bg-background px-3 py-2"
+            className="flex-1 rounded-2xl border bg-background px-3 py-2"
             ref={inputRef}
           />
           <Button type="submit" disabled={input.length === 0}>
@@ -119,9 +118,16 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           </Button>
         </form>
         <DrawerClose asChild>
-          <Button variant="outline" onClick={onClose}>
+        <div className="flex justify-center w-full mt-4">
+          <Button
+            type="button"
+            variant="secondary"
+            className="max-w-[200px]"
+            onClick={onClose}
+          >
             Close
           </Button>
+        </div>
         </DrawerClose>
       </DrawerFooter>
     </DrawerContent>
@@ -133,7 +139,10 @@ interface ChatMessageProps {
   onClose: () => void;
 }
 
-function ChatMessage({ message: { role, content }, onClose }: ChatMessageProps) {
+function ChatMessage({
+  message: { role, content },
+  onClose,
+}: ChatMessageProps) {
   const isAiMessage = role === "assistant";
 
   return (
@@ -146,22 +155,22 @@ function ChatMessage({ message: { role, content }, onClose }: ChatMessageProps) 
       {isAiMessage && <Bot className="mr-2 flex-none" />}
       <div
         className={cn(
-          "rounded-md border px-3 py-2",
+          "rounded-2xl border px-3 py-2",
           isAiMessage ? "bg-background" : "bg-foreground text-background",
         )}
       >
         <ReactMarkdown
           components={{
             a: ({ node, ref, ...props }) => (
-              <Badge variant="outline" >
-              <Link
-                {...props}
-                href={props.href ?? ""}
-                className="text-primary hover:underline"
-                onClick={(e) => {
-                  onClose();
-                }}
-              />
+              <Badge variant="outline">
+                <Link
+                  {...props}
+                  href={props.href ?? ""}
+                  className="text-primary hover:underline"
+                  onClick={(e) => {
+                    onClose();
+                  }}
+                />
               </Badge>
             ),
             p: ({ node, ...props }) => (

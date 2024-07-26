@@ -36,7 +36,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { ReactNode, useState } from "react";
+import SchoolIcon from "@mui/icons-material/School";
 export default function Page() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true }),
@@ -64,8 +64,8 @@ export default function Page() {
             <CardHeader>
               <CardTitle>Major</CardTitle>
               <CardDescription>
-                I am currently in my final year of pursuing a{" "}
-                <strong>B.S. in Computer Science and Engineering,</strong>
+                <strong>B.S. in Computer Science & Engineering. </strong>
+                Expected graduation date of <strong>May 2025<SchoolIcon fontSize="small"/>.</strong>
               </CardDescription>
             </CardHeader>
           </Card>
@@ -144,8 +144,8 @@ export default function Page() {
                   alt="a picture of a ponder"
                   width={250}
                   height={250}
-                  className="mb-4 animate-float"
-                  />
+                  className="animate-float mb-4"
+                />
                 <span>Get to Know Me!</span>
               </CardTitle>
             </CardHeader>
@@ -383,4 +383,3 @@ export default function Page() {
     </section>
   );
 }
-

@@ -27,7 +27,7 @@ export default function Home() {
             />
           </H1>
           <p className="text-center sm:text-start">
-            Welcome to my Hot Page. This website is a smart personal portfolio
+            Welcome to my Hot Page. This website is a personal portfolio
             where I showcase my work and skills. Click the top bar links to
             learn more about me!
           </p>
