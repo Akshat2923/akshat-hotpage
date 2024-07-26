@@ -1,10 +1,8 @@
 "use client";
-import { H1 } from "@/components/ui/H1";
 import Image from "next/image";
 import { H2 } from "@/components/ui/H2";
 import { H3 } from "@/components/ui/H3";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Terminal } from "lucide-react";
+
 import { Badge } from "@/components/ui/badge";
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
@@ -37,6 +35,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import SchoolIcon from "@mui/icons-material/School";
+import EmailIcon from "@mui/icons-material/Email";
+import DescriptionIcon from '@mui/icons-material/Description';
 export default function Page() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true }),
@@ -125,7 +125,8 @@ export default function Page() {
             <CardHeader>
               <CardTitle>Favorite language?</CardTitle>
               <CardDescription>
-                Currently I am really enjoying <strong>TypeScript</strong> because I prefer its type safety and code maintainability.
+                Currently I am really enjoying <strong>TypeScript</strong>{" "}
+                because I prefer its type safety and code maintainability.
               </CardDescription>
             </CardHeader>
           </Card>
@@ -147,7 +148,7 @@ export default function Page() {
                   alt="a picture of me pondering"
                   width={250}
                   height={250}
-                  className="animate-float mb-4"
+                  className="mb-4 animate-float"
                 />
                 <span>About Me</span>
               </CardTitle>
@@ -380,6 +381,25 @@ export default function Page() {
               LinkedIn
             </a>
             <LinkedInIcon className="h-4 w-4" />
+          </Badge>
+          <Badge variant="outline">
+            <a
+              href="mailto:saladi.4@buckeyemail.osu.edu"
+              className="p-1 text-primary hover:underline"
+            >
+              Email
+            </a>
+            <EmailIcon className="h-4 w-4" />
+          </Badge>
+          <Badge variant="outline">
+            <a
+              target="_blank"
+              href="https://github.com/Akshat2923/Resume/blob/350a4a3803fc7475ace34a4450c38ab120735710/AkshatSaladiResume2024.pdf"
+              className="p-1 text-primary hover:underline"
+            >
+              Resume
+            </a>
+            <DescriptionIcon className="h-4 w-4" />
           </Badge>
         </div>
       </section>
