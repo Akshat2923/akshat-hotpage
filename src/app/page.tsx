@@ -52,9 +52,9 @@ export default function Home() {
             height={40}
             className="mr-2 inline-block aspect-square rounded-full object-cover align-text-bottom transition-all hover:-translate-y-1.5 "
           />
-          <span className="inline">Don't know where to start?</span>
+          <span className="inline">Don&apos;t know where to start?</span>
         </H2>
-        <p>Click the memoji icon in the top right corner to open the chatbot. You can ask it anything you want about me!</p>
+        <p>Click the memoji icon in the top right to open the chatbot. You can ask it anything you want about me!</p>
       </section>
     </section>
   );
