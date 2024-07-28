@@ -30,8 +30,15 @@ import { Metadata } from "next";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PhotoIcon from "@mui/icons-material/Photo";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import simonsays from "@/assets/images/simonsays.jpg";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Experience",
@@ -384,10 +391,17 @@ export default function Page() {
                   <Image
                     src={simonsays}
                     alt="a photo of the arduino board simon says layout"
-                    width={300}
-                    height={300}
-                    className="rounded-md"
+                    width={400}
+                    height={400}
+                    className="rounded-2xl"
                   />
+                  <DialogFooter className="sm:justify-start">
+                    <DialogClose asChild>
+                      <Button type="button" variant="secondary">
+                        Close
+                      </Button>
+                    </DialogClose>
+                  </DialogFooter>
                 </DialogContent>
               </Dialog>
             </CardContent>
