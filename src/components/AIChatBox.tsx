@@ -167,7 +167,7 @@ function ChatMessage({
           <ReactMarkdown
             components={{
               a: ({ node, ref, ...props }) => (
-                <Badge variant="outline">
+                <Badge variant="outline" className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
                   <Link
                     {...props}
                     href={props.href ?? ""}

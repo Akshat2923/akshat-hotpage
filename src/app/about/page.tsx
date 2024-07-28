@@ -46,7 +46,7 @@ export default function Page() {
     <section className="space-y-6">
       <section className="space-y-3">
         <div className="lg:min-h-screen-md grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 lg:grid-rows-1">
-          <Card className="col-span-1  flex transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800 sm:col-span-1 lg:col-span-1 lg:row-span-1 lg:row-start-1">
+          <Card className="col-span-1 flex transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800 sm:col-span-1 lg:col-span-1 lg:row-span-1 lg:row-start-1">
             <CardHeader>
               <CardTitle>School</CardTitle>
               <CardDescription>
@@ -60,7 +60,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="col-span-1 flex sm:col-span-1 lg:col-span-1 lg:row-span-1 lg:row-start-1 transition-all hover:-translate-y-0.5 hover:shadow-md ">
+          <Card className="col-span-1 flex sm:col-span-1 lg:col-span-1 lg:row-span-1 lg:row-start-1">
             <CardHeader>
               <CardTitle>Major</CardTitle>
               <CardDescription>
@@ -73,7 +73,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="col-span-2 sm:col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:row-start-1 transition-all hover:-translate-y-0.5 hover:shadow-md ">
+          <Card className="col-span-2 sm:col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:row-start-1">
             <CardHeader>
               <CardTitle>Passion</CardTitle>
               <CardDescription>
@@ -84,7 +84,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-2 transition-all hover:-translate-y-0.5 hover:shadow-md ">
+          <Card className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-2">
             <CardHeader>
               <CardTitle>Courses</CardTitle>
             </CardHeader>
@@ -121,7 +121,7 @@ export default function Page() {
               </Badge>
             </CardContent>
           </Card>
-          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-2 transition-all hover:-translate-y-0.5 hover:shadow-md ">
+          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-2">
             <CardHeader>
               <CardTitle>Favorite language?</CardTitle>
               <CardDescription>
@@ -130,7 +130,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-3 transition-all hover:-translate-y-0.5 hover:shadow-md ">
+          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-3">
             <CardHeader className="pb-2">
               <CardTitle>Free Time?</CardTitle>
             </CardHeader>
@@ -140,7 +140,7 @@ export default function Page() {
               <Badge className="px-2 py-0.5">Basketball</Badge>
             </CardContent>
           </Card>
-          <Card className="order-first col-span-2 flex items-center justify-center bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2 transition-all hover:-translate-y-0.5 hover:shadow-md ">
+          <Card className="order-first col-span-2 flex items-center justify-center bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2">
             <CardHeader>
               <CardTitle className="text-center flex flex-col items-center text-3xl font-bold tracking-tight sm:text-4xl">
                 <Image
