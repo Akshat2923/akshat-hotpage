@@ -412,7 +412,7 @@ export default function Page() {
             </CardFooter>
           </Card>
 
-          <Card className="w-[350px]">
+          <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
             <CardHeader>
               <CardTitle>Smart Irrigation Tracker</CardTitle>
               <CardDescription>
