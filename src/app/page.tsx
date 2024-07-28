@@ -5,6 +5,7 @@ import pic from "@/assets/images/pic.jpg";
 import { H2 } from "@/components/ui/H2";
 import { Bot } from "lucide-react";
 import hi from "@/assets/images/hi.png";
+import shrug from "@/assets/images/shrug.png";
 
 export const metadata: Metadata = {
   title: "Akshat Saladi - My Hot Page",
@@ -20,16 +21,16 @@ export default function Home() {
             <span className="inline">Hey, I&apos;m Akshat Saladi</span>
             <Image
               src={hi}
-              alt="a picture of me"
+              alt="a memoji of a me saying hi"
               width={50}
               height={50}
-              className="ml-2 inline-block aspect-square rounded-full object-cover align-text-bottom transition-all duration-300 hover:-translate-y-1.5 active:scale-95 active:shadow-inner "
+              className="ml-2 inline-block aspect-square rounded-full object-cover align-text-bottom transition-all hover:-translate-y-1.5 "
             />
           </H1>
           <p className="text-center sm:text-start">
-            Welcome to my Hot Page. This website is a personal portfolio
-            where I showcase my work and skills. Click the top bar links to
-            learn more about me!
+            Welcome to my Hot Page. This website is a personal portfolio where I
+            showcase my work and skills. Click the top bar links to learn more
+            about me!
           </p>
         </div>
         <div className="flex justify-center">
@@ -43,11 +44,17 @@ export default function Home() {
         </div>
       </section>
       <section className="space-y-3 text-center">
-        <H2>...Or ask the chatbot anything</H2>
-        <p>
-          Click the <Bot className="inline pb-1" /> icon in the top bar to
-          open the chatbot. You can ask it anything you want about me!
-        </p>
+        <H2>
+        <Image
+            src={shrug}
+            alt="a memoji of a me shrugging"
+            width={40}
+            height={40}
+            className="mr-2 inline-block aspect-square rounded-full object-cover align-text-bottom transition-all hover:-translate-y-1.5 "
+          />
+          <span className="inline">Don't know where to start?</span>
+        </H2>
+        <p>Click the memoji icon in the top right corner to open the chatbot. You can ask it anything you want about me!</p>
       </section>
     </section>
   );

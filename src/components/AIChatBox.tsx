@@ -14,7 +14,9 @@ import {
 } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-
+import Image from "next/image";
+import chaticon from "@/assets/images/chaticon.png";
+import ponder from "@/assets/images/ponder.png";
 export function ButtonOutline() {
   return <Button variant="outline">Outline</Button>;
 }
@@ -69,7 +71,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             message={{
               id: "loading",
               role: "assistant",
-              content: "Thinking...",
+              content: "thinking",
             }}
             onClose={onClose}
           />
@@ -86,7 +88,12 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
         )}
         {!error && messages.length === 0 && (
           <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
-            <Bot size={28} />
+            <Image
+              src={chaticon}
+              alt="a memoji of a me"
+              width={100}
+              height={100}
+            />
             <p className="text-lg font-medium">
               Send a message to start the AI chat!
             </p>
@@ -117,18 +124,6 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             <SendHorizontal className="h-4 w-4" />
           </Button>
         </form>
-        <DrawerClose asChild>
-          <div className="mt-4 flex w-full justify-center">
-            <Button
-              type="button"
-              variant="secondary"
-              className="max-w-[200px]"
-              onClick={onClose}
-            >
-              Close
-            </Button>
-          </div>
-        </DrawerClose>
       </DrawerFooter>
     </DrawerContent>
   );
@@ -140,10 +135,11 @@ interface ChatMessageProps {
 }
 
 function ChatMessage({
-  message: { role, content },
+  message: { role, content, id },
   onClose,
 }: ChatMessageProps) {
   const isAiMessage = role === "assistant";
+  const isThinking = content === "thinking";
 
   return (
     <div
@@ -152,42 +148,52 @@ function ChatMessage({
         isAiMessage ? "me-5 justify-start" : "ms-5 justify-end",
       )}
     >
-      {isAiMessage && <Bot className="mr-2 flex-none" />}
-      <div
-        className={cn(
-          "rounded-2xl border px-3 py-2",
-          isAiMessage ? "bg-background" : "bg-foreground text-background",
-        )}
-      >
-        <ReactMarkdown
-          components={{
-            a: ({ node, ref, ...props }) => (
-              <Badge variant="outline">
-                <Link
-                  {...props}
-                  href={props.href ?? ""}
-                  className="text-primary hover:underline"
-                  onClick={(e) => {
-                    onClose();
-                  }}
-                />
-              </Badge>
-            ),
-            p: ({ node, ...props }) => (
-              <p {...props} className="mt-3 first:mt-0" />
-            ),
-            ul: ({ node, ...props }) => (
-              <ul
-                {...props}
-                className="mt-3 list-inside list-disc first:mt-0"
-              />
-            ),
-            li: ({ node, ...props }) => <li {...props} className="mt-1" />,
-          }}
+      {isAiMessage && (
+        <Image
+          src={isThinking ? ponder : chaticon}
+          alt={isThinking ? "Thinking..." : "AI assistant"}
+          width={isThinking ? 50 : 35}
+          height={isThinking ? 50 : 35}
+          className={isThinking ? "mr-2 flex-none animate-float" : "mr-2 flex-none"}
+        />
+      )}
+      {!isThinking && (
+        <div
+          className={cn(
+            "rounded-2xl border px-3 py-2",
+            isAiMessage ? "bg-background" : "bg-foreground text-background",
+          )}
         >
-          {content}
-        </ReactMarkdown>
-      </div>
+          <ReactMarkdown
+            components={{
+              a: ({ node, ref, ...props }) => (
+                <Badge variant="outline">
+                  <Link
+                    {...props}
+                    href={props.href ?? ""}
+                    className="text-primary hover:underline"
+                    onClick={(e) => {
+                      onClose();
+                    }}
+                  />
+                </Badge>
+              ),
+              p: ({ node, ...props }) => (
+                <p {...props} className="mt-3 first:mt-0" />
+              ),
+              ul: ({ node, ...props }) => (
+                <ul
+                  {...props}
+                  className="mt-3 list-inside list-disc first:mt-0"
+                />
+              ),
+              li: ({ node, ...props }) => <li {...props} className="mt-1" />,
+            }}
+          >
+            {content}
+          </ReactMarkdown>
+        </div>
+      )}
     </div>
   );
 }

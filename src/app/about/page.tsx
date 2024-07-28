@@ -60,7 +60,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="col-span-1 flex sm:col-span-1 lg:col-span-1 lg:row-span-1 lg:row-start-1">
+          <Card className="col-span-1 flex sm:col-span-1 lg:col-span-1 lg:row-span-1 lg:row-start-1 transition-all hover:-translate-y-0.5 hover:shadow-md ">
             <CardHeader>
               <CardTitle>Major</CardTitle>
               <CardDescription>
@@ -73,7 +73,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="col-span-2 sm:col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:row-start-1">
+          <Card className="col-span-2 sm:col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:row-start-1 transition-all hover:-translate-y-0.5 hover:shadow-md ">
             <CardHeader>
               <CardTitle>Passion</CardTitle>
               <CardDescription>
@@ -84,7 +84,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-2">
+          <Card className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-2 transition-all hover:-translate-y-0.5 hover:shadow-md ">
             <CardHeader>
               <CardTitle>Courses</CardTitle>
             </CardHeader>
@@ -121,7 +121,7 @@ export default function Page() {
               </Badge>
             </CardContent>
           </Card>
-          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-2">
+          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-2 transition-all hover:-translate-y-0.5 hover:shadow-md ">
             <CardHeader>
               <CardTitle>Favorite language?</CardTitle>
               <CardDescription>
@@ -130,7 +130,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-3">
+          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-3 transition-all hover:-translate-y-0.5 hover:shadow-md ">
             <CardHeader className="pb-2">
               <CardTitle>Free Time?</CardTitle>
             </CardHeader>
@@ -140,12 +140,12 @@ export default function Page() {
               <Badge className="px-2 py-0.5">Basketball</Badge>
             </CardContent>
           </Card>
-          <Card className="order-first col-span-2 flex items-center justify-center bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2">
+          <Card className="order-first col-span-2 flex items-center justify-center bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2 transition-all hover:-translate-y-0.5 hover:shadow-md ">
             <CardHeader>
-              <CardTitle className="text-cente flex flex-col items-center text-3xl font-bold tracking-tight sm:text-4xl">
+              <CardTitle className="text-center flex flex-col items-center text-3xl font-bold tracking-tight sm:text-4xl">
                 <Image
                   src={ponder}
-                  alt="a picture of me pondering"
+                  alt="a memoji of me pondering"
                   width={250}
                   height={250}
                   className="mb-4 animate-float"
@@ -162,7 +162,7 @@ export default function Page() {
                     What Drives Me?{" "}
                     <Image
                       src={think}
-                      alt="a picture of me thinking"
+                      alt="a memoji of me thinking"
                       width={100}
                       height={100}
                       className="mx-auto"
@@ -189,9 +189,9 @@ export default function Page() {
               end of the day.{" "}
               <Image
                 src={think}
-                alt="a picture of a thinking"
-                width={100}
-                height={100}
+                alt="a memoji of me thinking"
+                width={50}
+                height={50}
                 className="mx-auto"
               />
               <DialogFooter className="sm:justify-start">
@@ -212,7 +212,7 @@ export default function Page() {
                     Why Computer Science?{" "}
                     <Image
                       src={computer}
-                      alt="a picture of a thinking"
+                      alt="a memoji of me and a computer"
                       width={100}
                       height={100}
                       className="mx-auto"
@@ -242,9 +242,9 @@ export default function Page() {
               hardships will better me as a person.
               <Image
                 src={computer}
-                alt="a picture of a thinking"
-                width={100}
-                height={100}
+                alt="a memoji of me and a computer"
+                width={50}
+                height={50}
                 className="mx-auto"
               />
               <DialogFooter className="sm:justify-start">
@@ -362,7 +362,7 @@ export default function Page() {
       <section className="space-y-3">
         <H2>Contact</H2>
         <div className="flex flex-wrap gap-2">
-          <Badge variant="outline">
+          <Badge variant="outline" className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
             <a
               target="_blank"
               href="https://github.com/Akshat2923"
@@ -372,7 +372,7 @@ export default function Page() {
             </a>
             <GitHubIcon className="h-4 w-4" />
           </Badge>
-          <Badge variant="outline">
+          <Badge variant="outline" className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
             <a
               target="_blank"
               href="https://www.linkedin.com/in/akshatsaladi/"
@@ -382,7 +382,7 @@ export default function Page() {
             </a>
             <LinkedInIcon className="h-4 w-4" />
           </Badge>
-          <Badge variant="outline">
+          <Badge variant="outline" className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
             <a
               href="mailto:saladi.4@buckeyemail.osu.edu"
               className="p-1 text-primary hover:underline"
@@ -391,7 +391,7 @@ export default function Page() {
             </a>
             <EmailIcon className="h-4 w-4" />
           </Badge>
-          <Badge variant="outline">
+          <Badge variant="outline" className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
             <a
               target="_blank"
               href="https://github.com/Akshat2923/Resume/blob/350a4a3803fc7475ace34a4450c38ab120735710/AkshatSaladiResume2024.pdf"
