@@ -55,7 +55,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   const lastMessageIsUser = messages[messages.length - 1]?.role === "user";
 
   return (
-    <DrawerContent className="mx-auto flex h-[75vh] w-full max-w-2xl flex-col rounded-t-2xl">
+    <DrawerContent className="mx-auto flex h-[75vh] sm:w-full lg:max-w-2xl flex-col rounded-t-2xl">
       <DrawerHeader>
         <DrawerTitle>AI Chat</DrawerTitle>
         <DrawerDescription>
