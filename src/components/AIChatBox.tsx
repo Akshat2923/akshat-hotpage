@@ -17,6 +17,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import chaticon from "@/assets/images/chaticon.png";
 import ponder from "@/assets/images/ponder.png";
+import ShineBorder from "./magicui/shine-border";
 export function ButtonOutline() {
   return <Button variant="outline">Outline</Button>;
 }
@@ -55,7 +56,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   const lastMessageIsUser = messages[messages.length - 1]?.role === "user";
 
   return (
-    <DrawerContent className="mx-auto flex h-[75vh] sm:w-full lg:max-w-2xl flex-col rounded-t-2xl">
+    <DrawerContent className="mx-auto flex h-[75vh] flex-col rounded-t-2xl sm:w-full lg:max-w-2xl">
       <DrawerHeader>
         <DrawerTitle>AI Chat</DrawerTitle>
         <DrawerDescription>
@@ -88,12 +89,18 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
         )}
         {!error && messages.length === 0 && (
           <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
-            <Image
-              src={chaticon}
-              alt="a memoji of a me"
-              width={100}
-              height={100}
-            />
+            <ShineBorder
+              className="bg-transparent"
+              color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+              borderRadius={9999}
+            >
+              <Image
+                src={chaticon}
+                alt="a memoji of a me"
+                width={100}
+                height={100}
+              />
+            </ShineBorder>
             <p className="text-lg font-medium">
               Send a message to start the AI chat!
             </p>
@@ -154,7 +161,9 @@ function ChatMessage({
           alt={isThinking ? "Thinking..." : "AI assistant"}
           width={isThinking ? 50 : 35}
           height={isThinking ? 50 : 35}
-          className={isThinking ? "mr-2 flex-none animate-float" : "mr-2 flex-none"}
+          className={
+            isThinking ? "mr-2 flex-none animate-float" : "mr-2 flex-none"
+          }
         />
       )}
       {!isThinking && (
@@ -167,7 +176,11 @@ function ChatMessage({
           <ReactMarkdown
             components={{
               a: ({ node, ref, ...props }) => (
-                <Badge variant="outline" className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
+                
+                <Badge
+                  variant="outline"
+                  className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800"
+                >
                   <Link
                     {...props}
                     href={props.href ?? ""}

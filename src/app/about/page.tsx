@@ -37,6 +37,8 @@ import { Button } from "@/components/ui/button";
 import SchoolIcon from "@mui/icons-material/School";
 import EmailIcon from "@mui/icons-material/Email";
 import DescriptionIcon from "@mui/icons-material/Description";
+import ShineBorder from "@/components/magicui/shine-border";
+import { Car } from "lucide-react";
 export default function Page() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false }),
@@ -140,9 +142,13 @@ export default function Page() {
               <Badge className="px-2 py-0.5">Basketball</Badge>
             </CardContent>
           </Card>
-          <Card className="order-first col-span-2 flex items-center justify-center bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2">
+          <ShineBorder
+            className="order-first col-span-2 flex items-center justify-center bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2"
+            color={"dark" ? "white" : "black"}
+            borderRadius={16}
+          >
             <CardHeader>
-              <CardTitle className="text-center flex flex-col items-center text-3xl font-bold tracking-tight sm:text-4xl">
+              <CardTitle className="flex flex-col items-center text-center text-3xl font-bold tracking-tight sm:text-4xl">
                 <Image
                   src={ponder}
                   alt="a memoji of me pondering"
@@ -153,7 +159,23 @@ export default function Page() {
                 <span>About Me</span>
               </CardTitle>
             </CardHeader>
-          </Card>
+          </ShineBorder>
+
+          {/* <Card className="order-first col-span-2 flex items-center justify-center bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2">
+            <CardHeader>
+              <CardTitle className="flex flex-col items-center text-center text-3xl font-bold tracking-tight sm:text-4xl">
+                <Image
+                  src={ponder}
+                  alt="a memoji of me pondering"
+                  width={250}
+                  height={250}
+                  className="mb-4 animate-float"
+                />
+                <span>About Me</span>
+              </CardTitle>
+            </CardHeader>
+          </Card> */}
+
           <Dialog>
             <DialogTrigger asChild>
               <Card className="col-span-2 flex flex-col transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-1">
@@ -362,7 +384,10 @@ export default function Page() {
       <section className="space-y-3">
         <H2>Contact</H2>
         <div className="flex flex-wrap gap-2">
-          <Badge variant="outline" className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
+          <Badge
+            variant="outline"
+            className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800"
+          >
             <a
               target="_blank"
               href="https://github.com/Akshat2923"
@@ -372,7 +397,10 @@ export default function Page() {
             </a>
             <GitHubIcon className="h-4 w-4" />
           </Badge>
-          <Badge variant="outline" className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
+          <Badge
+            variant="outline"
+            className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800"
+          >
             <a
               target="_blank"
               href="https://www.linkedin.com/in/akshatsaladi/"
@@ -382,7 +410,10 @@ export default function Page() {
             </a>
             <LinkedInIcon className="h-4 w-4" />
           </Badge>
-          <Badge variant="outline" className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
+          <Badge
+            variant="outline"
+            className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800"
+          >
             <a
               href="mailto:saladi.4@buckeyemail.osu.edu"
               className="p-1 text-primary hover:underline"
@@ -391,7 +422,10 @@ export default function Page() {
             </a>
             <EmailIcon className="h-4 w-4" />
           </Badge>
-          <Badge variant="outline" className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800">
+          <Badge
+            variant="outline"
+            className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800"
+          >
             <a
               target="_blank"
               href="https://github.com/Akshat2923/Resume/blob/350a4a3803fc7475ace34a4450c38ab120735710/AkshatSaladiResume2024.pdf"

@@ -39,6 +39,7 @@ import {
 } from "@/components/ui/dialog";
 import simonsays from "@/assets/images/simonsays.jpg";
 import { Button } from "@/components/ui/button";
+import ShineBorder from "@/components/magicui/shine-border";
 
 export const metadata: Metadata = {
   title: "Experience",

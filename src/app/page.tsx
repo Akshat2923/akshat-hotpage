@@ -6,6 +6,7 @@ import { H2 } from "@/components/ui/H2";
 import { Bot } from "lucide-react";
 import hi from "@/assets/images/hi.png";
 import shrug from "@/assets/images/shrug.png";
+import ShineBorder from "@/components/magicui/shine-border";
 
 export const metadata: Metadata = {
   title: "Akshat Saladi - My Hot Page",
@@ -34,18 +35,24 @@ export default function Home() {
           </p>
         </div>
         <div className="flex justify-center">
-          <Image
-            src={pic}
-            alt="a photo of me"
-            width={300}
-            height={300}
-            className="aspect-square rounded-full border-2 object-cover shadow-md [object-position:right_10%_bottom_60%] dark:border-foreground"
-          />
+          <ShineBorder
+            className="bg-transparent"
+            color={"dark" ? "white" : "black"}
+            borderRadius={9999}
+          >
+            <Image
+              src={pic}
+              alt="a photo of me"
+              width={300}
+              height={300}
+              className="aspect-square rounded-full object-cover shadow-md [object-position:right_10%_bottom_60%] dark:border-foreground"
+            />
+          </ShineBorder>
         </div>
       </section>
       <section className="space-y-3 text-center">
         <H2>
-        <Image
+          <Image
             src={shrug}
             alt="a memoji of a me shrugging"
             width={40}
@@ -54,7 +61,10 @@ export default function Home() {
           />
           <span className="inline">Don&apos;t know where to start?</span>
         </H2>
-        <p>Click the memoji icon in the top right to open the chatbot. You can ask it anything you want about me!</p>
+        <p>
+          Click the memoji icon in the top right to open the chatbot. You can
+          ask it anything you want about me!
+        </p>
       </section>
     </section>
   );
