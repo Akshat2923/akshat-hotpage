@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from "react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
@@ -21,7 +20,14 @@ import chaticon from "@/assets/images/chaticon.png";
 import ponder from "@/assets/images/ponder.png";
 import ShineBorder from "./magicui/shine-border";
 import AnimatedGradientText from "./magicui/animated-gradient-text";
-import Particles from "./magicui/particles";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { H3 } from "./ui/H3";
+import Marquee from "./magicui/marquee";
+
 export function ButtonOutline() {
   return <Button variant="outline">Outline</Button>;
 }
@@ -69,15 +75,48 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
     <DrawerContent className="mx-auto flex h-[75vh] flex-col rounded-t-2xl sm:w-full lg:max-w-2xl">
       <DrawerHeader>
         <DrawerTitle>
-          <AnimatedGradientText>
-            <span
-              className={cn(
-                `animate-gradient inline bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
-              )}
-            >
-              Hot Page AI
-            </span>
-          </AnimatedGradientText>
+          <HoverCard>
+            <HoverCardTrigger>
+              <AnimatedGradientText>
+                <span
+                  className={cn(
+                    `animate-gradient inline bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+                  )}
+                >
+                  Hot Page AI
+                </span>
+              </AnimatedGradientText>
+            </HoverCardTrigger>
+            <HoverCardContent className="w-80">
+              <p className="mb-1 text-sm">Ask me anything about my Hot Page!</p>
+              <div className="space-y-2 text-sm text-muted-foreground">
+                <div>
+                  <span role="img" aria-label="design">
+                    🙋‍♂️
+                  </span>{" "}
+                  Handles follow up questions.
+                </div>
+                <div>
+                  <span role="img" aria-label="connection">
+                    🔗
+                  </span>{" "}
+                  Provides external links to relevant resources.
+                </div>
+                <div>
+                  <span role="img" aria-label="connection">
+                    📑
+                  </span>{" "}
+                  Find specific information about me on relevant pages.
+                </div>
+                <div>
+                  <span role="img" aria-label="connection">
+                    🚀
+                  </span>{" "}
+                  Powered by the latest GPT-4o-mini model from OpenAI
+                </div>
+              </div>
+            </HoverCardContent>
+          </HoverCard>
         </DrawerTitle>
       </DrawerHeader>
       <div className="flex-1 overflow-y-auto p-4" ref={scrollRef}>
@@ -119,11 +158,25 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
               />
             </ShineBorder>
             <p className="text-lg font-medium">
-              Send a message to start the AI chat!
+              Send a message to start the Hot Page AI chat!
             </p>
-            <p className="text-sm text-muted-foreground">
-              Powered by the new gpt-4o-mini model from OpenAI.
+            <p className="text-sm font-medium">
+              Don't know what to ask? Here are some starters...
             </p>
+            <div className="relative flex h-[300px] w-full flex-col items-center justify-center overflow-hidden  bg-background ">
+              <Marquee pauseOnHover className="[--duration:20s]">
+                {firstRow.map((questions) => (
+                  <QuestionCard key={questions.body} {...questions} />
+                ))}
+              </Marquee>
+              <Marquee reverse pauseOnHover className="[--duration:20s]">
+                {secondRow.map((questions) => (
+                  <QuestionCard key={questions.body} {...questions} />
+                ))}
+              </Marquee>
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+            </div>
           </div>
         )}
       </div>
@@ -228,3 +281,70 @@ function ChatMessage({
     </div>
   );
 }
+
+const questions = [
+  {
+    body: "Tell me about yourself.",
+  },
+  {
+    body: "Why did you choose computer science?",
+  },
+  {
+    body: "What are some of your favorite programming languages?",
+  },
+  {
+    body: "What experiences have you had working in the tech industry?",
+  },
+  {
+    body: "What are your biggest challenges in your career?",
+  },
+  {
+    body: "What motivates you to pursue a career in computer science?",
+  },
+  {
+    body: "What are some of your favorite hobbies or interests?",
+  },
+  {
+    body: "What schools or universities have you attended?",
+  },
+  {
+    body: "What hard skills and soft skills do you have?",
+  },
+  {
+    body: "Can I see you resume?",
+  },
+  {
+    body: "Do you have LinkedIn or GitHub profiles?",
+  },
+  {
+    body: "How do you like to spend your free time?",
+  },
+  {
+    body: "How can I get in touch with you?",
+  },
+  {
+    body: "What projects have you worked on outside of class?",
+  },
+  {
+    body: "What are you passionate about?",
+  },
+];
+
+const firstRow = questions.slice(0, questions.length / 2);
+const secondRow = questions.slice(questions.length / 2);
+
+const QuestionCard = ({ body }: { body: string }) => {
+  return (
+    <figure
+      className={cn(
+        "relative w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
+        // light styles
+        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        // dark styles
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+      )}
+    >
+      <blockquote className="text-sm">{body}</blockquote>
+    </figure>
+  );
+};

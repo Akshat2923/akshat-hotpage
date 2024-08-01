@@ -39,6 +39,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import DescriptionIcon from "@mui/icons-material/Description";
 import ShineBorder from "@/components/magicui/shine-border";
 import { Car } from "lucide-react";
+import { MagicCard } from "@/components/magicui/magic-card";
 export default function Page() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false }),
@@ -62,6 +63,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
+
           <Card className="col-span-1 flex sm:col-span-1 lg:col-span-1 lg:row-span-1 lg:row-start-1">
             <CardHeader>
               <CardTitle>Major</CardTitle>
@@ -280,7 +282,9 @@ export default function Page() {
           </Dialog>
         </div>
       </section>
-      <hr className="border-muted" />
+      <ShineBorder color={"dark" ? "white" : "black"} borderWidth={1}>
+        <hr className="border-muted" />
+      </ShineBorder>{" "}
       <section className="space-y-3">
         <H2>Skills</H2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -380,7 +384,9 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <hr className="border-muted" />
+      <ShineBorder color={"dark" ? "white" : "black"} borderWidth={1}>
+        <hr className="border-muted" />
+      </ShineBorder>
       <section className="space-y-3">
         <H2>Contact</H2>
         <div className="flex flex-wrap gap-2">

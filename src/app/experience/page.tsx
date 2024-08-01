@@ -245,7 +245,9 @@ export default function Page() {
           </TimelineItem>
         </Timeline>
       </section>
-      <hr className="border-muted" />
+      <ShineBorder color={"dark" ? "white" : "black"} borderWidth={1}>
+        <hr className="border-muted" />
+      </ShineBorder>{" "}
       <section className="space-y-3">
         <H2>Projects</H2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
