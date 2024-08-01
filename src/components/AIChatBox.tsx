@@ -161,7 +161,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
               Send a message to start the Hot Page AI chat!
             </p>
             <p className="text-sm font-medium">
-              Don't know what to ask? Here are some starters...
+              Don&apos;t know what to ask? Here are some starters...
             </p>
             <div className="relative flex h-[300px] w-full flex-col items-center justify-center overflow-hidden  bg-background ">
               <Marquee pauseOnHover className="[--duration:20s]">
