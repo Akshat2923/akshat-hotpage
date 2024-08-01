@@ -30,8 +30,8 @@ export default function Home() {
           </H1>
           <p className="text-center sm:text-start">
             Welcome to my Hot Page. This website is a personal portfolio where I
-            showcase my work and skills. Click the top bar links to learn more
-            about me!
+            showcase my work and skills. Click the{" "}
+            <strong>top bar links</strong> to learn more about me!
           </p>
         </div>
         <div className="flex justify-center">
@@ -62,8 +62,8 @@ export default function Home() {
           <span className="inline">Don&apos;t know where to start?</span>
         </H2>
         <p>
-          Click the memoji icon in the top right to open the chatbot. You can
-          ask it anything you want about me!
+          Click the memoji icon in the <strong>top right</strong> to open the
+          Hot Page AI chatbot. You can ask it anything you want about me!
         </p>
       </section>
     </section>

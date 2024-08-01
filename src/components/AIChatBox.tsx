@@ -18,6 +18,7 @@ import Image from "next/image";
 import chaticon from "@/assets/images/chaticon.png";
 import ponder from "@/assets/images/ponder.png";
 import ShineBorder from "./magicui/shine-border";
+import AnimatedGradientText from "./magicui/animated-gradient-text";
 export function ButtonOutline() {
   return <Button variant="outline">Outline</Button>;
 }
@@ -58,10 +59,17 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   return (
     <DrawerContent className="mx-auto flex h-[75vh] flex-col rounded-t-2xl sm:w-full lg:max-w-2xl">
       <DrawerHeader>
-        <DrawerTitle>AI Chat</DrawerTitle>
-        <DrawerDescription>
-          Ask me anything about the website!
-        </DrawerDescription>
+        <DrawerTitle>
+          <AnimatedGradientText>
+            <span
+              className={cn(
+                `animate-gradient inline bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+              )}
+            >
+              Hot Page AI
+            </span>
+          </AnimatedGradientText>
+        </DrawerTitle>
       </DrawerHeader>
       <div className="flex-1 overflow-y-auto p-4" ref={scrollRef}>
         {messages.map((message) => (
@@ -110,27 +118,29 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           </div>
         )}
       </div>
+      
       <DrawerFooter>
-        <form onSubmit={handleSubmit} className="flex gap-2">
-          <Button
-            type="button"
-            variant="outline"
-            size="icon"
-            onClick={() => setMessages([])}
-          >
-            <Trash className="h-4 w-4" />
-          </Button>
-          <input
-            value={input}
-            onChange={handleInputChange}
-            placeholder="Say something..."
-            className="flex-1 rounded-2xl border bg-background px-3 py-2"
-            ref={inputRef}
-          />
-          <Button type="submit" disabled={input.length === 0}>
-            <SendHorizontal className="h-4 w-4" />
-          </Button>
-        </form>
+          <form onSubmit={handleSubmit} className="flex gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              onClick={() => setMessages([])}
+            >
+              <Trash className="h-4 w-4" />
+            </Button>
+            <input
+              value={input}
+              onChange={handleInputChange}
+              placeholder="Say something..."
+              className="flex-1 rounded-2xl border bg-background px-3 py-2"
+              ref={inputRef}
+            />
+
+            <Button type="submit" disabled={input.length === 0}>
+              <SendHorizontal className="h-4 w-4" />
+            </Button>
+          </form>
       </DrawerFooter>
     </DrawerContent>
   );
@@ -176,7 +186,6 @@ function ChatMessage({
           <ReactMarkdown
             components={{
               a: ({ node, ref, ...props }) => (
-                
                 <Badge
                   variant="outline"
                   className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800"
