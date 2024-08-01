@@ -16,44 +16,10 @@ interface Sparkle {
 }
 
 interface SparklesTextProps {
-  /**
-   * @default <div />
-   * @type ReactElement
-   * @description
-   * The component to be rendered as the text
-   * */
   as?: ReactElement;
-
-  /**
-   * @default ""
-   * @type string
-   * @description
-   * The className of the text
-   */
   className?: string;
-
-  /**
-   * @required
-   * @type string
-   * @description
-   * The text to be displayed
-   * */
   text: string;
-
-  /**
-   * @default 10
-   * @type number
-   * @description
-   * The count of sparkles
-   * */
   sparklesCount?: number;
-
-  /**
-   * @default "{first: '#9E7AFF', second: '#FE8BBB'}"
-   * @type string
-   * @description
-   * The colors of the sparkles
-   * */
   colors?: {
     first: string;
     second: string;
@@ -62,14 +28,21 @@ interface SparklesTextProps {
 
 const SparklesText: React.FC<SparklesTextProps> = ({
   text,
-  colors = { first: "#9E7AFF", second: "#FE8BBB" },
+  colors = { first: "orange", second: "purple" },
   className,
   sparklesCount = 10,
   ...props
 }) => {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     const generateStar = (): Sparkle => {
       const starX = `${Math.random() * 100}%`;
       const starY = `${Math.random() * 100}%`;
@@ -102,11 +75,15 @@ const SparklesText: React.FC<SparklesTextProps> = ({
     const interval = setInterval(updateStars, 100);
 
     return () => clearInterval(interval);
-  }, [colors.first, colors.second]);
+  }, [colors.first, colors.second, isClient]);
+
+  if (!isClient) {
+    return <span className={cn("font-bold", className)}>{text}</span>;
+  }
 
   return (
-    <div
-      className={cn("text-6xl font-bold", className)}
+    <span
+      className={cn("relative inline-block font-bold", className)}
       {...props}
       style={
         {
@@ -115,13 +92,11 @@ const SparklesText: React.FC<SparklesTextProps> = ({
         } as CSSProperties
       }
     >
-      <span className="relative inline-block">
-        {sparkles.map((sparkle) => (
-          <Sparkle key={sparkle.id} {...sparkle} />
-        ))}
-        <strong>{text}</strong>
-      </span>
-    </div>
+      {sparkles.map((sparkle) => (
+        <Sparkle key={sparkle.id} {...sparkle} />
+      ))}
+      <strong>{text}</strong>
+    </span>
   );
 };
 

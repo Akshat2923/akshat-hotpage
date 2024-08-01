@@ -1,8 +1,10 @@
+
+import { useEffect, useState, useRef } from "react";
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { Message, useChat } from "ai/react";
 import { Bot, SendHorizontal, Trash, XCircle } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import {
   DrawerContent,
@@ -19,6 +21,7 @@ import chaticon from "@/assets/images/chaticon.png";
 import ponder from "@/assets/images/ponder.png";
 import ShineBorder from "./magicui/shine-border";
 import AnimatedGradientText from "./magicui/animated-gradient-text";
+import Particles from "./magicui/particles";
 export function ButtonOutline() {
   return <Button variant="outline">Outline</Button>;
 }
@@ -29,6 +32,12 @@ interface AIChatBoxProps {
 }
 
 export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
+  const { theme } = useTheme();
+  const [color, setColor] = useState("#ffffff");
+
+  useEffect(() => {
+    setColor(theme === "dark" ? "#ffffff" : "#000000");
+  }, [theme]);
   const {
     messages,
     input,
@@ -118,29 +127,29 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           </div>
         )}
       </div>
-      
-      <DrawerFooter>
-          <form onSubmit={handleSubmit} className="flex gap-2">
-            <Button
-              type="button"
-              variant="outline"
-              size="icon"
-              onClick={() => setMessages([])}
-            >
-              <Trash className="h-4 w-4" />
-            </Button>
-            <input
-              value={input}
-              onChange={handleInputChange}
-              placeholder="Say something..."
-              className="flex-1 rounded-2xl border bg-background px-3 py-2"
-              ref={inputRef}
-            />
 
-            <Button type="submit" disabled={input.length === 0}>
-              <SendHorizontal className="h-4 w-4" />
-            </Button>
-          </form>
+      <DrawerFooter>
+        <form onSubmit={handleSubmit} className="flex gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            onClick={() => setMessages([])}
+          >
+            <Trash className="h-4 w-4" />
+          </Button>
+          <input
+            value={input}
+            onChange={handleInputChange}
+            placeholder="Say something..."
+            className="flex-1 rounded-2xl border bg-background px-3 py-2"
+            ref={inputRef}
+          />
+
+          <Button type="submit" disabled={input.length === 0}>
+            <SendHorizontal className="h-4 w-4" />
+          </Button>
+        </form>
       </DrawerFooter>
     </DrawerContent>
   );

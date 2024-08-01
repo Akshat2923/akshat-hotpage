@@ -7,6 +7,7 @@ import { Bot } from "lucide-react";
 import hi from "@/assets/images/hi.png";
 import shrug from "@/assets/images/shrug.png";
 import ShineBorder from "@/components/magicui/shine-border";
+import SparklesText from "@/components/magicui/sparkles-text";
 
 export const metadata: Metadata = {
   title: "Akshat Saladi - My Hot Page",
@@ -63,7 +64,13 @@ export default function Home() {
         </H2>
         <p>
           Click the memoji icon in the <strong>top right</strong> to open the
-          Hot Page AI chatbot. You can ask it anything you want about me!
+          <SparklesText
+            text=" Hot Page AI "
+            sparklesCount={4}
+            className="text-md inline"
+            colors={{ first: "#ffaa40", second: "#9c40ff" }}
+          />
+          chatbot. You can ask it anything you want about me!
         </p>
       </section>
     </section>
