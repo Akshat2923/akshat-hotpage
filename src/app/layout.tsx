@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import PageTransition from "@/components/PageTransition";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 const inter = Noto_Sans({ subsets: ["latin"] });
 
@@ -29,7 +31,7 @@ export default function RootLayout({
           <div className="relative z-10 min-h-screen flex flex-col">
             <Navbar />
             <PageTransition>
-              <main className="flex-grow mx-auto max-w-3xl px-3 py-10">{children}</main>
+              <main className="flex-grow mx-auto max-w-3xl px-3 py-10">{children}<SpeedInsights /></main>
             </PageTransition>
           </div>
         </ThemeProvider>

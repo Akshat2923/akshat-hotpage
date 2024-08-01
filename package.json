@@ -23,6 +23,7 @@
     "@radix-ui/react-hover-card": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@upstash/redis": "^1.28.2",
+    "@vercel/speed-insights": "^1.0.12",
     "ai": "^2.2.32",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
