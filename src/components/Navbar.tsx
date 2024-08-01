@@ -23,7 +23,7 @@ export default function Navbar() {
           ${
             isActive
             
-              ? "-translate-y-0.5 bg-background shadow-md dark:bg-gray-800 border-b-2 border-primary"
+              ? "-translate-y-0.5 bg-background shadow-md dark:bg-gray-800"
               : "hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md dark:hover:bg-gray-800"
           } 
           active:scale-95 active:shadow-inner`}
