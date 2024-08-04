@@ -63,7 +63,6 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
           </Card>
-
           <Card className="col-span-1 flex sm:col-span-1 lg:col-span-1 lg:row-span-1 lg:row-start-1">
             <CardHeader>
               <CardTitle>Major</CardTitle>
@@ -84,7 +83,7 @@ export default function Page() {
                 I am very passionate about{" "}
                 <strong>front-end development/mobile development. </strong>I am
                 eager to learn more from others around me and help others along
-                the way!
+                the way! I always strive to create something that is performant, beautiful, and easy to use.
               </CardDescription>
             </CardHeader>
           </Card>
