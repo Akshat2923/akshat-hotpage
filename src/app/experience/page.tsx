@@ -274,6 +274,7 @@ export default function Page() {
             <CardFooter className="flex flex-wrap gap-2">
               <Badge>iOS</Badge>
               <Badge>Swift</Badge>
+              <Badge>SwiftUI</Badge>
             </CardFooter>
           </Card>
           <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
