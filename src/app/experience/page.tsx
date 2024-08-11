@@ -225,7 +225,7 @@ export default function Page() {
                         showcases my adaptability and quick learning abilities.
                         Despite initially being unfamiliar with the Python and R
                         Shiny tech stack, I was able to rapidly get up to speed
-                        and contribute effectively to the team's projects.
+                        and contribute effectively to the team&apos;s projects.
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3">
