@@ -221,7 +221,11 @@ export default function Page() {
                         through official documentation, googling, and of course
                         annoying my mentor 24/7 I found that many of the same
                         concepts and logic carried over from past web
-                        development projects I worked on.
+                        development projects I worked on. This experience
+                        showcases my adaptability and quick learning abilities.
+                        Despite initially being unfamiliar with the Python and R
+                        Shiny tech stack, I was able to rapidly get up to speed
+                        and contribute effectively to the team's projects.
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3">
