@@ -257,8 +257,14 @@ export default function Page() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
             <CardHeader>
-              <CardTitle>Project Code &quot;CP&quot;</CardTitle>
-              <CardDescription>Coming Soon...</CardDescription>
+              <CardTitle>Chill Pill <i>in development...</i></CardTitle>
+              <CardDescription>
+                A medication tracking app but with a twist. It will help people
+                take their medication thorugh the use of postive reinforcement.
+                The goal is to relieve any negative feelings that come
+                with taking medication to ultimately help the person to the
+                finisline, 100%.
+              </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
               {/* <a
@@ -276,9 +282,36 @@ export default function Page() {
               </a> */}
             </CardContent>
             <CardFooter className="flex flex-wrap gap-2">
-              <Badge>iOS</Badge>
+              <Badge>Mobile App</Badge>
+            </CardFooter>
+          </Card>
+          <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
+            <CardHeader>
+              <CardTitle>iOS To Do List App</CardTitle>
+              <CardDescription>
+                Built a simple easy-to-use iOS To Do List app. Users can log in
+                with a simple authentication and logout keeping track of the
+                state of their tasks. Users can create new tasks with paramaters
+                such as title, time, and due date. You can also check off tasks
+                as completed and delete them.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-wrap gap-2">
+              <a target="_blank" href="https://github.com/Akshat2923/ToDoList">
+                <GitHubIcon
+                  fontSize="large"
+                  sx={{
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                />
+              </a>
+            </CardContent>
+            <CardFooter className="flex flex-wrap gap-2 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
               <Badge>Swift</Badge>
               <Badge>SwiftUI</Badge>
+              <Badge>Firebase</Badge>
             </CardFooter>
           </Card>
           <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
@@ -291,7 +324,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
-              {/* <a
+              <a
                 target="_blank"
                 href="https://github.com/Akshat2923/akshat-hotpage"
               >
@@ -303,7 +336,7 @@ export default function Page() {
                     },
                   }}
                 />
-              </a> */}
+              </a>
             </CardContent>
             <CardFooter className="flex flex-wrap gap-2">
               <Badge>Next.js 14</Badge>
