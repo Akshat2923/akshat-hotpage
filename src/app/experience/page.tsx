@@ -260,7 +260,7 @@ export default function Page() {
               <CardTitle>Chill Pill <i>in development...</i></CardTitle>
               <CardDescription>
                 A medication tracking app but with a twist. It will help people
-                take their medication thorugh the use of postive reinforcement.
+                take their medication through the use of postive reinforcement.
                 The goal is to relieve any negative feelings that come
                 with taking medication to ultimately help the person to the
                 finisline, 100%.
