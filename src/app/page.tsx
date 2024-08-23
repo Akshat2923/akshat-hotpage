@@ -30,8 +30,7 @@ export default function Home() {
             />
           </H1>
           <p className="text-center sm:text-start">
-            Welcome to my Hot Page. This website is a personal portfolio where I
-            showcase my work and skills. Click the{" "}
+            Welcome to my Hot Page. Click the{" "}
             <strong>top bar links</strong> to learn more about me!
           </p>
         </div>
