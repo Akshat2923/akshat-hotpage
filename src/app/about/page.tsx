@@ -433,7 +433,7 @@ export default function Page() {
           >
             <a
               target="_blank"
-              href="https://github.com/Akshat2923/Resume/blob/350a4a3803fc7475ace34a4450c38ab120735710/AkshatSaladiResume2024.pdf"
+              href="https://github.com/Akshat2923/Resume/blob/6d9d7a56d26b4902ee060043c4d971c9d08796ff/AkshatCollegeResume2024.pdf"
               className="p-1 text-primary hover:underline"
             >
               Resume
