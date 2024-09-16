@@ -89,13 +89,11 @@ export default function Page() {
                         What tech stack does this app use?
                       </AccordionTrigger>
                       <AccordionContent className="flex flex-wrap gap-2">
-                        <Badge variant="secondary">T3 Turborepo</Badge>
-                        <Badge variant="secondary">Expo</Badge>
-                        <Badge variant="secondary">React Native</Badge>
-                        <Badge variant="secondary">Tailwind CSS</Badge>
+                        <Badge variant="secondary">React Native + Expo</Badge>
+                        <Badge variant="secondary">NativeWins</Badge>
                         <Badge variant="secondary">TypeScript</Badge>
-                        <Badge variant="secondary">tRPC</Badge>
-                        <Badge variant="secondary">Next.js</Badge>
+                        <Badge variant="secondary">Hono</Badge>
+                        <Badge variant="secondary">AWS</Badge>
                         <Badge variant="secondary">Drizzle</Badge>
                         <Badge variant="secondary">Supabase</Badge>
                       </AccordionContent>
