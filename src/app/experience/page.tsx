@@ -90,7 +90,7 @@ export default function Page() {
                       </AccordionTrigger>
                       <AccordionContent className="flex flex-wrap gap-2">
                         <Badge variant="secondary">React Native + Expo</Badge>
-                        <Badge variant="secondary">NativeWins</Badge>
+                        <Badge variant="secondary">NativeWind</Badge>
                         <Badge variant="secondary">TypeScript</Badge>
                         <Badge variant="secondary">Hono</Badge>
                         <Badge variant="secondary">AWS</Badge>
