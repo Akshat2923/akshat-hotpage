@@ -259,7 +259,7 @@ export default function Page() {
               to Swift and XCode, sparking my interest in the field, also a
               little inspiration for the styling of this page :). However
               nothing is easy in life. The challenges that I&apos;ve faced
-              throughout my undergrad have been I could&apos;ve imagined. But I
+              throughout my undergrad have been unimaginable. But I
               believe that this will make you the best of people in the world,
               and my ability to pursue Computer Science alongside these
               hardships will better me as a person.
@@ -433,7 +433,7 @@ export default function Page() {
           >
             <a
               target="_blank"
-              href="https://github.com/Akshat2923/Resume/blob/6d9d7a56d26b4902ee060043c4d971c9d08796ff/AkshatCollegeResume2024.pdf"
+              href="https://github.com/Akshat2923/Resume/blob/main/Akshat_Resume_2024.pdf"
               className="p-1 text-primary hover:underline"
             >
               Resume
