@@ -304,6 +304,7 @@ export default function Page() {
             <div className="flex flex-wrap gap-2">
               <Badge>React Native</Badge>
               <Badge>Expo</Badge>
+              <Badge>React.js</Badge>
               <Badge>Next.js</Badge>
               <Badge>Vue.js</Badge>
               <Badge>Ruby on Rails</Badge>

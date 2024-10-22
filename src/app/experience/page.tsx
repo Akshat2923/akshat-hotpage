@@ -255,12 +255,14 @@ export default function Page() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
             <CardHeader>
-              <CardTitle>Chill Pill <i>in development...</i></CardTitle>
+              <CardTitle>
+                Chill Pill <i>in development...</i>
+              </CardTitle>
               <CardDescription>
                 A medication tracking app but with a twist. It will help people
                 take their medication through the use of postive reinforcement.
-                The goal is to relieve any negative feelings that come
-                with taking medication to ultimately help the person to the
+                The goal is to relieve any negative feelings that come with
+                taking medication to ultimately help the person to the
                 finisline, 100%.
               </CardDescription>
             </CardHeader>
@@ -281,6 +283,54 @@ export default function Page() {
             </CardContent>
             <CardFooter className="flex flex-wrap gap-2">
               <Badge>Mobile App</Badge>
+            </CardFooter>
+          </Card>
+          <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
+            <CardHeader>
+              <CardTitle>SafeVolt (HackOHI/O)</CardTitle>
+              <CardDescription>
+                Developed a safety-focused application that reports
+                high-severity field observations, offers preventive insights,
+                and provides solutions to enhance worker safety. Utilized a
+                monorepo tech stack to analyze CSV data, generate statistical
+                summaries, and help supervisors make informed decisions through
+                filters, scatter plots, and severity trends.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-wrap gap-2">
+              <a target="_blank" href="https://github.com/Akshat2923/SafeVolt">
+                <GitHubIcon
+                  fontSize="large"
+                  sx={{
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                />
+              </a>
+              <a
+                target="_blank"
+                href="https://youtu.be/apZeouBzbhM"
+              >
+                <YouTubeIcon
+                  fontSize="large"
+                  sx={{
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                />
+              </a>
+            </CardContent>
+            <CardFooter className="flex flex-wrap gap-2 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
+              <Badge>React.js</Badge>
+              <Badge>TypeScript</Badge>
+              <Badge>Tailwind CSS</Badge>
+              <Badge>Java</Badge>
+              <Badge>Spring Boot</Badge>
+              <Badge>MongoDB</Badge>
+              <Badge>Ollama</Badge>
+              <Badge>Llama 3.2</Badge>
             </CardFooter>
           </Card>
           <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
