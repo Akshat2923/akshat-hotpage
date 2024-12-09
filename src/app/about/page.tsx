@@ -291,6 +291,7 @@ export default function Page() {
             <H3>Languages</H3>
             <div className="flex flex-wrap gap-2">
               <Badge>Java</Badge>
+              <Badge>Kotlin</Badge>
               <Badge>TypeScript/JavaScript</Badge>
               <Badge>Python</Badge>
               <Badge>C++</Badge>
