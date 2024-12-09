@@ -287,6 +287,35 @@ export default function Page() {
           </Card>
           <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
             <CardHeader>
+              <CardTitle>StudentGO</CardTitle>
+              <CardDescription>
+                Developed a full-stack Android app leveraging Firebase and
+                Google Maps API to gamify exercise by rewarding students with
+                points for visiting campus landmarks.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-wrap gap-2">
+              <a target="_blank" href="https://github.com/Akshat2923/StudentGo">
+                <GitHubIcon
+                  fontSize="large"
+                  sx={{
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                />
+              </a>
+            </CardContent>
+            <CardFooter className="flex flex-wrap gap-2 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
+              <Badge>Android</Badge>
+              <Badge>Kotlin</Badge>
+              <Badge>Material 3</Badge>
+              <Badge>Firebase</Badge>
+              <Badge>Google Maps API</Badge>
+            </CardFooter>
+          </Card>
+          <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
+            <CardHeader>
               <CardTitle>SafeVolt (HackOHI/O)</CardTitle>
               <CardDescription>
                 Developed a safety-focused application that reports
@@ -308,10 +337,7 @@ export default function Page() {
                   }}
                 />
               </a>
-              <a
-                target="_blank"
-                href="https://youtu.be/apZeouBzbhM"
-              >
+              <a target="_blank" href="https://youtu.be/apZeouBzbhM">
                 <YouTubeIcon
                   fontSize="large"
                   sx={{
