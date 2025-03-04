@@ -255,21 +255,19 @@ export default function Page() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
             <CardHeader>
-              <CardTitle>
-                Chill Pill <i>in development...</i>
-              </CardTitle>
+              <CardTitle>Hero Coach (🍎 Swift Student Challenge)</CardTitle>
               <CardDescription>
-                A medication tracking app but with a twist. It will help people
-                take their medication through the use of postive reinforcement.
-                The goal is to relieve any negative feelings that come with
-                taking medication to ultimately help the person to the
-                finisline, 100%.
+                Designed and Developed a goal-tracking app where users can speak freely to set
+                goals; trained a text classification model to categorize goals,
+                and used speech recognition and natural language processing to
+                extract actionable mini-goals and due dates, enhancing user
+                flexibility and organization.
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
-              {/* <a
+              <a
                 target="_blank"
-                href="https://github.com/Akshat2923/akshat-hotpage"
+                href="https://github.com/Akshat2923/Hero-Coach"
               >
                 <GitHubIcon
                   fontSize="large"
@@ -279,10 +277,26 @@ export default function Page() {
                     },
                   }}
                 />
-              </a> */}
+              </a>
+              <a target="_blank" href="https://www.youtube.com/watch?v=A0phG_YCdII">
+                <YouTubeIcon
+                  fontSize="large"
+                  sx={{
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                />
+              </a>
             </CardContent>
             <CardFooter className="flex flex-wrap gap-2">
-              <Badge>Mobile App</Badge>
+              <Badge>SwiftUI</Badge>
+              <Badge>SwiftData</Badge>
+              <Badge>MVVM</Badge>
+              <Badge>CoreML</Badge>
+              <Badge>CreateML</Badge>
+              <Badge>Natural Language Processing (NLP)</Badge>
+              <Badge>Speech Recognition</Badge>
             </CardFooter>
           </Card>
           <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
