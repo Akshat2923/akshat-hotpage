@@ -11,6 +11,7 @@ export interface MagicCardProps extends React.HTMLAttributes<HTMLDivElement> {
   gradientOpacity?: number;
 }
 
+
 export function MagicCard({
   children,
   className,

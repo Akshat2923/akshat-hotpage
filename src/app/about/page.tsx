@@ -321,8 +321,9 @@ export default function Page() {
               <Badge>Docker</Badge>
             </div>
           </div>
-          
+
           <div className="space-y-3">
+            
             <Carousel
               plugins={[plugin.current]}
               className="w-full max-w-xs md:w-auto"
