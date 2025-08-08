@@ -146,6 +146,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
         {!error && messages.length === 0 && (
           <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
             <ShineBorder
+            
               className="bg-transparent"
               color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
               borderRadius={9999}
