@@ -68,7 +68,7 @@ export default function Page() {
               <CardTitle>Major</CardTitle>
               <CardDescription>
                 <strong>B.S. in Computer Science & Engineering. </strong>
-                Expected graduation date of{" "}
+                Earned in{" "}
                 <strong>
                   May 2025
                   <SchoolIcon fontSize="small" />.
@@ -102,6 +102,12 @@ export default function Page() {
                 Web Apps
               </Badge>
               <Badge variant="secondary" className="px-2 py-0.5">
+                Mobile Apps
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-0.5">
+                Intro to AI
+              </Badge>
+              <Badge variant="secondary" className="px-2 py-0.5">
                 Networking
               </Badge>
               <Badge variant="secondary" className="px-2 py-0.5">
@@ -114,13 +120,13 @@ export default function Page() {
                 Software Dev
               </Badge>
               <Badge variant="secondary" className="px-2 py-0.5">
-                Linear Algebra
+                Intro to SwiftUI
               </Badge>
               <Badge variant="secondary" className="px-2 py-0.5">
                 Electronics
               </Badge>
               <Badge variant="secondary" className="px-2 py-0.5">
-                Statistics
+                UI/UX Design (Figma)
               </Badge>
             </CardContent>
           </Card>

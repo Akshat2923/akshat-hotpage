@@ -138,7 +138,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             message={{
               id: "error",
               role: "assistant",
-              content: "Something went wrong. Please try again!",
+              content: "Something went wrong. Please try again! (e.g. out of tokens 😔)",
             }}
             onClose={onClose}
           />

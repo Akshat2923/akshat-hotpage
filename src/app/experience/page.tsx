@@ -10,6 +10,7 @@ import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import blok from "@/assets/images/icon.png";
+import impact from "@/assets/images/impact.webp";
 import aep from "@/assets/images/AEP logo.svg.png";
 import {
   Card,
@@ -55,7 +56,7 @@ export default function Page() {
         <Timeline position="alternate">
           <TimelineItem>
             <TimelineOppositeContent>
-              March 2024 - Present
+              June 2025 - Present
             </TimelineOppositeContent>
             <TimelineSeparator>
               <TimelineDot variant="filled" color="primary" />
@@ -64,12 +65,43 @@ export default function Page() {
             <TimelineContent>
               <Card className="w-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner sm:w-[350px]">
                 <CardHeader>
+                  <CardTitle>Software Engineer</CardTitle>
+                  <CardDescription>
+                    <a
+                      target="_blank"
+                      href="https://www.impact.com"
+                      className="flex items-center gap-2 hover:text-primary hover:underline"
+                    >
+                      <Image
+                        src={impact}
+                        alt="a picture of the BLOK app logo"
+                        width={50}
+                        height={50}
+                        className="hover:scale-110 transition-all duration-300"
+                      />
+                    </a>
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent>
+              March 2024 - March 2025
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+              <TimelineDot variant="filled" color="primary" />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Card className="text-right w-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner sm:w-[350px]">
+                <CardHeader>
                   <CardTitle>Full Stack Developer</CardTitle>
                   <CardDescription>
                     <a
                       target="_blank"
                       href="https://www.theblokapp.com/"
-                      className="flex items-center gap-2 hover:text-primary hover:underline"
+                      className="flex items-center gap-2 hover:text-primary hover:underline justify-end"
                     >
                       The BLOK App
                       <Image
