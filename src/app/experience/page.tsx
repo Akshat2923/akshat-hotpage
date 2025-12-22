@@ -72,7 +72,7 @@ export default function Page() {
                       href="https://www.impact.com"
                       className="flex items-center gap-2 hover:text-primary hover:underline"
                     >
-                      <div className="rounded-full bg-white p-2 transition-all duration-300 hover:scale-110">
+                      <div className="rounded-2xl bg-white p-1.5 transition-all duration-300 hover:scale-110">
                         <Image
                           src={impact}
                           alt="impact.com logo"
