@@ -59,7 +59,7 @@ export default function Page() {
               June 2025 - Present
             </TimelineOppositeContent>
             <TimelineSeparator>
-              <TimelineDot variant="filled" color="primary" />
+              <TimelineDot variant="filled" color="error" />
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
@@ -72,16 +72,32 @@ export default function Page() {
                       href="https://www.impact.com"
                       className="flex items-center gap-2 hover:text-primary hover:underline"
                     >
-                      <Image
-                        src={impact}
-                        alt="a picture of the BLOK app logo"
-                        width={50}
-                        height={50}
-                        className="hover:scale-110 transition-all duration-300"
-                      />
+                      <div className="rounded-full bg-white p-2 transition-all duration-300 hover:scale-110">
+                        <Image
+                          src={impact}
+                          alt="impact.com logo"
+                          width={50}
+                          height={50}
+                        />
+                      </div>
                     </a>
                   </CardDescription>
                 </CardHeader>
+                <CardContent>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        What tech stack do you use?
+                      </AccordionTrigger>
+                      <AccordionContent className="flex flex-wrap gap-2">
+                        <Badge variant="secondary">React.js</Badge>
+                        <Badge variant="secondary">Vue.js</Badge>
+                        <Badge variant="secondary">TypeScript</Badge>
+                        <Badge variant="secondary">Spring</Badge>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardContent>
               </Card>
             </TimelineContent>
           </TimelineItem>
@@ -94,14 +110,14 @@ export default function Page() {
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
-              <Card className="text-right w-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner sm:w-[350px]">
+              <Card className="w-full text-right transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner sm:w-[350px]">
                 <CardHeader>
                   <CardTitle>Full Stack Developer</CardTitle>
                   <CardDescription>
                     <a
                       target="_blank"
                       href="https://www.theblokapp.com/"
-                      className="flex items-center gap-2 hover:text-primary hover:underline justify-end"
+                      className="flex items-center justify-end gap-2 hover:text-primary hover:underline"
                     >
                       The BLOK App
                       <Image
@@ -289,11 +305,11 @@ export default function Page() {
             <CardHeader>
               <CardTitle>Hero Coach (🍎 Swift Student Challenge)</CardTitle>
               <CardDescription>
-                Designed and Developed a goal-tracking app where users can speak freely to set
-                goals; trained a text classification model to categorize goals,
-                and used speech recognition and natural language processing to
-                extract actionable mini-goals and due dates, enhancing user
-                flexibility and organization.
+                Designed and Developed a goal-tracking app where users can speak
+                freely to set goals; trained a text classification model to
+                categorize goals, and used speech recognition and natural
+                language processing to extract actionable mini-goals and due
+                dates, enhancing user flexibility and organization.
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
@@ -310,7 +326,10 @@ export default function Page() {
                   }}
                 />
               </a>
-              <a target="_blank" href="https://www.youtube.com/watch?v=A0phG_YCdII">
+              <a
+                target="_blank"
+                href="https://www.youtube.com/watch?v=A0phG_YCdII"
+              >
                 <YouTubeIcon
                   fontSize="large"
                   sx={{

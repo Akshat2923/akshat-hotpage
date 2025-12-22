@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     const { stream, handlers } = LangChainStream();
 
     const chatModel = new ChatOpenAI({
-      modelName: "gpt-4o-mini",
+      modelName: "gpt-5-mini",
       streaming: true,
       callbacks: [handlers],
       // verbose: true,
@@ -47,7 +47,7 @@ export async function POST(req: Request) {
     });
 
     const rephrasingModel = new ChatOpenAI({
-      modelName: "gpt-4o-mini",
+      modelName: "gpt-5-mini",
       // verbose: true,
       cache,
     });
