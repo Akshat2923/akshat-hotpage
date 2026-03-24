@@ -2,6 +2,7 @@ import { H1 } from "@/components/ui/H1";
 import { H2 } from "@/components/ui/H2";
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
@@ -12,6 +13,7 @@ import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import blok from "@/assets/images/icon.png";
 import impact from "@/assets/images/impact.webp";
 import aep from "@/assets/images/AEP logo.svg.png";
+import fog from "@/assets/images/FogIcon-watchOS-Default-129x129@2x.png";
 import {
   Card,
   CardContent,
@@ -301,6 +303,34 @@ export default function Page() {
       <section className="space-y-3">
         <H2>Projects</H2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <Link href="/fog" className="block md:col-span-2 md:w-full w-[350px]">
+            <Card className="h-full w-full cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Image
+                    src={fog}
+                    alt="Fog app icon"
+                    width={32}
+                    height={32}
+                    className="rounded-lg"
+                  />
+                  Fog
+                </CardTitle>
+                <CardDescription>
+                  A notes app that organizes itself. Just write — Fog
+                  automatically groups your notes into smart collections called
+                  Clouds, powered by Apple&apos;s on-device Foundation Models.
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="flex flex-wrap gap-2">
+                <Badge>Swift</Badge>
+                <Badge>SwiftUI</Badge>
+                <Badge>SwiftData</Badge>
+                <Badge>Foundation Models</Badge>
+                <Badge>On-Device AI</Badge>
+              </CardFooter>
+            </Card>
+          </Link>
           <Card className="w-[350px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
             <CardHeader>
               <CardTitle>Hero Coach (🍎 Swift Student Challenge)</CardTitle>
