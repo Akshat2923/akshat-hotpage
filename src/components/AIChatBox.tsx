@@ -112,7 +112,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
                   <span role="img" aria-label="connection">
                     🚀
                   </span>{" "}
-                  Powered by the latest GPT-4o-mini model from OpenAI
+                  Powered by the latest GPT-5.4-nano model from OpenAI
                 </div>
               </div>
             </HoverCardContent>
