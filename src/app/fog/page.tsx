@@ -125,10 +125,32 @@ export default function FogPage() {
                   height={220}
                   className="mb-4 animate-float"
                 />
+                
                 <span>Fog</span>
                 <span className="mt-1 text-base font-normal text-muted-foreground">
                   Notes that organize themselves.
                 </span>
+                <a
+                  href="https://apps.apple.com/us/app/fog/id6760272134?itscg=30200&itsct=apps_box_badge&mttnsubad=6760272134"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block shrink-0"
+                >
+                  <img
+                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1774396800"
+                    alt="Download on the App Store"
+                    width={246}
+                    height={82}
+                    className="max-h-[82px] w-auto max-w-full align-middle object-contain dark:hidden"
+                  />
+                  <img
+                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/white/en-us?releaseDate=1774396800"
+                    alt="Download on the App Store"
+                    width={246}
+                    height={82}
+                    className="hidden max-h-[82px] w-auto max-w-full align-middle object-contain dark:block"
+                  />
+                </a>
               </CardTitle>
             </CardHeader>
           </ShineBorder>

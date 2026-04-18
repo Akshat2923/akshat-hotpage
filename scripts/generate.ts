@@ -5,10 +5,8 @@ import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { TextLoader } from "langchain/document_loaders/fs/text";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { getEmbeddingsCollection, getVectorStore } from "../src/lib/astradb";
-import { Redis } from "@upstash/redis";
 
 async function generateEmbeddings() {
-  await Redis.fromEnv().flushdb();
   const vectorStore = await getVectorStore();
   (await getEmbeddingsCollection()).deleteMany({});
   const loader = new DirectoryLoader(

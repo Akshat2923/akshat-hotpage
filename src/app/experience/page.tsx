@@ -511,7 +511,7 @@ export default function Page() {
               <Badge>Next.js 14</Badge>
               <Badge>Vercel AI SDK</Badge>
               <Badge>Langchain</Badge>
-              <Badge>gpt-4o-mini</Badge>
+              <Badge>gpt-5.4-nano</Badge>
               <Badge>TypeScript</Badge>
               <Badge>Tailwind CSS</Badge>
             </CardFooter>
