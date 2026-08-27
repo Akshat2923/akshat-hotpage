@@ -125,7 +125,6 @@ export default function FogPage() {
                   height={220}
                   className="mb-4 animate-float"
                 />
-                
                 <span>Fog</span>
                 <span className="mt-1 text-base font-normal text-muted-foreground">
                   Notes that organize themselves.

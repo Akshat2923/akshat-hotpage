@@ -14,6 +14,7 @@ import blok from "@/assets/images/icon.png";
 import impact from "@/assets/images/impact.webp";
 import aep from "@/assets/images/AEP logo.svg.png";
 import fog from "@/assets/images/FogIcon-watchOS-Default-129x129@2x.png";
+import zoomie from "@/assets/images/ZoomieSpike-watchOS-Default-129@2x.png";
 import {
   Card,
   CardContent,
@@ -67,23 +68,21 @@ export default function Page() {
             <TimelineContent>
               <Card className="w-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner sm:w-[350px]">
                 <CardHeader>
-                  <CardTitle>Software Engineer</CardTitle>
-                  <CardDescription>
-                    <a
-                      target="_blank"
-                      href="https://www.impact.com"
-                      className="flex items-center gap-2 hover:text-primary hover:underline"
-                    >
-                      <div className="rounded-2xl bg-white p-1.5 transition-all duration-300 hover:scale-110">
-                        <Image
-                          src={impact}
-                          alt="impact.com logo"
-                          width={50}
-                          height={50}
-                        />
-                      </div>
-                    </a>
-                  </CardDescription>
+                  <CardTitle>Associate Full Stack II</CardTitle>
+                  <a
+                    target="_blank"
+                    href="https://www.impact.com"
+                    className="inline-flex w-fit items-center gap-2 hover:text-primary hover:underline"
+                  >
+                    <span className="inline-flex rounded-2xl bg-white p-1.5 transition-all duration-300 hover:scale-110">
+                      <Image
+                        src={impact}
+                        alt="impact.com logo"
+                        width={50}
+                        height={50}
+                      />
+                    </span>
+                  </a>
                 </CardHeader>
                 <CardContent>
                   <Accordion type="single" collapsible className="w-full">
@@ -303,6 +302,38 @@ export default function Page() {
       <section className="space-y-3">
         <H2>Projects</H2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <Link
+            href="/zoomie"
+            className="block md:col-span-2 md:w-full w-[350px]"
+          >
+            <Card className="h-full w-full cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Image
+                    src={zoomie}
+                    alt="Zoomie app icon"
+                    width={20}
+                    height={20}
+                    className="rounded-md"
+                  />
+                  Zoomie
+                </CardTitle>
+                <CardDescription>
+                  Dog Activity Tracker. Close your dog&apos;s rings — Paws,
+                  Playtime, and Wags. Snap a photo for interactive play, keep
+                  sessions live on the Lock Screen, and share progress with Apple
+                  Fitness.
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="flex flex-wrap gap-2">
+                <Badge>Swift</Badge>
+                <Badge>SwiftUI</Badge>
+                <Badge>HealthKit</Badge>
+                <Badge>Live Activities</Badge>
+                <Badge>WidgetKit</Badge>
+              </CardFooter>
+            </Card>
+          </Link>
           <Link href="/fog" className="block md:col-span-2 md:w-full w-[350px]">
             <Card className="h-full w-full cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
               <CardHeader>
