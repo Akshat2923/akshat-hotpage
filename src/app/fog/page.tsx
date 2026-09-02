@@ -1,296 +1,236 @@
 "use client";
+
+//
+//  /fog
+//  The page is the app.
+//
+//  The mesh behind it is Fog's own background, ported; the window below the title is Fog
+//  itself, wired up; the copy is stored as notes because reading about the app should mean
+//  using it. What the page cannot do — run Apple's on-device model — it says so plainly
+//  rather than pretending.
+//
+
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
-import { H2 } from "@/components/ui/H2";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import ShineBorder from "@/components/magicui/shine-border";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import EmailIcon from "@mui/icons-material/Email";
-import DescriptionIcon from "@mui/icons-material/Description";
+import { motion } from "framer-motion";
+import { FogProvider } from "@/components/fog/fog-context";
+import { MeshField } from "@/components/fog/mesh-field";
+import { FogWindow, SectionBody, SectionHeader } from "@/components/fog/fog-window";
+import { CopyEmail } from "@/components/CopyEmail";
 import fogIcon from "@/assets/images/FogIcon-watchOS-Default-1088x1088@1x.png";
-import { Button } from "@/components/ui/button";
+import screen1 from "@/assets/fog/screen-1.jpeg";
+import screen2 from "@/assets/fog/screen-2.jpeg";
+import screen3 from "@/assets/fog/screen-3.jpeg";
+import screen4 from "@/assets/fog/screen-4.jpeg";
+
+const ROUNDED = 'ui-rounded, "SF Pro Rounded", Avenir, system-ui, sans-serif';
+
+const SCREENS = [
+  { src: screen1, alt: "The Fog list: Forecast, Pinned, Folders and Unfiled sections" },
+  { src: screen2, alt: "A note in Fog with its suggested title and the note menu open" },
+  { src: screen3, alt: "Selecting notes and grouping them into a new folder" },
+  { src: screen4, alt: "A folder with a generated summary and its notes below" },
+];
+
+const STACK = [
+  ["SwiftUI", "Every screen, and the mesh gradient behind them"],
+  ["SwiftData", "Notes and folders, stored on the device"],
+  ["CloudKit", "Sync between your own devices, through your own iCloud"],
+  ["Foundation Models", "Titles, folder names, summaries, answers — all local"],
+  ["App Intents", "Apple's notes schema, which is how Siri already understands"],
+  ["Core Spotlight", "Notes findable by text, title, or a tag you never typed"],
+  ["WidgetKit", "The latest note and folder, in the colour you picked"],
+];
+
+/// The landing screen's reveal, compressed. The app spends 3.4 seconds on this because it
+/// only happens once ever; a web page does not get that kind of patience.
+function Reveal({ delay, children }: { delay: number; children: React.ReactNode }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{ delay, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function FogPage() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: false }),
-  );
+  const [screensOpen, setScreensOpen] = React.useState(true);
+  const [stackOpen, setStackOpen] = React.useState(true);
 
   return (
-    <section className="space-y-6">
-      <section className="space-y-3">
-        <div className="lg:min-h-screen-md grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 lg:grid-rows-1">
+    <FogProvider>
+      <MeshField />
 
-          {/* Top-left: Auto-Organized (mirrors School card) */}
-          <Card className="col-span-1 flex transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800 sm:col-span-1 lg:col-span-1 lg:row-span-1 lg:row-start-1">
-            <CardHeader>
-              <CardTitle>Auto-Organized</CardTitle>
-              <CardDescription>
-                Notes sort themselves into smart collections called{" "}
-                <strong>Clouds</strong> as you write — no folders, no filing,
-                no effort.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          {/* Top-right wide: tagline — spans cols 2-4 on large */}
-          <Card className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-3 lg:col-start-2 lg:row-span-1 lg:row-start-1">
-            <CardHeader>
-              <CardTitle>Clear your Fog.</CardTitle>
-              <CardDescription>
-                If you&apos;ve ever abandoned a notes app because keeping
-                folders tidy felt like a second job, Fog was built for you.
-                Just write. Fog automatically groups your notes into smart
-                collections, so you always know where everything is — without
-                lifting a finger.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          {/* Left row 2: Live Cloud Grouping */}
-          <Card className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-1 lg:row-start-2">
-            <CardHeader>
-              <CardTitle>Live Cloud Grouping</CardTitle>
-              <CardDescription>
-                As you write, related notes are grouped into{" "}
-                <strong>Clouds in real time</strong> — the UI updates
-                instantly so your notes are always organized without any
-                manual sorting.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          {/* Left row 3: Ask Your Notes */}
-          <Card className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-1 lg:row-start-3">
-            <CardHeader>
-              <CardTitle>Ask Your Notes</CardTitle>
-              <CardDescription>
-                Search for anything. If there&apos;s no direct match, the
-                on-device model <strong>generates a relevant answer</strong>{" "}
-                based on the context across all your notes.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          {/* Right row 2: Privacy & iCloud Sync */}
-          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-2">
-            <CardHeader>
-              <CardTitle>Private & In Sync</CardTitle>
-              <CardDescription>
-                Syncs securely across your devices via{" "}
-                <strong>iCloud (CloudKit)</strong> — Apple first-party,
-                end-to-end encrypted. Your notes stay yours, always.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          {/* Right row 3: On-Device AI */}
-          <Card className="col-span-1 sm:col-span-1 lg:col-span-1 lg:col-start-4 lg:row-span-1 lg:row-start-3">
-            <CardHeader>
-              <CardTitle>On-Device AI</CardTitle>
-              <CardDescription>
-                Powered by <strong>Apple&apos;s Foundations Model</strong> —
-                fully offline, no server, no API calls. Your data never
-                leaves your device to be processed.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          {/* Center: Fog icon with ShineBorder — 2 rows only */}
-          <ShineBorder
-            className="order-first col-span-2 flex items-center justify-center bg-transparent sm:col-span-3 md:col-span-4 lg:order-none lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-2"
-            color={"dark" ? "white" : "black"}
-            borderRadius={16}
-          >
-            <CardHeader>
-              <CardTitle className="flex flex-col items-center text-center text-3xl font-bold tracking-tight sm:text-4xl">
-                <Image
-                  src={fogIcon}
-                  alt="Fog app icon"
-                  width={220}
-                  height={220}
-                  className="mb-4 animate-float"
-                />
-                <span>Fog</span>
-                <span className="mt-1 text-base font-normal text-muted-foreground">
-                  Notes that organize themselves.
-                </span>
-                <a
-                  href="https://apps.apple.com/us/app/fog/id6760272134?itscg=30200&itsct=apps_box_badge&mttnsubad=6760272134"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-block shrink-0"
-                >
-                  <img
-                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1774396800"
-                    alt="Download on the App Store"
-                    width={246}
-                    height={82}
-                    className="max-h-[82px] w-auto max-w-full align-middle object-contain dark:hidden"
-                  />
-                  <img
-                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/white/en-us?releaseDate=1774396800"
-                    alt="Download on the App Store"
-                    width={246}
-                    height={82}
-                    className="hidden max-h-[82px] w-auto max-w-full align-middle object-contain dark:block"
-                  />
-                </a>
-              </CardTitle>
-            </CardHeader>
-          </ShineBorder>
-
-          {/* Bottom row: 4 cards spanning full width — like the "Why" cards in about */}
-          <Card className="col-span-2 flex flex-col transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:row-start-4">
-            <CardHeader className="pb-2">
-              <CardTitle>Rich Formatting</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-wrap gap-2 text-xs">
-              <Badge className="px-2 py-0.5">Bold</Badge>
-              <Badge className="px-2 py-0.5">Italic</Badge>
-              <Badge className="px-2 py-0.5">Underline</Badge>
-              <Badge className="px-2 py-0.5">Headings</Badge>
-              <Badge className="px-2 py-0.5">Lists</Badge>
-            </CardContent>
-          </Card>
-
-          <Card className="col-span-2 flex flex-col transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:row-start-4">
-            <CardHeader className="pb-2">
-              <CardTitle>Themes</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-wrap gap-2 text-xs">
-              <Badge className="px-2 py-0.5">Custom gradient</Badge>
-              <Badge className="px-2 py-0.5">Font styles</Badge>
-              <Badge className="px-2 py-0.5">App colors</Badge>
-            </CardContent>
-          </Card>
-
-        </div>
-      </section>
-
-      <ShineBorder color={"dark" ? "white" : "black"} borderWidth={1}>
-        <hr className="border-muted" />
-      </ShineBorder>
-
-      <section className="space-y-3">
-        <H2>Built With</H2>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="space-y-2 md:self-center">
-            <p className="text-sm text-muted-foreground">
-              Fog is built entirely with Apple-first technologies — running
-              fully on-device with no third-party dependencies.
+      <div className="space-y-12">
+        {/* MARK: Landing */}
+        <section className="pt-2 text-center">
+          <Reveal delay={0.05}>
+            <p className="text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/45">
+              iPhone &amp; iPad · Free
             </p>
-          </div>
-          <Carousel
-            plugins={[plugin.current]}
-            className="w-full max-w-xs md:w-auto"
-            onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
-          >
-            <CarouselContent>
-              {["Swift", "SwiftUI", "SwiftData", "CloudKit", "Foundations Model"].map((tech) => (
-                <CarouselItem key={tech}>
-                  <div className="p-1">
-                    <Card className="transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
-                      <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <span className="text-xl font-semibold">{tech}</span>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        </div>
-      </section>
+          </Reveal>
 
-      <ShineBorder color={"dark" ? "white" : "black"} borderWidth={1}>
-        <hr className="border-muted" />
-      </ShineBorder>
+          <Reveal delay={0.2}>
+            <Image
+              src={fogIcon}
+              alt="Fog app icon"
+              width={132}
+              height={132}
+              priority
+              className="animate-float mx-auto mt-6 rounded-[28px] shadow-[0_24px_48px_-18px_rgba(0,0,0,0.45)]"
+            />
+          </Reveal>
 
-      <section className="space-y-3">
-        <H2>Contact</H2>
-        <div className="flex flex-wrap gap-2">
-          <Badge
-            variant="outline"
-            className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800"
-          >
-            <a
-              target="_blank"
-              href="https://github.com/Akshat2923"
-              className="p-1 text-primary hover:underline"
+          <Reveal delay={0.4}>
+            <h1
+              style={{ fontFamily: ROUNDED }}
+              className="mt-6 text-6xl font-bold tracking-tight sm:text-7xl"
             >
-              Github
-            </a>
-            <GitHubIcon className="h-4 w-4" />
-          </Badge>
-          <Badge
-            variant="outline"
-            className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800"
-          >
+              Fog
+            </h1>
+          </Reveal>
+
+          <Reveal delay={0.6}>
+            <p
+              style={{ fontFamily: ROUNDED }}
+              className="mx-auto mt-3 max-w-sm text-[19px] leading-snug text-foreground/60"
+            >
+              A notes app where you <span className="font-bold text-foreground">remember</span>{" "}
+              what you wrote.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.8}>
             <a
+              href="https://apps.apple.com/us/app/fog/id6760272134?itscg=30200&itsct=apps_box_badge&mttnsubad=6760272134"
               target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-block transition active:scale-95"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1774396800"
+                alt="Download on the App Store"
+                width={202}
+                height={67}
+                className="max-h-[67px] w-auto object-contain dark:hidden"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/white/en-us?releaseDate=1774396800"
+                alt="Download on the App Store"
+                width={202}
+                height={67}
+                className="hidden max-h-[67px] w-auto object-contain dark:block"
+              />
+            </a>
+          </Reveal>
+        </section>
+
+        {/* MARK: The app, running here */}
+        <section>
+          <Reveal delay={1}>
+            <p className="mb-3 px-1 text-center text-[13px] text-foreground/50">
+              This is Fog, running in your browser. Collapse a section, pin a note, group two
+              of them, or ask it something.
+            </p>
+            <FogWindow />
+            <p className="mt-3 px-1 text-center text-[12px] leading-relaxed text-foreground/40">
+              The layout, the motion and the flows are the app&apos;s. The answers and folder
+              names here come from a lookup — a browser has no on-device model to ask, and the
+              honest version of this demo says so.
+            </p>
+          </Reveal>
+        </section>
+
+        {/* MARK: Screens */}
+        <section>
+          <SectionHeader
+            title="Screens"
+            count={SCREENS.length}
+            expanded={screensOpen}
+            onToggle={() => setScreensOpen((open) => !open)}
+          />
+          <SectionBody show={screensOpen}>
+            <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto p-3">
+              {SCREENS.map((screen) => (
+                <Image
+                  key={screen.alt}
+                  src={screen.src}
+                  alt={screen.alt}
+                  placeholder="blur"
+                  sizes="220px"
+                  className="w-[200px] shrink-0 snap-center rounded-[18px] transition duration-300 hover:-translate-y-1 sm:w-[220px]"
+                />
+              ))}
+            </div>
+          </SectionBody>
+        </section>
+
+        {/* MARK: Built on */}
+        <section>
+          <SectionHeader
+            title="Built On"
+            count={STACK.length}
+            expanded={stackOpen}
+            onToggle={() => setStackOpen((open) => !open)}
+          />
+          <SectionBody show={stackOpen}>
+            {STACK.map(([name, purpose], index) => (
+              <div
+                key={name}
+                className={`flex flex-col gap-0.5 px-4 py-3 sm:flex-row sm:items-baseline sm:gap-3 ${
+                  index === 0 ? "" : "border-t border-black/[0.06] dark:border-white/[0.07]"
+                }`}
+              >
+                <span className="w-[9.5rem] shrink-0 text-[15px] font-semibold">{name}</span>
+                <span className="text-[13px] text-foreground/55">{purpose}</span>
+              </div>
+            ))}
+          </SectionBody>
+          <p className="px-2 pt-3 text-[13px] leading-relaxed text-foreground/50">
+            No third-party dependencies. Everything the model does happens on the phone — and
+            where a phone has no model, the buttons that would have suggested something are
+            absent rather than greyed out.
+          </p>
+        </section>
+
+        {/* MARK: Footer */}
+        <section className="border-t border-white/40 pt-6 dark:border-white/10">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px]">
+            <Link href="/fog/privacy" className="font-medium hover:underline">
+              Privacy Policy
+            </Link>
+            <a
+              href="https://github.com/Akshat2923"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/60 hover:underline"
+            >
+              GitHub
+            </a>
+            <a
               href="https://www.linkedin.com/in/akshatsaladi/"
-              className="p-1 text-primary hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/60 hover:underline"
             >
               LinkedIn
             </a>
-            <LinkedInIcon className="h-4 w-4" />
-          </Badge>
-          <Badge
-            variant="outline"
-            className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800"
-          >
-            <a
-              href="mailto:akshatcanbuild@gmail.com"
-              className="p-1 text-primary hover:underline"
-            >
-              Email
-            </a>
-            <EmailIcon className="h-4 w-4" />
-          </Badge>
-          <Badge
-            variant="outline"
-            className="transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-95 active:shadow-inner dark:hover:bg-gray-800"
-          >
-            <a
-              target="_blank"
-              href="https://github.com/Akshat2923/Resume/blob/bf2c0d35c40a451ba539688fac906476749ef71e/akshat_saladi_osu_resume.pdf"
-              className="p-1 text-primary hover:underline"
-            >
-              Resume
-            </a>
-            <DescriptionIcon className="h-4 w-4" />
-          </Badge>
-        </div>
-      </section>
-
-      <ShineBorder color={"dark" ? "white" : "black"} borderWidth={1}>
-        <hr className="border-muted" />
-      </ShineBorder>
-
-      <section className="space-y-3">
-      <div className="flex flex-wrap gap-2">
-
-        <Link href="/fog/privacy">
-          <Button variant="outline">Privacy Policy</Button>
-        </Link>
-        </div>
-      </section>
-    </section>
+            <CopyEmail
+              className="text-foreground/60 transition hover:text-foreground hover:underline"
+              copiedLabel="Copied to clipboard"
+            />
+          </div>
+          <p className="pt-3 text-[12px] text-foreground/40">
+            Fog — a side project by Akshat Saladi. SwiftUI, on-device, offline-first.
+          </p>
+        </section>
+      </div>
+    </FogProvider>
   );
 }

@@ -45,22 +45,21 @@ export default function FogPrivacyPage() {
         <H2>What Data Fog Collects</H2>
         <p className="font-semibold">None.</p>
         <p className="text-muted-foreground">
-          Fog does not collect any personal information. Your notes, the smart
-          collections they&apos;re organized into (Clouds), and any other
-          content you create in the app are stored exclusively on your device
-          using Apple&apos;s SwiftData framework. This data never leaves your
-          device.
+          Fog does not collect any personal information. Your notes, the
+          folders you organize them into, and any other content you create in
+          the app are stored exclusively on your device using Apple&apos;s
+          SwiftData framework. This data never leaves your device.
         </p>
       </div>
 
       <div className="space-y-2">
         <H2>On-Device AI Processing</H2>
         <p className="text-muted-foreground">
-          Fog uses Apple&apos;s Foundation Models framework to automatically
-          organize your notes. All AI processing happens entirely on your
-          device — no data is sent to any server, including mine, Apple&apos;s,
-          or any third party&apos;s. The model runs locally and works fully
-          offline.
+          Fog uses Apple&apos;s Foundation Models framework to suggest titles,
+          name folders and write summaries. All AI processing happens entirely
+          on your device — no data is sent to any server, including mine,
+          Apple&apos;s, or any third party&apos;s. The model runs locally and
+          works fully offline.
         </p>
       </div>
 

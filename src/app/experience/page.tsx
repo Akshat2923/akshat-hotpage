@@ -312,8 +312,8 @@ export default function Page() {
                   <Image
                     src={zoomie}
                     alt="Zoomie app icon"
-                    width={20}
-                    height={20}
+                    width={32}
+                    height={32}
                     className="rounded-md"
                   />
                   Zoomie
@@ -348,9 +348,10 @@ export default function Page() {
                   Fog
                 </CardTitle>
                 <CardDescription>
-                  A notes app that organizes itself. Just write — Fog
-                  automatically groups your notes into smart collections called
-                  Clouds, powered by Apple&apos;s on-device Foundation Models.
+                  A notes app that helps you organize, instead of organizing
+                  for you. Fog suggests titles, names your folders and writes
+                  the summaries — you decide what to keep. Powered by
+                  Apple&apos;s on-device Foundation Models and App Intents.
                 </CardDescription>
               </CardHeader>
               <CardFooter className="flex flex-wrap gap-2">
@@ -358,6 +359,7 @@ export default function Page() {
                 <Badge>SwiftUI</Badge>
                 <Badge>SwiftData</Badge>
                 <Badge>Foundation Models</Badge>
+                <Badge>App Intents</Badge>
                 <Badge>On-Device AI</Badge>
               </CardFooter>
             </Card>
