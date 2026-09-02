@@ -58,12 +58,12 @@ function Panel({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[26px] border border-white/10 bg-[#0c0c0e] p-5">
-      <p className="text-sm font-bold text-white">{title}</p>
-      <p className="text-xs text-white/40">{sub}</p>
+    <div className="rounded-[26px] border border-[var(--zm-line)] bg-[var(--zm-card)] p-5">
+      <p className="text-sm font-bold text-[var(--zm-text)]">{title}</p>
+      <p className="text-xs text-[var(--zm-faint)]">{sub}</p>
       <p
         className="mt-1 font-mono text-3xl font-bold tabular-nums"
-        style={{ color: RING[ring].color }}
+        style={{ color: RING[ring].ink }}
       >
         {value}
       </p>
@@ -92,7 +92,7 @@ export function Insights() {
             />
           ))}
         </div>
-        <div className="mt-2 flex justify-between text-[10px] text-white/30">
+        <div className="mt-2 flex justify-between text-[10px] text-[var(--zm-dim)]">
           <span>12 AM</span>
           <span>6 AM</span>
           <span>12 PM</span>
@@ -107,7 +107,7 @@ export function Insights() {
         ring="paws"
       >
         <div className="flex gap-1.5">
-          <div className="flex flex-col justify-between py-[1px] text-[9px] leading-none text-white/30">
+          <div className="flex flex-col justify-between py-[1px] text-[9px] leading-none text-[var(--zm-dim)]">
             {DAYS.map((d) => (
               <span key={d} className="h-[14px] leading-[14px]">
                 {d}
@@ -131,7 +131,7 @@ export function Insights() {
             ))}
           </div>
         </div>
-        <div className="mt-2 flex justify-between pl-6 text-[10px] text-white/30">
+        <div className="mt-2 flex justify-between pl-6 text-[10px] text-[var(--zm-dim)]">
           <span>Jun</span>
           <span>Jul</span>
           <span>Aug</span>

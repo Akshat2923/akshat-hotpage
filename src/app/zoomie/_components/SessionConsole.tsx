@@ -86,12 +86,12 @@ const PlaytimeList = React.memo(function PlaytimeList({
   onPick: (t: PlaytimeType) => void;
 }) {
   return (
-    <div className="rounded-[26px] border border-white/10 bg-[#0c0c0e] p-3">
+    <div className="rounded-[26px] border border-[var(--zm-line)] bg-[var(--zm-card)] p-3">
       <div className="px-2 pb-2 pt-1">
-        <p className="text-[26px] font-extrabold leading-none tracking-tight text-white">
+        <p className="text-[26px] font-extrabold leading-none tracking-tight text-[var(--zm-text)]">
           Playtime
         </p>
-        <p className="text-xs text-white/40">9 kinds, 3 moods</p>
+        <p className="text-xs text-[var(--zm-faint)]">9 kinds, 3 moods</p>
       </div>
 
       {/* Only the two-column layout needs this to scroll on its own; on a
@@ -99,10 +99,10 @@ const PlaytimeList = React.memo(function PlaytimeList({
       <div className="space-y-3 lg:max-h-[430px] lg:overflow-y-auto lg:pr-1">
         {CATEGORY_ORDER.map((category) => (
           <div key={category}>
-            <p className="px-2 pb-1.5 text-sm font-bold text-white/45">
+            <p className="px-2 pb-1.5 text-sm font-bold text-[var(--zm-faint)]">
               {category}
             </p>
-            <div className="overflow-hidden rounded-2xl bg-[#161618]">
+            <div className="overflow-hidden rounded-2xl bg-[var(--zm-inset)]">
               {PLAYTIMES.filter((p) => p.category === category).map(
                 (p, i, arr) => {
                   const active = p.id === activeId;
@@ -112,14 +112,14 @@ const PlaytimeList = React.memo(function PlaytimeList({
                       onClick={() => onPick(p)}
                       aria-pressed={active}
                       className={`flex w-full items-center gap-3 px-3 py-2.5 text-left transition-colors ${
-                        active ? "bg-white/[0.07]" : "hover:bg-white/[0.04]"
-                      } ${i < arr.length - 1 ? "border-b border-white/5" : ""}`}
+                        active ? "bg-[var(--zm-active)]" : "hover:bg-[var(--zm-hover)]"
+                      } ${i < arr.length - 1 ? "border-b border-[var(--zm-line-soft)]" : ""}`}
                     >
                       <span className="min-w-0 flex-1">
-                        <span className="block truncate text-[15px] font-semibold text-white">
+                        <span className="block truncate text-[15px] font-semibold text-[var(--zm-text)]">
                           {p.name}
                         </span>
-                        <span className="block truncate text-xs text-white/40">
+                        <span className="block truncate text-xs text-[var(--zm-faint)]">
                           {p.tagline}
                         </span>
                       </span>
@@ -257,7 +257,7 @@ export function SessionConsole() {
 
       {/* ── The live session ──────────────────────────────────────────── */}
       <div className="space-y-4">
-        <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-black">
+        <div className="relative overflow-hidden rounded-[26px] border border-[var(--zm-line)] bg-black">
           <div className="h-[240px] sm:h-[280px]">
             <PlaytimeStage stage={type.stage} typeId={type.id} running={running} />
           </div>
@@ -339,10 +339,10 @@ export function SessionConsole() {
         </div>
 
         {/* Quick actions — this type's own, in its own order */}
-        <div className="relative rounded-[26px] border border-white/10 bg-[#0c0c0e] p-4">
+        <div className="relative rounded-[26px] border border-[var(--zm-line)] bg-[var(--zm-card)] p-4">
           <div className="mb-3 flex items-baseline justify-between">
-            <p className="text-sm font-bold text-white">Quick actions</p>
-            <p className="text-xs text-white/40">
+            <p className="text-sm font-bold text-[var(--zm-text)]">Quick actions</p>
+            <p className="text-xs text-[var(--zm-faint)]">
               {status === "idle" ? "press play first" : "every tap is a wag"}
             </p>
           </div>
@@ -351,7 +351,7 @@ export function SessionConsole() {
             {floaters.map((f) => (
               <div
                 key={f.id}
-                className="zm-float absolute flex flex-col items-center"
+                className="zm-float absolute flex flex-col items-center text-[var(--zm-text)]"
                 style={{ left: `${f.x}%` }}
               >
                 <WagIcon name={f.icon} className="h-6 w-6" />
@@ -369,33 +369,39 @@ export function SessionConsole() {
                 className="group flex flex-col items-center gap-1.5 rounded-xl py-2 transition-transform enabled:active:scale-90 disabled:opacity-35"
               >
                 <span
-                  className="grid h-12 w-12 place-items-center rounded-full bg-[#3A4750] text-white transition-colors group-enabled:group-hover:bg-[#4a5b66]"
-                  style={key === "photo" ? { background: RING.wags.color } : undefined}
+                  className="grid h-12 w-12 place-items-center rounded-full bg-[var(--zm-chip)] text-[var(--zm-chip-ink)] transition-colors group-enabled:group-hover:bg-[var(--zm-chip-hover)]"
+                  style={
+                    key === "photo"
+                      ? { background: RING.wags.color, color: "#fff" }
+                      : undefined
+                  }
                 >
                   <WagIcon name={WAGS[key].icon} className="h-5 w-5" />
                 </span>
-                <span className="text-[10px] font-medium text-white/55">
+                <span className="text-[10px] font-medium text-[var(--zm-muted)]">
                   {WAGS[key].label}
                 </span>
               </button>
             ))}
           </div>
 
-          {status !== "idle" && (
-            <button
-              onClick={() => reset(type)}
-              className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#FF4A4A] py-3 text-base font-bold text-white transition-transform active:scale-[0.98]"
-            >
-              <X className="h-5 w-5" strokeWidth={3} />
-              End Playtime
-            </button>
-          )}
+          {/* Always rendered, disabled when there's nothing to end — the same
+              way the quick actions above behave. Mounting it only mid-session
+              made the card change height and left a gap under the grid. */}
+          <button
+            onClick={() => reset(type)}
+            disabled={status === "idle"}
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#FF4A4A] py-3 text-base font-bold text-white transition-transform enabled:active:scale-[0.98] disabled:opacity-35"
+          >
+            <X className="h-5 w-5" strokeWidth={3} />
+            End Playtime
+          </button>
         </div>
       </div>
 
       {/* ── Rings, filling for real ───────────────────────────────────── */}
       <div className="lg:col-span-2">
-        <div className="flex flex-col items-center gap-6 rounded-[26px] border border-white/10 bg-[#0c0c0e] p-6 sm:flex-row sm:gap-10 sm:p-8">
+        <div className="flex flex-col items-center gap-6 rounded-[26px] border border-[var(--zm-line)] bg-[var(--zm-card)] p-6 sm:flex-row sm:gap-10 sm:p-8">
           <PawRings
             progress={progress}
             size={196}
@@ -405,10 +411,10 @@ export function SessionConsole() {
 
           <div className="w-full space-y-4">
             <div>
-              <p className="text-xl font-extrabold tracking-tight text-white">
+              <p className="text-xl font-extrabold tracking-tight text-[var(--zm-text)]">
                 {closed ? "Zoomie closed." : "Percy's Zoomie"}
               </p>
-              <p className="text-sm text-white/45">
+              <p className="text-sm text-[var(--zm-faint)]">
                 {closed
                   ? "All three rings, in one session. That earns a Treat."
                   : "Three rings, filling as you play."}
@@ -418,18 +424,18 @@ export function SessionConsole() {
             {(["paws", "playtime", "wags"] as RingKey[]).map((key) => (
               <div key={key}>
                 <div className="mb-1 flex items-baseline justify-between gap-3">
-                  <span className="text-sm font-semibold text-white/70">
+                  <span className="text-sm font-semibold text-[var(--zm-muted)]">
                     {RING[key].label}
                   </span>
                   <span
                     className="font-mono text-lg font-bold tabular-nums"
-                    style={{ color: RING[key].color }}
+                    style={{ color: RING[key].ink }}
                   >
                     {values[key].toLocaleString()} / {TARGETS[key].toLocaleString()}{" "}
                     <span className="text-xs">{RING[key].unit}</span>
                   </span>
                 </div>
-                <div className="h-1.5 overflow-hidden rounded-full bg-white/8">
+                <div className="h-1.5 overflow-hidden rounded-full bg-[var(--zm-track)]">
                   <div
                     className="h-full rounded-full transition-[width] duration-300"
                     style={{
@@ -439,7 +445,7 @@ export function SessionConsole() {
                   />
                 </div>
                 {key === "paws" && !type.tracksPaws && (
-                  <p className="mt-1 text-[11px] text-white/30">
+                  <p className="mt-1 text-[11px] text-[var(--zm-dim)]">
                     {type.name} doesn&apos;t track paws — a session of tug isn&apos;t a distance.
                   </p>
                 )}

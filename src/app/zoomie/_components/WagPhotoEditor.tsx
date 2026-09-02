@@ -83,7 +83,7 @@ export function WagPhotoEditor() {
         }
       `}</style>
 
-      <div className="relative aspect-[4/3] overflow-hidden rounded-[26px] border border-white/10 bg-gradient-to-b from-[#2b2620] to-[#15120f]">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-[26px] border border-[var(--zm-line)] bg-gradient-to-b from-[#2b2620] to-[#15120f]">
         {/* a floor, so the dog isn't levitating */}
         <div className="absolute inset-x-0 bottom-0 h-[22%] bg-[#3a3229]" />
         <div className="absolute inset-0 p-[4%]">
@@ -192,19 +192,19 @@ export function WagPhotoEditor() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 rounded-[26px] border border-white/10 bg-[#0c0c0e] p-4">
+      <div className="flex flex-col gap-3 rounded-[26px] border border-[var(--zm-line)] bg-[var(--zm-card)] p-4">
         <div>
-          <p className="text-sm font-bold text-white">Photo Wag</p>
-          <p className="mt-1 text-xs leading-relaxed text-white/45">
+          <p className="text-sm font-bold text-[var(--zm-text)]">Photo Wag</p>
+          <p className="mt-1 text-xs leading-relaxed text-[var(--zm-faint)]">
             Vision finds the joints. You decide what goes on them. Both the
             emoji and the note are optional — save at any point.
           </p>
         </div>
 
-        <div className="rounded-xl bg-[#161618] p-3">
-          <p className="font-mono text-3xl font-bold" style={{ color: RING.wags.color }}>
+        <div className="rounded-xl bg-[var(--zm-inset)] p-3">
+          <p className="font-mono text-3xl font-bold" style={{ color: RING.wags.ink }}>
             {count}
-            <span className="ml-1 text-sm text-white/40">
+            <span className="ml-1 text-sm text-[var(--zm-faint)]">
               {count === 1 ? "wag" : "wags"}
             </span>
           </p>
@@ -215,7 +215,7 @@ export function WagPhotoEditor() {
           onChange={(e) => setNote(e.target.value)}
           rows={3}
           placeholder="Add a note…"
-          className="resize-none rounded-xl border border-white/10 bg-[#161618] p-3 text-sm text-white placeholder:text-white/25 focus:border-white/25 focus:outline-none"
+          className="resize-none rounded-xl border border-[var(--zm-line)] bg-[var(--zm-inset)] p-3 text-sm text-[var(--zm-text)] placeholder:text-[var(--zm-dim)] focus:border-[var(--zm-line)] focus:outline-none"
         />
 
         <button
@@ -224,7 +224,7 @@ export function WagPhotoEditor() {
             setNote("");
             setOpen(null);
           }}
-          className="mt-auto flex items-center justify-center gap-2 rounded-full border border-white/15 py-2.5 text-sm font-semibold text-white/70 transition-colors hover:bg-white/5"
+          className="mt-auto flex items-center justify-center gap-2 rounded-full border border-[var(--zm-line)] py-2.5 text-sm font-semibold text-[var(--zm-muted)] transition-colors hover:bg-[var(--zm-hover)]"
         >
           <RotateCcw className="h-4 w-4" />
           Start over

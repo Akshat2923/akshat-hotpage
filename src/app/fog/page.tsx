@@ -75,13 +75,16 @@ export default function FogPage() {
           </Reveal>
 
           <Reveal delay={0.2}>
+            {/* The asset is a circular tile on transparency, so it gets no corner radius
+                and no box-shadow: a radius clips its edge into a squircle, and a shadow
+                draws a square glow behind a round icon. */}
             <Image
               src={fogIcon}
               alt="Fog app icon"
               width={132}
               height={132}
               priority
-              className="animate-float mx-auto mt-6 rounded-[28px] shadow-[0_24px_48px_-18px_rgba(0,0,0,0.45)]"
+              className="animate-float mx-auto mt-6"
             />
           </Reveal>
 

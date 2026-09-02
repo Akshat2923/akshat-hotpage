@@ -17,7 +17,7 @@ export function ShotRail() {
       <div className="flex w-max snap-x snap-mandatory gap-4 px-3">
         {SHOTS.map(({ n, caption }) => (
           <figure key={n} className="w-[220px] shrink-0 snap-start sm:w-[250px]">
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <div className="overflow-hidden rounded-2xl border border-[var(--zm-line)] bg-[var(--zm-inset)]">
               <Image
                 src={`/zoomie/shot-${n}.jpeg`}
                 alt={caption}
@@ -26,7 +26,7 @@ export function ShotRail() {
                 className="h-auto w-full"
               />
             </div>
-            <figcaption className="mt-2 text-[11px] leading-snug text-white/35">
+            <figcaption className="mt-2 text-[11px] leading-snug text-[var(--zm-dim)]">
               {caption}
             </figcaption>
           </figure>

@@ -64,7 +64,7 @@ export function PawGauge({
       </defs>
 
       {/* Track — stands in for the app's .thinMaterial. */}
-      <g {...stroke} opacity={0.17}>
+      <g {...stroke} style={{ opacity: "var(--zm-gauge-track, .17)" }}>
         <PawArt />
       </g>
 
@@ -95,7 +95,7 @@ export function PawRings({
         width: size,
         height: size,
         position: "relative",
-        filter: "drop-shadow(0 2px 10px rgba(0,0,0,.55))",
+        filter: "var(--zm-ring-shadow, drop-shadow(0 2px 10px rgba(0,0,0,.55)))",
       }}
     >
       {RING_ORDER.map((key, i) => {

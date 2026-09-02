@@ -43,18 +43,18 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t border-white/8 py-14 sm:py-20">
+    <section className="border-t border-[var(--zm-line-soft)] py-14 sm:py-20">
       <p
         className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em]"
-        style={{ color: RING[accent].color }}
+        style={{ color: RING[accent].ink }}
       >
         {eyebrow}
       </p>
-      <h2 className="max-w-2xl text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-[42px]">
+      <h2 className="max-w-2xl text-3xl font-black leading-[1.05] tracking-tight text-[var(--zm-text)] sm:text-[42px]">
         {title}
       </h2>
       {lede && (
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/50">
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--zm-muted)]">
           {lede}
         </p>
       )}
@@ -83,7 +83,7 @@ export default function ZoomiePage() {
   return (
     <ZoomieFx>
       <div
-        className={`${display.className} relative z-10 overflow-x-clip bg-[#050506]`}
+        className={`${display.className} relative z-10 overflow-x-clip bg-[var(--zm-bg)]`}
         style={{
           marginLeft: "calc(50% - 50vw)",
           marginRight: "calc(50% - 50vw)",
@@ -102,7 +102,7 @@ export default function ZoomiePage() {
               {(Object.keys(RING) as RingKey[]).map((key) => (
                 <div
                   key={key}
-                  className="rounded-[22px] border border-white/10 bg-[#0c0c0e] p-5"
+                  className="rounded-[22px] border border-[var(--zm-line)] bg-[var(--zm-card)] p-5"
                 >
                   <div
                     className="mb-3 h-1 w-10 rounded-full"
@@ -110,17 +110,17 @@ export default function ZoomiePage() {
                   />
                   <p
                     className="text-xl font-extrabold"
-                    style={{ color: RING[key].color }}
+                    style={{ color: RING[key].ink }}
                   >
                     {RING[key].label}
                   </p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-white/50">
+                  <p className="mt-1.5 text-sm leading-relaxed text-[var(--zm-muted)]">
                     {RING[key].blurb}
                   </p>
                 </div>
               ))}
             </div>
-            <p className="mt-4 text-sm text-white/35">
+            <p className="mt-4 text-sm text-[var(--zm-dim)]">
               The colours never move. Orange is Paws in the app, in the widget,
               on the Lock Screen, in the Dynamic Island and on a treat badge —
               so a glance is enough.
@@ -182,7 +182,7 @@ export default function ZoomiePage() {
             lede="Ten shortcut families, and Siri answers with the actual rings rather than a sentence about them."
             accent="wags"
           >
-            <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-[#0c0c0e] py-6">
+            <div className="relative overflow-hidden rounded-[26px] border border-[var(--zm-line)] bg-[var(--zm-card)] py-6">
               <style>{`
                 @keyframes zm-marquee { to { transform: translateX(-50%); } }
                 .zm-marquee { animation: zm-marquee 34s linear infinite; }
@@ -192,14 +192,14 @@ export default function ZoomiePage() {
                 {[...SIRI_PHRASES, ...SIRI_PHRASES].map((p, i) => (
                   <span
                     key={i}
-                    className="whitespace-nowrap rounded-full bg-white/[0.06] px-5 py-2.5 text-sm font-medium text-white/70"
+                    className="whitespace-nowrap rounded-full bg-[var(--zm-active)] px-5 py-2.5 text-sm font-medium text-[var(--zm-muted)]"
                   >
                     &ldquo;{p}&rdquo;
                   </span>
                 ))}
               </div>
-              <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#0c0c0e] to-transparent" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#0c0c0e] to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[var(--zm-card)] to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[var(--zm-card)] to-transparent" />
             </div>
           </Section>
 
@@ -214,12 +214,12 @@ export default function ZoomiePage() {
               {STACK.map((group, i) => (
                 <div
                   key={i}
-                  className="rounded-[22px] border border-white/10 bg-[#0c0c0e] p-4"
+                  className="rounded-[22px] border border-[var(--zm-line)] bg-[var(--zm-card)] p-4"
                 >
                   {group.map((t) => (
                     <p
                       key={t}
-                      className="py-1 text-sm font-semibold text-white/70"
+                      className="py-1 text-sm font-semibold text-[var(--zm-muted)]"
                     >
                       {t}
                     </p>
@@ -230,13 +230,13 @@ export default function ZoomiePage() {
           </Section>
 
           {/* ── Footer ──────────────────────────────────────────────── */}
-          <section className="border-t border-white/8 py-14">
+          <section className="border-t border-[var(--zm-line-soft)] py-14">
             <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-3xl font-black tracking-tight text-white">
+                <p className="text-3xl font-black tracking-tight text-[var(--zm-text)]">
                   Go close some rings.
                 </p>
-                <p className="mt-2 max-w-sm text-sm text-white/45">
+                <p className="mt-2 max-w-sm text-sm text-[var(--zm-faint)]">
                   Zoomie — Dog Activity Tracker. Built by Akshat Saladi.
                 </p>
                 <a
@@ -247,11 +247,20 @@ export default function ZoomiePage() {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/white/en-us?releaseDate=1774396800"
+                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1774396800"
                     alt="Download Zoomie on the App Store"
                     width={180}
                     height={60}
-                    className="h-[54px] w-auto object-contain"
+                    className="h-[54px] w-auto object-contain dark:hidden"
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/white/en-us?releaseDate=1774396800"
+                    alt=""
+                    aria-hidden="true"
+                    width={180}
+                    height={60}
+                    className="hidden h-[54px] w-auto object-contain dark:block"
                   />
                 </a>
               </div>
@@ -263,19 +272,19 @@ export default function ZoomiePage() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white/70 transition-all hover:-translate-y-0.5 hover:bg-white/5 hover:text-white active:scale-95"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-[var(--zm-line)] px-4 py-2 text-sm font-semibold text-[var(--zm-muted)] transition-all hover:-translate-y-0.5 hover:bg-[var(--zm-hover)] hover:text-[var(--zm-text)] active:scale-95"
                   >
                     {label}
                     <Icon className="h-4 w-4" />
                   </a>
                 ))}
                 <CopyEmail
-                  className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white/70 transition-all hover:-translate-y-0.5 hover:bg-white/5 hover:text-white active:scale-95"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[var(--zm-line)] px-4 py-2 text-sm font-semibold text-[var(--zm-muted)] transition-all hover:-translate-y-0.5 hover:bg-[var(--zm-hover)] hover:text-[var(--zm-text)] active:scale-95"
                   icon={<EmailIcon className="h-4 w-4" />}
                 />
                 <Link
                   href="/zoomie/privacy"
-                  className="inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white/70 transition-all hover:-translate-y-0.5 hover:bg-white/5 hover:text-white active:scale-95"
+                  className="inline-flex items-center rounded-full border border-[var(--zm-line)] px-4 py-2 text-sm font-semibold text-[var(--zm-muted)] transition-all hover:-translate-y-0.5 hover:bg-[var(--zm-hover)] hover:text-[var(--zm-text)] active:scale-95"
                 >
                   Privacy Policy
                 </Link>

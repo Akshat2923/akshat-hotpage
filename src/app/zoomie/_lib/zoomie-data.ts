@@ -8,14 +8,20 @@
 
 export type RingKey = "paws" | "playtime" | "wags";
 
+/**
+ * `color` is the brand hue and is used for anything painted — gauges, bars,
+ * the play button. `ink` is the same hue conditioned for type: identical in
+ * dark mode, darkened in light, where #00EC4B on white is unreadable.
+ */
 export const RING: Record<
   RingKey,
-  { label: string; color: string; unit: string; blurb: string }
+  { label: string; color: string; ink: string; unit: string; blurb: string }
 > = {
   // AccentColor.colorset
   paws: {
     label: "Paws",
     color: "#FF8100",
+    ink: "var(--zm-paws-ink, #FF8100)",
     unit: "PAWS",
     blurb: "Steps and ground covered, off the pedometer.",
   },
@@ -23,6 +29,7 @@ export const RING: Record<
   playtime: {
     label: "Playtime",
     color: "#00EC4B",
+    ink: "var(--zm-playtime-ink, #00EC4B)",
     unit: "MIN",
     blurb: "Minutes of actual, logged play.",
   },
@@ -30,6 +37,7 @@ export const RING: Record<
   wags: {
     label: "Wags",
     color: "#008CFF",
+    ink: "var(--zm-wags-ink, #008CFF)",
     unit: "WAGS",
     blurb: "Moments worth marking. Tapped, not measured.",
   },

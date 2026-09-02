@@ -22,7 +22,7 @@ function TreatCoin({ treat }: { treat: Treat }) {
   return (
     <div
       className={`group relative flex flex-col items-center gap-3 rounded-2xl p-4 text-center transition-colors ${
-        treat.earned ? "hover:bg-white/[0.04]" : ""
+        treat.earned ? "hover:bg-[var(--zm-hover)]" : ""
       }`}
     >
       <div className="relative h-24 w-24">
@@ -46,7 +46,7 @@ function TreatCoin({ treat }: { treat: Treat }) {
           {treat.earned ? (
             <span className="text-2xl drop-shadow">⭐️</span>
           ) : (
-            <Lock className="h-5 w-5 text-white/40" />
+            <Lock className="h-5 w-5 text-[var(--zm-faint)]" />
           )}
         </div>
       </div>
@@ -54,12 +54,12 @@ function TreatCoin({ treat }: { treat: Treat }) {
       <div>
         <p
           className={`text-sm font-bold ${
-            treat.earned ? "text-white" : "text-white/40"
+            treat.earned ? "text-[var(--zm-text)]" : "text-[var(--zm-faint)]"
           }`}
         >
           {treat.name}
         </p>
-        <p className="mt-0.5 text-[11px] leading-snug text-white/40">
+        <p className="mt-0.5 text-[11px] leading-snug text-[var(--zm-faint)]">
           {treat.description}
         </p>
       </div>
@@ -77,7 +77,6 @@ export function TreatVault() {
         .zm-coin {
           border-radius: 46% 54% 52% 48% / 50% 44% 56% 50%;
           animation: zm-morph 9s ease-in-out infinite;
-          filter: blur(.2px);
         }
         @keyframes zm-morph {
           0%,100% { border-radius: 46% 54% 52% 48% / 50% 44% 56% 50%; transform: rotate(0deg) }
@@ -87,8 +86,8 @@ export function TreatVault() {
       `}</style>
 
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm text-white/45">
-          <span className="font-bold text-white">
+        <p className="text-sm text-[var(--zm-faint)]">
+          <span className="font-bold text-[var(--zm-text)]">
             {TREATS.filter((t) => t.earned).length}
           </span>{" "}
           of {TREATS.length} shown here — the full catalog runs to about thirty,
@@ -96,7 +95,7 @@ export function TreatVault() {
         </p>
         <button
           onClick={() => setShowLocked((s) => !s)}
-          className="shrink-0 rounded-full border border-white/15 px-4 py-1.5 text-xs font-semibold text-white/70 transition-colors hover:bg-white/5"
+          className="shrink-0 rounded-full border border-[var(--zm-line)] px-4 py-1.5 text-xs font-semibold text-[var(--zm-muted)] transition-colors hover:bg-[var(--zm-hover)]"
         >
           {showLocked ? "Earned only" : "Show locked"}
         </button>
