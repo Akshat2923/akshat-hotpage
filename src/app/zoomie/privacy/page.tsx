@@ -13,7 +13,7 @@ export default function ZoomiePrivacyPage() {
       <div className="space-y-1">
         <H1>Privacy Policy</H1>
         <p className="text-sm text-muted-foreground">
-          Zoomie — Last updated: August 26, 2026
+          Zoomie — Last updated: September 3, 2026
         </p>
       </div>
 
@@ -85,25 +85,6 @@ export default function ZoomiePrivacyPage() {
       </div>
 
       <div className="space-y-2">
-        <H2>Apple Health</H2>
-        <p className="text-muted-foreground">
-          If you choose to allow Zoomie to interact with Apple Health, Zoomie
-          may read or write relevant activity information through Apple&apos;s
-          HealthKit framework, such as steps or walking and exercise activity,
-          where supported by the app and your permissions.
-        </p>
-        <p className="text-muted-foreground">
-          Health data is handled through Apple&apos;s HealthKit APIs and is
-          subject to Apple&apos;s privacy and security protections. Zoomie
-          does not sell Health data or use it for advertising.
-        </p>
-        <p className="text-muted-foreground">
-          You control Zoomie&apos;s access to Health data through your
-          device&apos;s Health permissions.
-        </p>
-      </div>
-
-      <div className="space-y-2">
         <H2>Siri &amp; App Intents</H2>
         <p className="text-muted-foreground">
           Zoomie supports Apple&apos;s App Intents and Siri features, allowing
@@ -138,8 +119,8 @@ export default function ZoomiePrivacyPage() {
         </p>
         <p className="text-muted-foreground">
           Zoomie does use Apple&apos;s first-party services and frameworks,
-          including SwiftData, CloudKit, HealthKit, ActivityKit, App Intents,
-          Siri, and other Apple system frameworks required to provide the
+          including SwiftData, CloudKit, ActivityKit, App Intents, Siri, and
+          other Apple system frameworks required to provide the
           app&apos;s features.
         </p>
         <p className="text-muted-foreground">
@@ -173,12 +154,12 @@ export default function ZoomiePrivacyPage() {
           parties.
         </p>
         <p className="text-muted-foreground">
-          The developer does not have access to your private CloudKit data,
-          HealthKit data, or other personal information stored within Zoomie.
+          The developer does not have access to your private CloudKit data or
+          other personal information stored within Zoomie.
         </p>
         <p className="text-muted-foreground">
           Apple may process data as necessary to provide its own services,
-          including iCloud, CloudKit, HealthKit, Siri, and related system
+          including iCloud, CloudKit, Siri, and related system
           functionality, according to Apple&apos;s applicable terms and
           privacy policies.
         </p>

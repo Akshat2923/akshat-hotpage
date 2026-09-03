@@ -65,9 +65,9 @@ function Section({
 
 const STACK = [
   ["Swift", "SwiftUI", "SwiftData"],
-  ["HealthKit", "CoreMotion", "WeatherKit"],
+  ["CoreMotion", "WeatherKit", "Core Location"],
   ["WidgetKit", "ActivityKit", "App Intents"],
-  ["Vision", "SpriteKit", "Core Location"],
+  ["Vision", "SpriteKit", "MapKit"],
 ];
 
 const LINKS = [
