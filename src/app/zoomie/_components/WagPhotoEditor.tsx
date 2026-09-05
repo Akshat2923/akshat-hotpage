@@ -2,57 +2,47 @@
 
 import * as React from "react";
 import { Camera, RotateCcw } from "lucide-react";
-import { EMOJI_PALETTE, JOINTS, RING } from "../_lib/zoomie-data";
+import dogFill from "@/assets/zoomie/dog.fill@10x.png";
+import { DOG_BOX, EMOJI_PALETTE, JOINTS, RING } from "../_lib/zoomie-data";
 
 // The app runs VNDetectAnimalBodyPoseRequest over a still photo, drops a
 // tappable target on every joint it finds, and lets you hang an emoji off
-// each one. Every emoji is a wag. This is that flow, with a drawn dog
-// standing in for the photo — the joint coordinates are where Vision
-// actually tends to put them.
+// each one. Every emoji is a wag. This is that flow, with the app's own
+// dog.fill symbol standing in for the photo.
 
+/**
+ * The subject, drawn from the app's `dog.fill` symbol rather than by hand.
+ * A white-on-transparent PNG can't be recoloured directly, so it masks a
+ * gradient-filled div. DOG_BOX places it in the frame; JOINTS are fractions
+ * of that same box, so the targets can't drift off the dog.
+ */
 function DogSubject() {
-  // viewBox is 0–100 on both axes so JOINTS coordinates map straight on.
   return (
-    <svg viewBox="0 0 100 100" className="h-full w-full" aria-hidden="true">
-      <defs>
-        <linearGradient id="zm-coat" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#D8A46B" />
-          <stop offset="100%" stopColor="#B07C42" />
-        </linearGradient>
-      </defs>
-
-      {/* far legs */}
-      <rect x="42" y="58" width="6" height="30" rx="3" fill="#96652F" />
-      <rect x="78" y="58" width="6" height="30" rx="3" fill="#96652F" />
-      {/* tail */}
-      <path
-        d="M80 44 q14 -6 15 -20"
-        stroke="url(#zm-coat)"
-        strokeWidth="7"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* body */}
-      <ellipse cx="60" cy="52" rx="25" ry="16" fill="url(#zm-coat)" />
-      {/* neck */}
-      <path d="M40 40 q2 12 10 14 l0 -18z" fill="url(#zm-coat)" />
-      {/* near legs */}
-      <rect x="34" y="58" width="7" height="31" rx="3.5" fill="url(#zm-coat)" />
-      <rect x="72" y="58" width="7" height="31" rx="3.5" fill="url(#zm-coat)" />
-      <ellipse cx="37.5" cy="89" rx="5" ry="3" fill="#96652F" />
-      <ellipse cx="75.5" cy="89" rx="5" ry="3" fill="#96652F" />
-      {/* head */}
-      <circle cx="32" cy="34" r="12" fill="url(#zm-coat)" />
-      <ellipse cx="20" cy="40" rx="9" ry="6" fill="url(#zm-coat)" />
-      <circle cx="13" cy="39" r="2.6" fill="#2E2119" />
-      <circle cx="30" cy="31" r="2" fill="#2E2119" />
-      {/* ears */}
-      <path d="M29 23 q-4 -9 4 -8 q4 3 1 9z" fill="#96652F" />
-      <path d="M38 21 q1 -9 7 -5 q2 4 -2 8z" fill="#96652F" />
-      {/* tongue, because it is always out */}
-      <ellipse cx="16" cy="45" rx="3" ry="4" fill="#E0768C" />
-    </svg>
+    <div
+      className="absolute"
+      style={{
+        left: `${DOG_BOX.left}%`,
+        top: `${DOG_BOX.top}%`,
+        width: `${DOG_BOX.width}%`,
+        height: `${DOG_BOX.height}%`,
+        background: "linear-gradient(180deg, #D8A46B 0%, #A8722F 100%)",
+        WebkitMaskImage: `url(${dogFill.src})`,
+        maskImage: `url(${dogFill.src})`,
+        WebkitMaskSize: "100% 100%",
+        maskSize: "100% 100%",
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+      }}
+    />
   );
+}
+
+/** A joint's position in the frame, from its position on the glyph. */
+function jointAt(j: { x: number; y: number }) {
+  return {
+    left: `${DOG_BOX.left + j.x * DOG_BOX.width}%`,
+    top: `${DOG_BOX.top + j.y * DOG_BOX.height}%`,
+  };
 }
 
 export function WagPhotoEditor() {
@@ -86,9 +76,7 @@ export function WagPhotoEditor() {
       <div className="relative aspect-[4/3] overflow-hidden rounded-[26px] border border-[var(--zm-line)] bg-gradient-to-b from-[#2b2620] to-[#15120f]">
         {/* a floor, so the dog isn't levitating */}
         <div className="absolute inset-x-0 bottom-0 h-[22%] bg-[#3a3229]" />
-        <div className="absolute inset-0 p-[4%]">
-          <DogSubject />
-        </div>
+        <DogSubject />
 
         {!scanned && (
           <div className="zm-scan absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-transparent via-[#008CFF]/30 to-transparent" />
@@ -102,11 +90,7 @@ export function WagPhotoEditor() {
               <div
                 key={j.id}
                 className="absolute"
-                style={{
-                  left: `${j.x}%`,
-                  top: `${j.y}%`,
-                  transform: "translate(-50%,-50%)",
-                }}
+                style={{ ...jointAt(j), transform: "translate(-50%,-50%)" }}
               >
                 {emoji ? (
                   <button
@@ -137,11 +121,11 @@ export function WagPhotoEditor() {
                     // Kept inside the frame: joints near an edge anchor to it
                     // rather than centring and hanging off the photo.
                     className={`absolute z-20 w-[196px] rounded-2xl border border-white/10 bg-[#1a1a1c]/95 p-2 shadow-2xl backdrop-blur ${
-                      j.y > 68 ? "bottom-8" : "top-8"
+                      j.y > 0.7 ? "bottom-8" : "top-8"
                     } ${
-                      j.x < 24
+                      j.x < 0.2
                         ? "left-0"
-                        : j.x > 76
+                        : j.x > 0.8
                           ? "right-0"
                           : "left-1/2 -translate-x-1/2"
                     }`}

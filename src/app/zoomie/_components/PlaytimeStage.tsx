@@ -1,6 +1,13 @@
 "use client";
 
 import * as React from "react";
+import figureStand from "@/assets/zoomie/figure.stand@10x.png";
+import treeFill from "@/assets/zoomie/tree.fill@10x.png";
+import leafFill from "@/assets/zoomie/leaf.fill@10x.png";
+import sofaFill from "@/assets/zoomie/sofa.fill@10x.png";
+import artFrame from "@/assets/zoomie/photo.artframe@10x.png";
+import figureWalk from "@/assets/zoomie/figure.walk@10x.png";
+import dogFill from "@/assets/zoomie/dog.fill@10x.png";
 import type { Stage } from "../_lib/zoomie-data";
 
 // A live session in Zoomie doesn't sit on a blank screen — it plays out on an
@@ -28,6 +35,7 @@ const P = {
   cloud: "#FFFFFF",
   wall: "#AD9C8C",
   wallDark: "#95836F",
+  frame: "#6E5B49",
   baseboard: "#F7F2EB",
   floor: "#BD9466",
   plank: "#9E7850",
@@ -37,71 +45,120 @@ const P = {
   seam: "#45666B",
   player: "#3359BF",
   dog: "#C08A52",
-  dogDark: "#A06F3E",
   ball: "#D9E04A",
   rope: "#D8C089",
 };
 
-/** Origin sits at the dog's shoulder; feet land 22 units below. */
-function Dog({
+// Actors are the app's own SF Symbols — figure.walk, figure.stand and
+// dog.fill, exported at @10x — rather than shapes drawn by hand. Each is
+// painted by filling a rect through a mask of the glyph, which is the only way
+// to recolour a white PNG inside an SVG.
+//
+// Boxes are sized from each file's own aspect ratio so nothing stretches, and
+// the dog stands at 0.63 of the person's height — the same ratio the app's
+// composed glyph pairs use (primarySize 32 against secondarySize 20).
+const PERSON_H = 54;
+const DOG_H = 34;
+const ASPECT = {
+  stand: 440 / 1050,
+  walk: 660 / 1090,
+  dog: 1250 / 1060,
+  tree: 1200 / 1220,
+  leaf: 1010 / 890,
+  sofa: 1410 / 810,
+  frame: 1110 / 870,
+};
+
+const SRC = {
+  stand: figureStand.src,
+  walk: figureWalk.src,
+  dog: dogFill.src,
+  tree: treeFill.src,
+  leaf: leafFill.src,
+  sofa: sofaFill.src,
+  frame: artFrame.src,
+};
+
+/**
+ * Where a lead attaches on dog.fill, as a fraction of its box. Read off the
+ * glyph's own row profile: the collar notch sits just behind the head.
+ */
+const COLLAR = { x: 0.75, y: 0.25 };
+
+/**
+ * One symbol, standing on `FEET`, centred on `x` and painted in `color`.
+ * `flip` mirrors it about its own centre — figure.walk and dog.fill both face
+ * right in the file, so anything meant to face the other way needs it.
+ */
+function Glyph({
+  kind,
   x,
-  s = 1,
+  h,
+  color,
+  base = FEET,
   flip = false,
   className,
 }: {
+  kind: keyof typeof SRC;
   x: number;
-  s?: number;
+  h: number;
+  color: string;
+  /** What the glyph stands on. Actors use the ground; scenery sets its own. */
+  base?: number;
   flip?: boolean;
   className?: string;
 }) {
+  const id = React.useId();
+  const w = h * ASPECT[kind];
+  const left = x - w / 2;
+  const top = base - h;
+
   return (
-    <g
-      transform={`translate(${x} ${FEET - 22 * s}) scale(${flip ? -s : s} ${s})`}
-      className={className}
-    >
-      <rect x={-16} y={6} width={7} height={16} rx={3.5} fill={P.dogDark} />
-      <rect x={8} y={6} width={7} height={16} rx={3.5} fill={P.dogDark} />
-      <rect x={-8} y={7} width={7} height={15} rx={3.5} fill={P.dog} />
-      <rect x={1} y={7} width={7} height={15} rx={3.5} fill={P.dog} />
-      <path
-        d="M14 -2 q12 -4 14 -14"
-        stroke={P.dog}
-        strokeWidth={6}
-        strokeLinecap="round"
-        fill="none"
-      />
-      <ellipse cx={0} cy={-1} rx={20} ry={12} fill={P.dog} />
-      <circle cx={-20} cy={-13} r={10} fill={P.dog} />
-      <ellipse cx={-29} cy={-10} rx={7} ry={5} fill={P.dog} />
-      <circle cx={-35} cy={-11} r={2.4} fill="#3B2A1B" />
-      <circle cx={-21} cy={-16} r={1.8} fill="#3B2A1B" />
-      <path d="M-15 -20 q6 -6 9 2 q-5 5 -9 -2z" fill={P.dogDark} />
+    <g className={className}>
+      <mask id={id} maskUnits="userSpaceOnUse" x={left} y={top} width={w} height={h}>
+        <image
+          href={SRC[kind]}
+          x={left}
+          y={top}
+          width={w}
+          height={h}
+          transform={flip ? `translate(${2 * left + w} 0) scale(-1 1)` : undefined}
+        />
+      </mask>
+      <rect x={left} y={top} width={w} height={h} fill={color} mask={`url(#${id})`} />
     </g>
   );
 }
 
-/** Origin sits at the waist; feet land 30 units below. */
-function Person({
+/** Scenery: a symbol planted on `base` rather than on the ground line. */
+function Prop({
+  kind,
   x,
-  s = 1,
-  className,
+  h,
+  base,
+  color,
 }: {
+  kind: keyof typeof SRC;
   x: number;
-  s?: number;
-  className?: string;
+  h: number;
+  base: number;
+  color: string;
 }) {
-  return (
-    <g
-      transform={`translate(${x} ${FEET - 30 * s}) scale(${s})`}
-      className={className}
-    >
-      <rect x={-7} y={12} width={6} height={18} rx={3} fill={P.player} />
-      <rect x={2} y={12} width={6} height={18} rx={3} fill={P.player} />
-      <rect x={-9} y={-12} width={18} height={26} rx={8} fill={P.player} />
-      <circle cx={0} cy={-22} r={9} fill={P.player} />
-      <rect x={7} y={-10} width={6} height={18} rx={3} fill={P.player} />
-    </g>
-  );
+  return <Glyph kind={kind} x={x} h={h} base={base} color={color} />;
+}
+
+/** The dog, facing right unless flipped. */
+function Dog({ h = DOG_H, ...props }: { x: number; h?: number; flip?: boolean; className?: string }) {
+  return <Glyph kind="dog" color={P.dog} h={h} {...props} />;
+}
+
+/** The owner. Walking while a session runs, standing the rest of the time. */
+function Person({
+  moving = false,
+  h = PERSON_H,
+  ...props
+}: { x: number; h?: number; moving?: boolean; flip?: boolean; className?: string }) {
+  return <Glyph kind={moving ? "walk" : "stand"} color={P.player} h={h} {...props} />;
 }
 
 function Outdoor({ typeId }: { typeId: string }) {
@@ -118,11 +175,14 @@ function Outdoor({ typeId }: { typeId: string }) {
       <ellipse cx="70" cy="44" rx="26" ry="10" fill={P.cloud} opacity={0.85} className="zm-drift" />
       <ellipse cx="290" cy="34" rx="34" ry="12" fill={P.cloud} opacity={0.7} className="zm-drift-slow" />
 
-      {/* treeline, sitting on the horizon */}
-      <circle cx="34" cy="58" r="24" fill={P.canopy} />
-      <circle cx="112" cy="66" r="16" fill={P.bush} />
-      <circle cx="336" cy="56" r="26" fill={P.canopy} />
-      <circle cx="258" cy="68" r="14" fill={P.bush} />
+      {/* Treeline, planted just past the horizon so the trunks read as
+          standing behind the ground rather than on top of it. */}
+      <Prop kind="tree" x={36} h={44} base={86} color={P.canopy} />
+      <Prop kind="tree" x={334} h={48} base={86} color={P.canopy} />
+      {/* Shrubs, set a little into the grass rather than balanced on the
+          horizon — a leaf has no trunk, so on the line itself it floats. */}
+      <Prop kind="leaf" x={112} h={22} base={91} color={P.bush} />
+      <Prop kind="leaf" x={258} h={18} base={89} color={P.bush} />
 
       <rect y={GROUND} width="400" height={180 - GROUND} fill={P.grass} />
       <rect y={GROUND} width="400" height="4" fill={P.grassDark} />
@@ -147,22 +207,17 @@ function Indoor({ couch }: { couch: boolean }) {
   return (
     <>
       <rect width="400" height="180" fill={P.wall} />
-      <rect x="26" y="14" width="80" height="52" rx="6" fill={P.wallDark} />
-      <rect x="33" y="21" width="66" height="38" rx="4" fill={P.dirt} opacity={0.55} />
-      {couch && (
-        <g>
-          <rect x="196" y="26" width="186" height="56" rx="12" fill={P.couch} />
-          <rect x="206" y="34" width="78" height="32" rx="8" fill={P.cushion} />
-          <rect x="292" y="34" width="78" height="32" rx="8" fill={P.cushion} />
-          <rect x="196" y="74" width="186" height="10" rx="5" fill={P.seam} />
-        </g>
-      )}
+      <Prop kind="frame" x={62} h={44} base={60} color={P.frame} />
       <rect y={GROUND} width="400" height="8" fill={P.baseboard} />
       <rect y={GROUND + 8} width="400" height={180 - GROUND - 8} fill={P.floor} />
       {Array.from({ length: 9 }).map((_, i) => (
         <rect key={i} x={i * 46} y={GROUND + 8} width="2.5" height={180 - GROUND - 8} fill={P.plank} opacity={0.7} />
       ))}
       <rect x="56" y="106" width="290" height="28" rx="8" fill={P.rug} />
+      {/* After the floor and the rug, so they can't cover its legs, and set
+          back far enough that the baseboard falls behind the solid seat band
+          rather than showing through the gap between the cushions. */}
+      {couch && <Prop kind="sofa" x={255} h={62} base={106} color={P.couch} />}
     </>
   );
 }
@@ -211,68 +266,86 @@ export const PlaytimeStage = React.memo(function PlaytimeStage({
       >
         {indoor ? <Indoor couch={stage === "couch"} /> : <Outdoor typeId={typeId} />}
 
+        {/* dog.fill carries its collar at about 0.80 across and 0.22 down,
+            which is where a leash or a rope has to land. */}
         {typeId === "walk" && (
           <g className="zm-bob">
-            <Person x={150} />
-            <line x1={162} y1={96} x2={222} y2={106} stroke={P.rope} strokeWidth={3} />
-            <Dog x={250} flip />
+            <Person x={140} moving={running} />
+            <Dog x={245} />
+            <line
+              x1={running ? 157 : 150}
+              y1={running ? 94 : 97}
+              x2={245 - 40.09 / 2 + COLLAR.x * 40.09}
+              y2={FEET - 34 + COLLAR.y * 34}
+              stroke={P.rope}
+              strokeWidth={2.5}
+            />
           </g>
         )}
 
         {typeId === "fetch" && (
           <>
-            <Person x={74} />
-            <circle cx={90} cy={92} r={6} fill={P.ball} className="zm-ball" />
-            <Dog x={236} className="zm-run" />
+            <Person x={70} />
+            <circle cx={84} cy={88} r={5} fill={P.ball} className="zm-ball" />
+            <Dog x={240} className="zm-run" />
           </>
         )}
 
+        {/* They run as a pair: the dog behind, gaining. */}
         {typeId === "chase" && (
           <g className="zm-run">
-            <Person x={152} className="zm-bob" />
-            <Dog x={240} flip />
+            <Dog x={165} />
+            <Person x={235} moving={running} className="zm-bob" />
           </g>
         )}
 
         {typeId === "tug" && (
           <>
-            <Person x={134} />
-            <line x1={147} y1={98} x2={220} y2={106} stroke={P.rope} strokeWidth={6} strokeLinecap="round" />
-            <Dog x={254} flip className="zm-bob" />
+            <Person x={130} />
+            <Dog x={250} flip className="zm-bob" />
+            <line
+              x1={141}
+              y1={96}
+              x2={250 + 40.09 / 2 - COLLAR.x * 40.09}
+              y2={FEET - 34 + COLLAR.y * 34}
+              stroke={P.rope}
+              strokeWidth={5}
+              strokeLinecap="round"
+            />
           </>
         )}
 
         {typeId === "cuddle" && (
           <>
-            <Person x={252} s={0.95} />
+            <Person x={252} />
             <g className="zm-breathe">
-              <Dog x={206} s={0.9} />
+              <Dog x={205} h={31} />
             </g>
           </>
         )}
 
         {(typeId === "massage" || typeId === "brushing") && (
           <>
-            <Person x={132} s={0.95} />
+            <Person x={128} />
             <g className="zm-breathe">
-              <Dog x={228} flip s={1.05} />
+              <Dog x={228} flip />
             </g>
           </>
         )}
 
         {typeId === "training" && (
           <>
-            <Person x={142} />
+            <Person x={138} />
             <Dog x={248} flip className="zm-bob" />
-            <circle cx={198} cy={84} r={5} fill={P.ball} opacity={0.9} />
+            <circle cx={196} cy={86} r={4.5} fill={P.ball} opacity={0.9} />
           </>
         )}
 
         {typeId === "scent" && (
           <>
-            <Person x={330} s={0.9} />
+            <Person x={332} />
             <g className="zm-run">
-              <Dog x={162} s={1.05} />
+              <Dog x={165} />
             </g>
             {[104, 142, 180, 218].map((x, i) => (
               <circle key={x} cx={x} cy={128} r={3} fill={P.dirt} opacity={0.4 + i * 0.14} />

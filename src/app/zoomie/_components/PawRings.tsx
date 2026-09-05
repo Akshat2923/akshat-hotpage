@@ -1,78 +1,75 @@
-import * as React from "react";
+import pawprint from "@/assets/zoomie/pawprint@10x.png";
 import { RING, RING_ORDER, type RingKey } from "../_lib/zoomie-data";
 
-// The paw, traced to match SF Symbol `pawprint` — the shape the app's rings
-// are actually drawn from. Four toes in an arc over one pad, all outline, no
-// fill. Progress is not an arc sweep: the app renders this glyph twice and
-// masks the coloured copy with a rising water line, so a ring at 60% is a paw
-// filled six-tenths of the way up.
-
-const ART_TOP = 28;
-const ART_HEIGHT = 168;
-
-function PawArt() {
-  return (
-    <>
-      <ellipse cx="42" cy="94" rx="16" ry="22" transform="rotate(-32 42 94)" />
-      <ellipse cx="76" cy="58" rx="17" ry="24" transform="rotate(-13 76 58)" />
-      <ellipse cx="124" cy="58" rx="17" ry="24" transform="rotate(13 124 58)" />
-      <ellipse cx="158" cy="94" rx="16" ry="22" transform="rotate(32 158 94)" />
-      <path d="M100 110 C133 110 160 131 160 155 C160 177 141 190 124 190 C113 190 107 184 100 184 C93 184 87 190 76 190 C59 190 40 177 40 155 C40 131 67 110 100 110 Z" />
-    </>
-  );
-}
+// The rings are the app's own `pawprint` SF Symbol, exported at @10x and used
+// here as a CSS mask rather than re-traced by hand — same glyph on the page as
+// on the phone.
+//
+// Progress is not an arc sweep. The app paints the glyph twice and reveals the
+// coloured copy with a rising water line, so a ring at 60% is a paw filled
+// six-tenths of the way up. The clip sits on a wrapper *around* the masked
+// element, so the water line stays level and the mask stays put.
+//
+// The export is cropped tight to the ink (measured: the glyph spans 0–1015 of
+// 1020 across and 0–998 of 1010 down), so `contain` inside a square box leaves
+// about half a percent of slack top and bottom — close enough that the fill
+// percentage maps straight onto the paw with no correction.
+const MASK = {
+  WebkitMaskImage: `url(${pawprint.src})`,
+  maskImage: `url(${pawprint.src})`,
+  WebkitMaskSize: "contain",
+  maskSize: "contain",
+  WebkitMaskRepeat: "no-repeat",
+  maskRepeat: "no-repeat",
+  WebkitMaskPosition: "center",
+  maskPosition: "center",
+} as const;
 
 export function PawGauge({
   progress,
   color,
   fillMs = 1600,
-  strokeWidth = 13,
   className,
 }: {
   progress: number;
   color: string;
   fillMs?: number;
-  strokeWidth?: number;
   className?: string;
 }) {
-  const clipId = React.useId();
   const p = Math.min(Math.max(progress, 0), 1);
 
-  const stroke = {
-    fill: "none",
-    stroke: color,
-    strokeWidth,
-    strokeLinejoin: "round" as const,
-    strokeLinecap: "round" as const,
-  };
-
   return (
-    <svg viewBox="0 0 200 200" className={className} aria-hidden="true">
-      <defs>
-        <clipPath id={clipId}>
-          <rect
-            x={-200}
-            y={ART_TOP}
-            width={600}
-            height={ART_HEIGHT * 2}
-            style={{
-              transform: `translateY(${(1 - p) * ART_HEIGHT}px)`,
-              transition: `transform ${fillMs}ms cubic-bezier(.22,1,.36,1)`,
-            }}
-          />
-        </clipPath>
-      </defs>
-
+    <div className={className} style={{ position: "relative" }}>
       {/* Track — stands in for the app's .thinMaterial. */}
-      <g {...stroke} style={{ opacity: "var(--zm-gauge-track, .17)" }}>
-        <PawArt />
-      </g>
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: color,
+          opacity: "var(--zm-gauge-track, .17)",
+          ...MASK,
+        }}
+      />
 
-      {/* Fill, clipped to the water line. */}
-      <g clipPath={`url(#${clipId})`} {...stroke}>
-        <PawArt />
-      </g>
-    </svg>
+      {/* Fill, revealed from the bottom up. */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          clipPath: `inset(${(1 - p) * 100}% 0% 0% 0%)`,
+          transition: `clip-path ${fillMs}ms cubic-bezier(.22,1,.36,1)`,
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: color,
+            ...MASK,
+          }}
+        />
+      </div>
+    </div>
   );
 }
 

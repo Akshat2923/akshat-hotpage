@@ -40,6 +40,7 @@ import {
 } from "./fog-context";
 import { FOLDERS, FolderSeed, NOTES, NoteSeed, answerFor, nameFolder } from "./fog-data";
 import { CopyEmail } from "@/components/CopyEmail";
+import { cn } from "@/lib/utils";
 
 // The rows are damped almost flat on purpose: a bouncing *list* is what reads as slow,
 // because every row carries the wobble. The personality lives on the header and the chevron.
@@ -104,13 +105,22 @@ function GlassButton({
       type="button"
       aria-label={label}
       onClick={onClick}
-      className={`grid h-9 w-9 place-items-center rounded-full border border-white/50 bg-white/60 text-foreground/70 shadow-sm backdrop-blur transition active:scale-90 dark:border-white/10 dark:bg-white/10 dark:text-foreground/80 ${className}`}
+      className={cn(
+        "grid h-9 w-9 place-items-center rounded-full border border-white/50 bg-white/60 text-foreground/70 shadow-sm backdrop-blur transition active:scale-90 dark:border-white/10 dark:bg-white/10 dark:text-foreground/80",
+        className,
+      )}
     >
       {children}
     </button>
   );
 }
 
+/// ⚠️ Composed with `cn`, not string interpolation.
+///
+/// Two utilities from the same group have equal specificity, so the one that wins is
+/// whichever Tailwind emits later — not whichever the caller wrote last. `px-0` from a call
+/// site lost to the `px-4` below, and inside a `w-10` button that padding shrank the grid's
+/// content box until the auto column overflowed to the right, putting the icon off centre.
 function ProminentButton({
   children,
   onClick,
@@ -131,7 +141,10 @@ function ProminentButton({
       onClick={onClick}
       disabled={disabled}
       style={{ background: "var(--fog-accent)" }}
-      className={`grid place-items-center rounded-full px-4 text-sm font-semibold text-white shadow-lg shadow-black/10 transition active:scale-90 disabled:opacity-40 ${className}`}
+      className={cn(
+        "grid place-items-center rounded-full px-4 text-sm font-semibold text-white shadow-lg shadow-black/10 transition active:scale-90 disabled:opacity-40",
+        className,
+      )}
     >
       {children}
     </button>
@@ -1017,7 +1030,6 @@ export function FogWindow() {
               <GlassButton
                 label="Filter by notes"
                 onClick={() => setFlat((current) => !current)}
-                className={flat ? "text-white" : ""}
               >
                 <Layers className="h-4 w-4" style={flat ? { color: "var(--fog-accent)" } : undefined} />
               </GlassButton>

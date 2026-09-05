@@ -454,18 +454,30 @@ export const SIRI_PHRASES = [
 // Roughly where VNDetectAnimalBodyPoseRequest puts them on a standing dog,
 // mapped onto the silhouette this page draws. Percentages of the frame.
 
+/**
+ * Where Vision's joints land on the `dog.fill` symbol the editor draws.
+ *
+ * Coordinates are fractions of the glyph's own box, read off its row profile
+ * rather than eyeballed — the ears break the top edge at y 0.02–0.13, the
+ * snout runs out to x 0.99, the tail is the detached span at (0.12, 0.28),
+ * the front legs occupy x 0.55–0.70 and the back legs x 0.03–0.29. The dog
+ * faces right, so the nose is the high-x end.
+ */
 export const JOINTS: { id: string; label: string; x: number; y: number }[] = [
-  { id: "nose", label: "Nose", x: 20, y: 40 },
-  { id: "leftEar", label: "Left Ear", x: 30, y: 24 },
-  { id: "rightEar", label: "Right Ear", x: 38, y: 22 },
-  { id: "neck", label: "Neck", x: 40, y: 42 },
-  { id: "leftFrontElbow", label: "Front Elbow", x: 39, y: 66 },
-  { id: "leftFrontPaw", label: "Front Paw", x: 37, y: 86 },
-  { id: "spine", label: "Spine", x: 58, y: 46 },
-  { id: "leftBackElbow", label: "Back Elbow", x: 73, y: 66 },
-  { id: "leftBackPaw", label: "Back Paw", x: 76, y: 86 },
-  { id: "tailBottom", label: "Tail", x: 82, y: 40 },
+  { id: "nose", label: "Nose", x: 0.95, y: 0.24 },
+  { id: "rightEar", label: "Right Ear", x: 0.87, y: 0.13 },
+  { id: "leftEar", label: "Left Ear", x: 0.74, y: 0.06 },
+  { id: "neck", label: "Neck", x: 0.72, y: 0.28 },
+  { id: "spine", label: "Spine", x: 0.45, y: 0.34 },
+  { id: "leftFrontElbow", label: "Front Elbow", x: 0.63, y: 0.66 },
+  { id: "leftFrontPaw", label: "Front Paw", x: 0.63, y: 0.92 },
+  { id: "leftBackElbow", label: "Back Elbow", x: 0.16, y: 0.66 },
+  { id: "leftBackPaw", label: "Back Paw", x: 0.10, y: 0.92 },
+  { id: "tailBottom", label: "Tail", x: 0.12, y: 0.27 },
 ];
+
+/** The glyph's box within the photo frame, as percentages of the frame. */
+export const DOG_BOX = { left: 12, width: 76, top: 8, height: 85.9 };
 
 export const EMOJI_PALETTE = [
   "🎾",
