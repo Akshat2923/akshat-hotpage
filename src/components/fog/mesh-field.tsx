@@ -272,7 +272,7 @@ export function MeshField() {
           base,
           { ...base, h: base.h + 0.075 },
         ];
-        tone = dark ? 0.46 : 0.4;
+        tone = dark ? 0.58 : 0.4;
       }
       tone *= scale * (1 + CHROMA_LIFT * energy);
 
@@ -325,6 +325,13 @@ export function MeshField() {
         ref={canvasRef}
         className="h-full w-full scale-110"
         style={{ filter: "blur(18px)" }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(120% 80% at 50% 38%, transparent 38%, rgba(0,0,0,0.16) 78%, rgba(0,0,0,0.34) 100%)",
+        }}
       />
       {grain ? (
         <div

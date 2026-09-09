@@ -36,7 +36,7 @@ const HEAT = (() => {
       // The habit builds: early weeks are patchy, recent ones are solid.
       const ramp = week / (WEEKS - 1);
       const weekend = day === 0 || day === 6 ? 0.2 : 0;
-      const v = rand() * 0.34 + ramp * 0.82 + weekend;
+      const v = rand() * 0.3 + ramp * 0.9 + weekend;
       return Math.max(0, Math.min(v, 1));
     }),
   );
@@ -58,16 +58,18 @@ function Panel({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[26px] border border-[var(--zm-line)] bg-[var(--zm-card)] p-5">
-      <p className="text-sm font-bold text-[var(--zm-text)]">{title}</p>
-      <p className="text-xs text-[var(--zm-faint)]">{sub}</p>
+    <div>
+      <p className="text-[13px] font-bold uppercase tracking-wider text-[var(--zm-faint)]">
+        {title}
+      </p>
       <p
-        className="mt-1 font-mono text-3xl font-bold tabular-nums"
+        className="mt-2 font-mono text-[44px] font-bold leading-none tabular-nums"
         style={{ color: RING[ring].ink }}
       >
         {value}
       </p>
-      <div className="mt-4">{children}</div>
+      <p className="mt-2 text-[13px] text-[var(--zm-faint)]">{sub}</p>
+      <div className="mt-7">{children}</div>
     </div>
   );
 }
@@ -76,7 +78,7 @@ export function Insights() {
   const max = Math.max(...HOURS);
 
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="grid gap-14 md:grid-cols-2 md:gap-16">
       <Panel title="Hour by Hour" sub="Paws, today" value="6,400" ring="paws">
         <div className="flex h-32 items-end gap-[3px]">
           {HOURS.map((h, i) => (
@@ -123,7 +125,7 @@ export function Insights() {
                     className="h-[14px] flex-1 rounded-[3px]"
                     style={{
                       background: RING.paws.color,
-                      opacity: 0.08 + v * 0.92,
+                      opacity: 0.05 + v * 0.95,
                     }}
                   />
                 ))}

@@ -96,7 +96,7 @@ const PlaytimeList = React.memo(function PlaytimeList({
 
       {/* Only the two-column layout needs this to scroll on its own; on a
           phone a nested scroller just fights the page. */}
-      <div className="space-y-3 lg:max-h-[430px] lg:overflow-y-auto lg:pr-1">
+      <div className="space-y-3 md:max-h-[430px] md:overflow-y-auto md:pr-1">
         {CATEGORY_ORDER.map((category) => (
           <div key={category}>
             <p className="px-2 pb-1.5 text-sm font-bold text-[var(--zm-faint)]">
@@ -241,7 +241,7 @@ export function SessionConsole() {
   const quickActions: WagKey[] = [...type.quickActions, "photo"];
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)]">
+    <div className="grid gap-4 md:grid-cols-[minmax(0,290px)_minmax(0,1fr)]">
       <style>{`
         @keyframes zm-float { to { transform: translateY(-72px) scale(1.25); opacity: 0; } }
         @keyframes zm-line-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -400,7 +400,7 @@ export function SessionConsole() {
       </div>
 
       {/* ── Rings, filling for real ───────────────────────────────────── */}
-      <div className="lg:col-span-2">
+      <div className="md:col-span-2">
         <div className="flex flex-col items-center gap-6 rounded-[26px] border border-[var(--zm-line)] bg-[var(--zm-card)] p-6 sm:flex-row sm:gap-10 sm:p-8">
           <PawRings
             progress={progress}

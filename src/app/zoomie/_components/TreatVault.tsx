@@ -21,9 +21,7 @@ function coinBackground(treat: Treat) {
 function TreatCoin({ treat }: { treat: Treat }) {
   return (
     <div
-      className={`group relative flex flex-col items-center gap-3 rounded-2xl p-4 text-center transition-colors ${
-        treat.earned ? "hover:bg-[var(--zm-hover)]" : ""
-      }`}
+      className="group relative flex flex-col items-center gap-3 py-4 text-center"
     >
       <div className="relative h-24 w-24">
         <div

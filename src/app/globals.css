@@ -111,3 +111,117 @@
     background-position: 0% 50%;
   }
 }
+/* ---------------------------------------------------------------------------
+   Fog
+   The app's own material system, in three roles rather than fifteen opacities.
+
+   Content is opaque and sits ON the mesh; chrome is glass and floats OVER it.
+   Keeping those two apart is the whole look — when everything is translucent,
+   nothing has an edge and the hierarchy goes flat. Text colours are iOS's own
+   label/secondary/tertiary values, so the page reads as native rather than as
+   grey-on-grey.
+--------------------------------------------------------------------------- */
+
+.fog-surface {
+  --fog-label: #000000;
+  --fog-secondary: rgba(60, 60, 67, 0.6);
+  --fog-tertiary: rgba(60, 60, 67, 0.32);
+  --fog-card: #ffffff;
+  --fog-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -16px rgba(0, 0, 0, 0.18);
+  --fog-separator: rgba(60, 60, 67, 0.18);
+  --fog-glass: rgba(255, 255, 255, 0.66);
+  --fog-glass-line: rgba(255, 255, 255, 0.85);
+  --fog-sheet: rgba(247, 247, 249, 0.94);
+  --fog-page: #f4f5f8;
+  --fog-fill: rgba(120, 120, 128, 0.12);
+}
+
+.dark .fog-surface {
+  --fog-label: #ffffff;
+  --fog-secondary: rgba(235, 235, 245, 0.6);
+  --fog-tertiary: rgba(235, 235, 245, 0.3);
+  --fog-card: #1c1c1e;
+  --fog-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px -20px rgba(0, 0, 0, 0.8);
+  --fog-separator: rgba(84, 84, 88, 0.6);
+  --fog-glass: rgba(64, 64, 68, 0.62);
+  --fog-glass-line: rgba(255, 255, 255, 0.12);
+  --fog-sheet: rgba(28, 28, 30, 0.94);
+  --fog-page: #0e0e0f;
+  --fog-fill: rgba(120, 120, 128, 0.24);
+}
+
+.fog-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.fog-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* The hero's entrance.
+   A CSS animation rather than a JS one: opacity and transform animate on the compositor, so
+   they still run when the main thread's animation frames are throttled — a JS reveal that
+   starts at opacity 0 leaves the page blank until the tab is focused. `both` also means the
+   end state is the resting state if the animation never runs at all. */
+@keyframes fog-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fog-rise {
+  animation: fog-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fog-rise {
+    animation-duration: 0.01s;
+  }
+}
+
+/* Pushing between screens inside the app.
+   Same reasoning as `fog-rise`: a JS animation that starts at opacity 0 leaves the screen
+   blank for as long as animation frames are throttled, and a phone with an empty screen in
+   it is worse than no animation at all. These restart on their own because the element is
+   keyed by view, so it remounts. */
+@keyframes fog-push-in {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fog-pop-in {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fog-push-in {
+  animation: fog-push-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fog-pop-in {
+  animation: fog-pop-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fog-push-in,
+  .fog-pop-in {
+    animation-duration: 0.01s;
+  }
+}

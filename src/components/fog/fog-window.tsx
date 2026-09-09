@@ -106,7 +106,7 @@ function GlassButton({
       aria-label={label}
       onClick={onClick}
       className={cn(
-        "grid h-9 w-9 place-items-center rounded-full border border-white/50 bg-white/60 text-foreground/70 shadow-sm backdrop-blur transition active:scale-90 dark:border-white/10 dark:bg-white/10 dark:text-foreground/80",
+        "grid h-9 w-9 place-items-center rounded-full border border-[var(--fog-glass-line)] bg-[var(--fog-glass)] text-[var(--fog-label)] shadow-sm backdrop-blur-xl transition active:scale-90",
         className,
       )}
     >
@@ -187,18 +187,18 @@ export function SectionHeader({
       style={{ originX: 0 }}
       className="flex w-full items-baseline gap-1.5 px-1.5 pb-2 pt-4 text-left"
     >
-      <span className="text-[19px] font-bold tracking-tight">{title}</span>
+      <span className="text-[20px] font-bold tracking-tight text-[var(--fog-secondary)]">{title}</span>
       {count !== undefined ? (
-        <span className="font-mono text-[13px] tabular-nums text-foreground/45">{count}</span>
+        <span className="text-[15px] font-semibold tabular-nums text-[var(--fog-tertiary)]">{count}</span>
       ) : null}
       <span className="flex-1" />
-      <motion.span
-        animate={{ rotate: expanded ? 90 : 0 }}
-        transition={CHEVRON_SPRING}
-        className="text-foreground/40"
+      <span
+        className={`text-[var(--fog-tertiary)] transition-transform duration-300 ease-out ${
+          expanded ? "rotate-90" : ""
+        }`}
       >
         <ChevronRight className="h-3.5 w-3.5" strokeWidth={3} />
-      </motion.span>
+      </span>
     </motion.button>
   );
 }
@@ -214,7 +214,7 @@ export function SectionBody({ show, children }: { show: boolean; children: React
           transition={ROW_SPRING}
           className="overflow-hidden"
         >
-          <div className="overflow-hidden rounded-[20px] border border-white/50 bg-white/75 backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.06]">
+          <div className="overflow-hidden rounded-[18px] bg-[var(--fog-card)] shadow-[var(--fog-card-shadow)]">
             {children}
           </div>
         </motion.div>
@@ -244,8 +244,8 @@ function RowShell({
         }
       }}
       className={`group flex items-center gap-3 px-4 py-3 transition-colors ${
-        first ? "" : "border-t border-black/[0.06] dark:border-white/[0.07]"
-      } ${onClick ? "cursor-pointer hover:bg-black/[0.03] dark:hover:bg-white/[0.04]" : ""}`}
+        first ? "" : "border-t border-[var(--fog-separator)]"
+      } ${onClick ? "cursor-pointer hover:bg-[var(--fog-fill)]" : ""}`}
     >
       {children}
     </div>
@@ -284,7 +284,7 @@ function NoteRow({
           >
             <span
               style={selected ? { background: "var(--fog-accent)", borderColor: "transparent" } : undefined}
-              className="grid h-[22px] w-[22px] place-items-center rounded-full border-[1.5px] border-foreground/25"
+              className="grid h-[22px] w-[22px] place-items-center rounded-full border-[1.5px] border-[var(--fog-separator)]"
             >
               {selected ? <Check className="h-3.5 w-3.5 text-white" strokeWidth={3.5} /> : null}
             </span>
@@ -297,8 +297,8 @@ function NoteRow({
           {note.pinned && note.pinEmoji ? <span className="text-[15px]">{note.pinEmoji}</span> : null}
           <span className="truncate text-[15px] font-semibold">{note.title}</span>
         </div>
-        <p className="truncate text-[13px] text-foreground/55">{note.snippet}</p>
-        <p className="mt-0.5 text-[11px] text-foreground/35">
+        <p className="truncate text-[13px] text-[var(--fog-secondary)]">{note.snippet}</p>
+        <p className="mt-0.5 text-[11px] text-[var(--fog-tertiary)]">
           {folderName ? `${note.date} · ${folderName}` : note.date}
         </p>
       </div>
@@ -311,13 +311,13 @@ function NoteRow({
             event.stopPropagation();
             onTogglePin();
           }}
-          className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-foreground/40 opacity-50 transition hover:bg-black/5 group-hover:opacity-100 dark:hover:bg-white/10 sm:opacity-0"
+          className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-[var(--fog-tertiary)] opacity-50 transition hover:bg-[var(--fog-fill)] group-hover:opacity-100 sm:opacity-0"
           style={note.pinned ? { color: "var(--fog-accent)", opacity: 1 } : undefined}
         >
           <Pin className="h-4 w-4" fill={note.pinned ? "currentColor" : "none"} />
         </button>
       ) : null}
-      <ChevronRight className="h-4 w-4 shrink-0 text-foreground/25" strokeWidth={2.5} />
+      <ChevronRight className="h-4 w-4 shrink-0 text-[var(--fog-tertiary)]" strokeWidth={2.5} />
     </RowShell>
   );
 }
@@ -338,11 +338,11 @@ function FolderRow({
       <div className="min-w-0 flex-1">
         <div className="flex items-baseline gap-1.5">
           <span className="truncate text-[15px] font-semibold">{folder.name}</span>
-          <span className="font-mono text-[12px] tabular-nums text-foreground/40">{count}</span>
+          <span className="font-mono text-[12px] tabular-nums text-[var(--fog-tertiary)]">{count}</span>
         </div>
-        <p className="truncate text-[13px] text-foreground/45">{folder.tags.join(" · ")}</p>
+        <p className="truncate text-[13px] text-[var(--fog-tertiary)]">{folder.tags.join(" · ")}</p>
       </div>
-      <ChevronRight className="h-4 w-4 shrink-0 text-foreground/25" strokeWidth={2.5} />
+      <ChevronRight className="h-4 w-4 shrink-0 text-[var(--fog-tertiary)]" strokeWidth={2.5} />
     </RowShell>
   );
 }
@@ -390,6 +390,7 @@ export function FogWindow() {
 
   const view = stack[stack.length - 1];
   const scrollRef = React.useRef<HTMLDivElement>(null);
+  const hasNavigated = React.useRef(false);
 
   React.useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0 });
@@ -408,10 +409,12 @@ export function FogWindow() {
   }, []);
 
   const push = (next: View) => {
+    hasNavigated.current = true;
     setDirection(1);
     setStack((current) => [...current, next]);
   };
   const back = () => {
+    hasNavigated.current = true;
     setDirection(-1);
     setStack((current) => (current.length > 1 ? current.slice(0, -1) : current));
   };
@@ -642,7 +645,7 @@ export function FogWindow() {
           <h3 className="text-[22px] font-bold leading-tight tracking-tight">
             {searching ? "Ask Anything" : flat ? "All Notes" : "Fog"}
           </h3>
-          <p className="text-[12px] text-foreground/45">
+          <p className="text-[12px] text-[var(--fog-tertiary)]">
             {flat ? `${notes.length} notes` : today || " "}
           </p>
         </div>
@@ -701,16 +704,16 @@ export function FogWindow() {
           </>
         ) : (
           <div className="space-y-3 pt-6">
-            <div className="rounded-[28px] border border-white/50 bg-white/70 p-7 text-center backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.07]">
-              <Search className="mx-auto h-5 w-5 text-foreground/40" />
+            <div className="rounded-[18px] bg-[var(--fog-card)] p-7 text-center shadow-[var(--fog-card-shadow)]">
+              <Search className="mx-auto h-5 w-5 text-[var(--fog-tertiary)]" />
               <p className="mt-3 text-[15px] font-semibold">No Results</p>
-              <p className="mt-1 text-[13px] text-foreground/55">
+              <p className="mt-1 text-[13px] text-[var(--fog-secondary)]">
                 Nothing matched {`"${query.trim()}"`} in your notes.
               </p>
             </div>
 
             {asking ? (
-              <div className="rounded-[28px] border border-white/50 bg-white/70 p-6 backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.07]">
+              <div className="rounded-[18px] bg-[var(--fog-card)] p-6 shadow-[var(--fog-card-shadow)]">
                 <p className="text-[15px] leading-relaxed">
                   {streamedAnswer}
                   {!answerDone ? <BlinkingCursor /> : null}
@@ -755,7 +758,7 @@ export function FogWindow() {
           />
           <SectionBody show={expanded.has("forecast")}>
             <div className="px-4 py-3.5">
-              <p className="text-[15px] italic text-foreground/70">{GREETINGS[personality]}</p>
+              <p className="text-[15px] italic text-[var(--fog-label)]">{GREETINGS[personality]}</p>
             </div>
           </SectionBody>
 
@@ -843,7 +846,7 @@ export function FogWindow() {
             );
           }}
           placeholder="Write something. Fog will offer a title when you are done."
-          className="h-56 w-full resize-none bg-transparent text-[15px] leading-relaxed outline-none placeholder:text-foreground/35"
+          className="h-56 w-full resize-none bg-transparent text-[15px] leading-relaxed outline-none placeholder:text-[var(--fog-tertiary)]"
         />
       ) : (
         <>
@@ -857,7 +860,7 @@ export function FogWindow() {
             <div className="mb-4 flex flex-wrap gap-2">
               {activeNote.links.map((link) => {
                 const pill =
-                  "rounded-full border border-white/50 bg-white/60 px-3 py-1.5 text-[13px] font-medium backdrop-blur transition hover:bg-white/80 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20";
+                  "rounded-full border border-[var(--fog-glass-line)] bg-[var(--fog-glass)] backdrop-blur-xl px-3 py-1.5 text-[13px] font-medium transition hover:brightness-105";
                 if (link.copy) {
                   return <CopyEmail key={link.label} className={pill} />;
                 }
@@ -882,11 +885,11 @@ export function FogWindow() {
           ) : null}
 
           {activeNote.tags.length ? (
-            <p className="text-[12px] text-foreground/40">{activeNote.tags.join(" · ")}</p>
+            <p className="text-[12px] text-[var(--fog-tertiary)]">{activeNote.tags.join(" · ")}</p>
           ) : null}
 
           {activeNote.hint ? (
-            <p className="mt-6 border-l-2 pl-3 text-[13px] italic text-foreground/45"
+            <p className="mt-6 border-l-2 pl-3 text-[13px] italic text-[var(--fog-tertiary)]"
                style={{ borderColor: "var(--fog-accent)" }}>
               {activeNote.hint}
             </p>
@@ -899,9 +902,9 @@ export function FogWindow() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 8 }}
                 transition={ROW_SPRING}
-                className="mt-6 rounded-[22px] border border-white/50 bg-white/70 p-4 backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.07]"
+                className="mt-6 rounded-[18px] bg-[var(--fog-card)] p-4 shadow-[var(--fog-card-shadow)]"
               >
-                <p className="text-[12px] uppercase tracking-wide text-foreground/40">
+                <p className="text-[12px] uppercase tracking-wide text-[var(--fog-tertiary)]">
                   Fog suggests
                 </p>
                 <p className="mt-1 text-[15px] font-semibold">{proposal.title}</p>
@@ -922,7 +925,7 @@ export function FogWindow() {
                   <button
                     type="button"
                     onClick={() => setProposal(null)}
-                    className="h-8 rounded-full border border-white/50 bg-white/60 px-4 text-[13px] font-medium backdrop-blur dark:border-white/10 dark:bg-white/10"
+                    className="h-8 rounded-full border border-[var(--fog-glass-line)] bg-[var(--fog-glass)] backdrop-blur-xl px-4 text-[13px] font-medium"
                   >
                     Keep mine
                   </button>
@@ -943,7 +946,7 @@ export function FogWindow() {
           <p className="text-[15px] leading-relaxed">{activeFolder.summary}</p>
         </div>
       </SectionBody>
-      <p className="px-4 pb-1 pt-2 text-[12px] text-foreground/40">{activeFolder.tags.join(" · ")}</p>
+      <p className="px-4 pb-1 pt-2 text-[12px] text-[var(--fog-tertiary)]">{activeFolder.tags.join(" · ")}</p>
 
       <SectionHeader
         title="Notes"
@@ -975,9 +978,9 @@ export function FogWindow() {
   return (
     <div
       style={{ fontFamily: FONT_STACKS[fontDesign] || undefined }}
-      className="relative overflow-hidden rounded-[34px] border border-white/50 bg-white/45 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.45)] backdrop-blur-2xl dark:border-white/10 dark:bg-white/[0.05]"
+      className="relative flex h-full flex-col overflow-hidden text-[var(--fog-label)]"
     >
-      <div className="px-4 pb-1 pt-4 sm:px-5">{header}</div>
+      <div className="shrink-0 px-4 pb-1 pt-1">{header}</div>
 
       {/* No exit animation, and no AnimatePresence. A push that waits for the outgoing
           screen to finish leaving is a push that shows nothing at all if the animation is
@@ -985,25 +988,31 @@ export function FogWindow() {
           immediately and slides in over nothing. */}
       <div
         ref={scrollRef}
-        className="relative h-[540px] overflow-y-auto overflow-x-hidden px-2 sm:h-[620px] sm:px-3"
+        className="fog-scroll relative min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-3"
       >
-        <motion.div
+        <div
           key={view.kind + (view.kind === "list" ? "" : view.id)}
-          initial={{ x: direction * 36, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={PUSH_SPRING}
+          className={
+            !hasNavigated.current ? undefined : direction > 0 ? "fog-push-in" : "fog-pop-in"
+          }
         >
           {view.kind === "list" ? listView : view.kind === "note" ? noteView : folderView}
-        </motion.div>
+        </div>
       </div>
 
       {/* Bottom bar. Select owns it while it is on: the only action there is the one
           selection exists for. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center gap-2 bg-gradient-to-t from-white/70 via-white/45 to-transparent px-4 pb-4 pt-12 dark:from-neutral-950/70 dark:via-neutral-950/40 sm:px-5">
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center gap-2 px-4 pb-6 pt-12"
+        style={{
+          background:
+            "linear-gradient(to top, var(--fog-page) 34%, color-mix(in srgb, var(--fog-page) 70%, transparent) 68%, transparent)",
+        }}
+      >
         <div className="pointer-events-auto flex w-full items-center gap-2">
           {selecting ? (
             <>
-              <span className="flex items-center gap-2 rounded-full border border-white/50 bg-white/60 px-4 py-2 text-[13px] font-medium backdrop-blur-xl dark:border-white/10 dark:bg-white/10">
+              <span className="flex items-center gap-2 rounded-full border border-[var(--fog-glass-line)] bg-[var(--fog-glass)] backdrop-blur-xl px-4 py-2 text-[13px] font-medium">
                 <FolderIcon className="h-4 w-4 opacity-50" />
                 {selection.size === 0
                   ? "Pick two notes"
@@ -1033,8 +1042,8 @@ export function FogWindow() {
               >
                 <Layers className="h-4 w-4" style={flat ? { color: "var(--fog-accent)" } : undefined} />
               </GlassButton>
-              <label className="flex h-10 flex-1 items-center gap-2 rounded-full border border-white/50 bg-white/60 px-4 backdrop-blur-xl dark:border-white/10 dark:bg-white/10">
-                <Search className="h-4 w-4 shrink-0 text-foreground/40" />
+              <label className="flex h-10 flex-1 items-center gap-2 rounded-full border border-[var(--fog-glass-line)] bg-[var(--fog-glass)] backdrop-blur-xl px-4">
+                <Search className="h-4 w-4 shrink-0 text-[var(--fog-tertiary)]" />
                 <input
                   value={query}
                   onChange={(event) => {
@@ -1043,11 +1052,11 @@ export function FogWindow() {
                     setAnswer("");
                   }}
                   placeholder="Ask anything"
-                  className="w-full bg-transparent text-[15px] outline-none placeholder:text-foreground/40"
+                  className="w-full bg-transparent text-[15px] outline-none placeholder:text-[var(--fog-tertiary)]"
                 />
                 {query ? (
                   <button type="button" aria-label="Clear" onClick={() => setQuery("")}>
-                    <X className="h-4 w-4 text-foreground/40" />
+                    <X className="h-4 w-4 text-[var(--fog-tertiary)]" />
                   </button>
                 ) : null}
               </label>
@@ -1061,7 +1070,7 @@ export function FogWindow() {
               <button
                 type="button"
                 onClick={back}
-                className="h-10 rounded-full border border-white/50 bg-white/60 px-5 text-[14px] font-medium backdrop-blur-xl dark:border-white/10 dark:bg-white/10"
+                className="h-10 rounded-full border border-[var(--fog-glass-line)] bg-[var(--fog-glass)] backdrop-blur-xl px-5 text-[14px] font-medium"
               >
                 Back to notes
               </button>
@@ -1085,19 +1094,19 @@ export function FogWindow() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={ROW_SPRING}
-              className="w-full max-w-xs overflow-hidden rounded-[28px] border border-white/50 bg-white/85 text-center backdrop-blur-2xl dark:border-white/10 dark:bg-neutral-900/85"
+              className="w-full max-w-xs overflow-hidden rounded-[26px] bg-[var(--fog-sheet)] text-center shadow-[var(--fog-card-shadow)] backdrop-blur-2xl"
             >
               <div className="px-5 py-5">
                 <p className="text-[16px] font-bold">{created.name} Folder Created</p>
-                <p className="mt-1 text-[13px] text-foreground/55">
+                <p className="mt-1 text-[13px] text-[var(--fog-secondary)]">
                   {created.count} notes added to {created.name}
                 </p>
               </div>
-              <div className="flex gap-2 border-t border-black/10 p-3 dark:border-white/10">
+              <div className="flex gap-2 border-t border-[var(--fog-separator)] p-3">
                 <button
                   type="button"
                   onClick={() => setCreated(null)}
-                  className="h-9 flex-1 rounded-full bg-black/5 text-[14px] font-medium dark:bg-white/10"
+                  className="h-9 flex-1 rounded-full bg-[var(--fog-fill)] text-[14px] font-medium"
                 >
                   Stay
                 </button>
@@ -1134,9 +1143,9 @@ export function FogWindow() {
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={PUSH_SPRING}
-              className="absolute inset-x-0 bottom-0 z-40 max-h-[86%] overflow-y-auto rounded-t-[34px] border-t border-white/50 bg-white/85 px-5 pb-6 pt-3 backdrop-blur-2xl dark:border-white/10 dark:bg-neutral-900/85"
+              className="fog-scroll absolute inset-x-0 bottom-0 z-40 max-h-[88%] overflow-y-auto rounded-t-[28px] bg-[var(--fog-sheet)] px-5 pb-8 pt-3 backdrop-blur-2xl"
             >
-              <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-foreground/20" />
+              <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-[var(--fog-fill)]" />
               <div className="mb-4 flex items-center">
                 <h4 className="text-[17px] font-bold">Settings</h4>
                 <span className="flex-1" />
@@ -1170,7 +1179,14 @@ export function FogWindow() {
                 <SettingsRow label="Rainbow Rave">
                   <Switch on={rave} onChange={() => setRave(!rave)} />
                 </SettingsRow>
-                <SettingsRow label={`Background Intensity  ${Math.round(intensity * 100)}%`}>
+                <div className="border-b border-[var(--fog-separator)] px-4 py-3 last:border-b-0">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-[15px]">Background Intensity</span>
+                    <span className="flex-1" />
+                    <span className="text-[13px] tabular-nums text-[var(--fog-secondary)]">
+                      {Math.round(intensity * 100)}%
+                    </span>
+                  </div>
                   <input
                     type="range"
                     min={0}
@@ -1178,9 +1194,10 @@ export function FogWindow() {
                     step={0.05}
                     value={intensity}
                     onChange={(event) => setIntensity(Number(event.target.value))}
-                    className="w-40 accent-[var(--fog-accent)]"
+                    aria-label="Background intensity"
+                    className="mt-2 w-full accent-[var(--fog-accent)]"
                   />
-                </SettingsRow>
+                </div>
               </SettingsGroup>
 
               <SettingsGroup title="Typography">
@@ -1205,7 +1222,7 @@ export function FogWindow() {
                     label: PERSONALITY_LABELS[key],
                   }))}
                 />
-                <p className="px-1 pt-2 text-[12px] text-foreground/45">
+                <p className="px-1 pt-2 text-[12px] text-[var(--fog-tertiary)]">
                   Changes the voice of the Forecast line, the way it changes every generated
                   line in the app.
                 </p>
@@ -1224,7 +1241,7 @@ export function FogWindow() {
                 </button>
               </SettingsGroup>
 
-              <p className="px-1 pt-4 text-[12px] leading-relaxed text-foreground/45">
+              <p className="px-1 pt-4 text-[12px] leading-relaxed text-[var(--fog-tertiary)]">
                 The app keeps these in AppStorage and syncs them to the widget. This page keeps
                 them until you close the tab.
               </p>
@@ -1241,10 +1258,10 @@ export function FogWindow() {
 function SettingsGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mb-4">
-      <p className="px-1 pb-1.5 text-[12px] font-semibold uppercase tracking-wide text-foreground/45">
+      <p className="px-1 pb-1.5 text-[12px] font-semibold uppercase tracking-wide text-[var(--fog-tertiary)]">
         {title}
       </p>
-      <div className="overflow-hidden rounded-[20px] border border-white/50 bg-white/60 dark:border-white/10 dark:bg-white/[0.06]">
+      <div className="overflow-hidden rounded-[18px] bg-[var(--fog-card)] shadow-[var(--fog-card-shadow)]">
         {children}
       </div>
     </div>
@@ -1253,7 +1270,7 @@ function SettingsGroup({ title, children }: { title: string; children: React.Rea
 
 function SettingsRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 border-b border-black/[0.06] px-4 py-3 last:border-b-0 dark:border-white/[0.07]">
+    <div className="flex items-center gap-3 border-b border-[var(--fog-separator)] px-4 py-3 last:border-b-0">
       <span className="text-[15px]">{label}</span>
       <span className="flex-1" />
       {children}
@@ -1269,7 +1286,7 @@ function Switch({ on, onChange }: { on: boolean; onChange: () => void }) {
       aria-checked={on}
       onClick={onChange}
       style={on ? { background: "var(--fog-accent)" } : undefined}
-      className={`h-[30px] w-[50px] rounded-full p-[3px] transition ${on ? "" : "bg-foreground/20"}`}
+      className={`h-[30px] w-[50px] rounded-full p-[3px] transition ${on ? "" : "bg-[var(--fog-fill)]"}`}
     >
       <motion.span
         layout
@@ -1291,15 +1308,15 @@ function Segmented({
   options: { value: string; label: string }[];
 }) {
   return (
-    <div className="flex gap-1 p-1.5">
+    <div className="flex flex-wrap gap-1 p-1.5">
       {options.map((option) => (
         <button
           key={option.value}
           type="button"
           onClick={() => onChange(option.value)}
           style={value === option.value ? { background: "var(--fog-accent)" } : undefined}
-          className={`flex-1 rounded-full px-2 py-1.5 text-[13px] font-medium transition ${
-            value === option.value ? "text-white shadow" : "text-foreground/60 hover:bg-black/5 dark:hover:bg-white/10"
+          className={`min-w-[62px] flex-1 rounded-full px-2 py-1.5 text-[13px] font-medium transition ${
+            value === option.value ? "text-white shadow" : "text-[var(--fog-secondary)] hover:bg-[var(--fog-fill)]"
           }`}
         >
           {option.label}

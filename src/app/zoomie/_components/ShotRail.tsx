@@ -1,32 +1,26 @@
-import Image from "next/image";
+import { DeviceShot } from "./DeviceShot";
 
 const SHOTS = [
-  { n: 1, caption: "Summary — three rings, ground covered, recent playtime" },
-  { n: 6, caption: "The rings, drilled into — bar chart and 12-week heat map" },
-  { n: 3, caption: "Playtime, sorted into Everyday, High Energy and Rest" },
-  { n: 4, caption: "Tug of war, mid-session, with the live control bar" },
-  { n: 5, caption: "Quick actions — bark, potty, pulled, treat, photo, note" },
-  { n: 7, caption: "Every session, logged, down to the paws" },
-  { n: 2, caption: "Siri, answering with the actual rings" },
-  { n: 8, caption: "First Zoomie — the treat for closing all three" },
+  { n: 1, caption: "Summary — rings, ground covered, recent playtime" },
+  { n: 6, caption: "The rings, drilled into" },
+  { n: 3, caption: "Playtime, sorted into three moods" },
+  { n: 4, caption: "A live session, and a mapped walk" },
+  { n: 5, caption: "Quick actions" },
+  { n: 7, caption: "Every session, logged" },
+  { n: 2, caption: "Siri, answering with the rings" },
+  { n: 8, caption: "Treats" },
 ];
 
 export function ShotRail() {
   return (
-    <div className="-mx-3 overflow-x-auto pb-4 [scrollbar-width:thin]">
-      <div className="flex w-max snap-x snap-mandatory gap-4 px-3">
+    // Runs off both edges of the reading column so the rail reads as a strip
+    // that continues past the page rather than a boxed-in carousel.
+    <div className="-mx-5 overflow-x-auto pb-6 sm:-mx-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="flex w-max gap-5 px-5 sm:px-6">
         {SHOTS.map(({ n, caption }) => (
-          <figure key={n} className="w-[220px] shrink-0 snap-start sm:w-[250px]">
-            <div className="overflow-hidden rounded-2xl border border-[var(--zm-line)] bg-[var(--zm-inset)]">
-              <Image
-                src={`/zoomie/shot-${n}.jpeg`}
-                alt={caption}
-                width={250}
-                height={542}
-                className="h-auto w-full"
-              />
-            </div>
-            <figcaption className="mt-2 text-[11px] leading-snug text-[var(--zm-dim)]">
+          <figure key={n} className="shrink-0">
+            <DeviceShot n={n} w={228} alt={caption} className="shadow-xl" />
+            <figcaption className="mt-4 max-w-[228px] text-[13px] font-semibold leading-snug text-[var(--zm-faint)]">
               {caption}
             </figcaption>
           </figure>

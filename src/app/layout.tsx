@@ -28,7 +28,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark">
           <div className="light-background dark:hidden" />
           <div className="dark-background hidden dark:block" />
-          <div className="relative z-10 min-h-screen flex flex-col">
+          <div className="relative z-10 min-h-screen flex flex-col overflow-x-clip">
             <Navbar />
             <PageTransition>
               <main className="flex-grow mx-auto max-w-3xl px-3 py-10">{children}<SpeedInsights /></main>

@@ -37,6 +37,8 @@ function BodyPortal({ children }: { children: React.ReactNode }) {
 const PALETTE = `
   :root {
     --zm-bg: #f5f5f7;
+    --zm-deep: #ffffff;
+    --zm-band: #ebebef;
     --zm-card: #ffffff;
     --zm-inset: #ececef;
     --zm-line: rgba(0,0,0,.10);
@@ -59,6 +61,8 @@ const PALETTE = `
   }
   .dark {
     --zm-bg: #050506;
+    --zm-deep: #000000;
+    --zm-band: #0b0b0d;
     --zm-card: #0c0c0e;
     --zm-inset: #161618;
     --zm-line: rgba(255,255,255,.10);
