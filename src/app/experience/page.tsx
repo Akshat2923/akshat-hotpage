@@ -15,6 +15,7 @@ import impact from "@/assets/images/impact.webp";
 import aep from "@/assets/images/AEP logo.svg.png";
 import fog from "@/assets/images/FogIcon-watchOS-Default-129x129@2x.png";
 import zoomie from "@/assets/images/ZoomieSpike-watchOS-Default-129@2x.png";
+import discCollection from "@/assets/Disc-Collection/Disc Collection-iOS-Default-128@2x.png";
 import {
   Card,
   CardContent,
@@ -302,6 +303,39 @@ export default function Page() {
       <section className="space-y-3">
         <H2>Projects</H2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <Link
+            href="/disc-collection"
+            className="block md:col-span-2 md:w-full w-[350px]"
+          >
+            <Card className="h-full w-full cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:shadow-inner">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Image
+                    src={discCollection}
+                    alt="Disc Collection app icon"
+                    width={32}
+                    height={32}
+                    className="rounded-md"
+                  />
+                  Disc Collection
+                </CardTitle>
+                <CardDescription>
+                  Your shelf, up close. Photograph a game or movie and it
+                  becomes a 3D case you can turn, open and take the disc out
+                  of, with your own copy&apos;s art. Keep a private log, and
+                  display cases in an anonymous public Gallery.
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="flex flex-wrap gap-2">
+                <Badge>Swift</Badge>
+                <Badge>SwiftUI</Badge>
+                <Badge>RealityKit</Badge>
+                <Badge>SwiftData</Badge>
+                <Badge>CloudKit</Badge>
+                <Badge>Vision</Badge>
+              </CardFooter>
+            </Card>
+          </Link>
           <Link
             href="/zoomie"
             className="block md:col-span-2 md:w-full w-[350px]"
