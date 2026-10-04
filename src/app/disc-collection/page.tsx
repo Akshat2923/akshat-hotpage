@@ -276,7 +276,7 @@ export default function DiscCollectionPage() {
         <Section
           eyebrow="The log"
           title="What you own, what you finished, what you thought."
-          lede="See your whole shelf without pulling a single case off it. Rating, hours played, finished or not; runtime, director, watched. A review in your own words. Numbered as you add them — Case #1, Case #2 — gaps and all, like a real catalog. It syncs between your devices through your own iCloud."
+          lede="See your whole shelf without pulling a single case off it. Rating, hours played, finished or not; runtime, director, watched. A review in your own words. Numbered as you add them — Case #1, Case #2 — gaps and all, like a real catalog. It syncs between your devices through your own iCloud, and it goes on your Home Screen too: widgets of your newest covers, open cases, or a shelf of spines."
         />
 
         {/* ── Gallery ──────────────────────────────────────────────────── */}

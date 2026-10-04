@@ -60,5 +60,6 @@ export const STACK = [
   ["SwiftData", "The collection, on the device"],
   ["CloudKit", "Private sync between your devices, and the public Gallery"],
   ["SensitiveContentAnalysis", "An on-device check before a photo goes public"],
+  ["WidgetKit", "Your shelf on the Home Screen: covers, spines or open cases"],
   ["SwiftUI", "Everything else, with Liquid Glass"],
 ];
