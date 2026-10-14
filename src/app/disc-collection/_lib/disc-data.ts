@@ -4,8 +4,6 @@
 /** Placeholder until the listing is live: swap in the App Store link. */
 export const APP_STORE_URL = "#";
 
-export const BLUE = "#2980FF";
-
 export type CaseFamily = {
   name: string;
   plastic: string;
@@ -34,31 +32,13 @@ export const MOVIE_CASES: CaseFamily[] = [
   { name: "4K Ultra HD", plastic: "#0B0B0B" },
 ];
 
-export const STEPS = [
-  {
-    n: "01",
-    title: "Two photos.",
-    body: "The outside, opened flat, and the inside. Apple's document scanner, the one in Notes and Files, finds the case's corners, and each photo is flattened to the exact millimeters of that case, so the art lands where the printer put it.",
-  },
-  {
-    n: "02",
-    title: "It reads the case.",
-    body: "Vision reads the spine for the title, the front banner for the platform, the copyright line for the year. All on the phone, all a guess you check before saving.",
-  },
-  {
-    n: "03",
-    title: "Your copy, in 3D.",
-    body: "Turn it, open it, lift the disc out and flip it to the data side. The plastic is the one your platform ships in, and the disc catches light the way a real one does.",
-  },
-];
-
 export const STACK = [
   ["RealityKit", "The case, the studio it stands in, and offscreen renders for sharing"],
   ["Metal", "A shader for the rainbow a disc throws when light crosses it"],
   ["VisionKit", "The document camera that finds a case's corners"],
   ["Vision + Core Image", "Reading the print, and flattening photos to millimeter layouts"],
   ["SwiftData", "The collection, on the device"],
-  ["CloudKit", "Private sync between your devices, and the public Gallery"],
+  ["CloudKit", "Private sync, the public Gallery, and heart notifications with no server of my own"],
   ["SensitiveContentAnalysis", "An on-device check before a photo goes public"],
   ["WidgetKit", "Your shelf on the Home Screen: covers, spines or open cases"],
   ["SwiftUI", "Everything else, with Liquid Glass"],

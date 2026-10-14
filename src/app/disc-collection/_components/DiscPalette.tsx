@@ -4,6 +4,7 @@
 
 const PALETTE = `
   :root {
+    --dc-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
     --dc-bg: #f2f3f6;
     --dc-deep: #ffffff;
     --dc-band: #e9ebf0;
@@ -18,6 +19,7 @@ const PALETTE = `
     --dc-shadow: rgba(0,0,0,.22);
     --dc-spot: rgba(41,128,255,.16);
     --dc-ink: #0a5fd6;
+    --dc-gold: #c99a06;
   }
   .dark {
     --dc-bg: #060709;
@@ -34,11 +36,12 @@ const PALETTE = `
     --dc-shadow: rgba(0,0,0,.8);
     --dc-spot: rgba(41,128,255,.22);
     --dc-ink: #5ea0ff;
+    --dc-gold: #fad02e;
   }
   .light-background, .dark-background { display: none !important; }
   body { background: var(--dc-bg); }
 `;
 
 export function DiscPalette() {
-  return <style>{PALETTE}</style>;
+  return <style dangerouslySetInnerHTML={{ __html: PALETTE }} />;
 }

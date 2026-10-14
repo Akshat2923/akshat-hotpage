@@ -322,8 +322,9 @@ export default function Page() {
                 <CardDescription>
                   Your shelf, up close. Photograph a game or movie and it
                   becomes a 3D case you can turn, open and take the disc out
-                  of, with your own copy&apos;s art. Keep a private log, and
-                  display cases in an anonymous public Gallery.
+                  of, with your own copy&apos;s art. Keep a private log, display
+                  cases in an anonymous public Gallery, and heart the ones you
+                  want onto a wish list.
                 </CardDescription>
               </CardHeader>
               <CardFooter className="flex flex-wrap gap-2">

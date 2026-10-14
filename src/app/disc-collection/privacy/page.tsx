@@ -21,7 +21,7 @@ export default function DiscCollectionPrivacyPage() {
       <div className="space-y-1">
         <H1>Privacy Policy</H1>
         <p className="text-sm text-muted-foreground">
-          Disc Collection — Last updated: October 3, 2026
+          Disc Collection — Last updated: October 8, 2026
         </p>
       </div>
 
@@ -33,7 +33,8 @@ export default function DiscCollectionPrivacyPage() {
         stored on your device and in your own iCloud account. There are no
         accounts, ads, analytics or third-party SDKs. The only thing anyone else
         can see is a case you choose to put on display, and it is shown
-        anonymously.
+        anonymously. When you heart someone else&apos;s case, they are told only
+        that someone wants it, never who.
       </p>
 
       <div className="space-y-2">
@@ -50,7 +51,9 @@ export default function DiscCollectionPrivacyPage() {
           Disc Collection uses what you create in the app: photos of your cases,
           titles, platforms and formats, release years, ratings, hours played,
           runtimes, directors, whether you finished or watched something, written
-          reviews, and app settings such as sort order.
+          reviews, your wish list (the title and platform or format of cases
+          you heart in the Gallery, and whether you have checked them off), and
+          app settings such as sort order.
         </p>
         <p className="text-muted-foreground">
           This information is stored on your device using Apple&apos;s SwiftData
@@ -95,7 +98,7 @@ export default function DiscCollectionPrivacyPage() {
         <H2>iCloud &amp; Sync</H2>
         <p className="text-muted-foreground">
           Disc Collection uses Apple&apos;s CloudKit to sync your collection
-          between your own Apple devices through your private iCloud account,
+          and your wish list between your own Apple devices through your private iCloud account,
           when iCloud is available. Your private iCloud data is accessible only
           to you, and the developer has no access to it.
         </p>
@@ -132,12 +135,52 @@ export default function DiscCollectionPrivacyPage() {
         </p>
         <p className="text-muted-foreground">
           Displaying a case requires being signed in to iCloud. Browsing the
-          Gallery does not.
+          Gallery does not. Hearting a case works without iCloud, but then it
+          only adds the case to your wish list on that device, and its poster
+          is not told.
         </p>
         <p className="text-muted-foreground">
           Because Gallery posts are public, the developer can see them, and may
           remove any post that is reported or that breaks the rules of the App
           Store.
+        </p>
+      </div>
+
+      <div className="space-y-2">
+        <H2>Hearts &amp; Your Wish List</H2>
+        <p className="text-muted-foreground">
+          When you heart a case in the Gallery, its title and platform or format
+          are added to your wish list, which is private to your iCloud account.
+        </p>
+        <p className="text-muted-foreground">
+          If you are signed in to iCloud, the app also stores a small record in
+          CloudKit&apos;s public database so the person who displayed the case
+          can be told it was hearted. The record contains a reference to the
+          post, the opaque identifier of the account that posted it, whether the
+          heart is still on, and, like every CloudKit record, the opaque
+          identifier of your iCloud account. It contains no name, email address
+          or other contact information.
+        </p>
+        <p className="text-muted-foreground">
+          The app never shows who hearted a case, or how many people did. The
+          person who displayed it sees only that someone has it on their wish
+          list. Taking a heart back turns its record off.
+        </p>
+      </div>
+
+      <div className="space-y-2">
+        <H2>Notifications</H2>
+        <p className="text-muted-foreground">
+          The first time you display a case, the app asks permission to send
+          notifications. With it, you are told when someone hearts one of your
+          cases. The notification never says who, and never says how many.
+        </p>
+        <p className="text-muted-foreground">
+          To do this, the app saves a CloudKit subscription for your iCloud
+          account, and Apple delivers the notifications through the Apple Push
+          Notification service. No server operated by the developer is
+          involved. You can turn notifications off at any time in your
+          device&apos;s Settings.
         </p>
       </div>
 
@@ -179,7 +222,8 @@ export default function DiscCollectionPrivacyPage() {
         </p>
         <p className="text-muted-foreground">
           It uses Apple&apos;s first-party services and frameworks, including
-          SwiftData, CloudKit, VisionKit, Vision and Sensitive Content Analysis.
+          SwiftData, CloudKit, VisionKit, Vision, Sensitive Content Analysis and
+          the Apple Push Notification service.
           These are governed by Apple&apos;s own privacy policies and security
           practices.
         </p>
@@ -205,9 +249,11 @@ export default function DiscCollectionPrivacyPage() {
           from the Gallery at any time, which deletes its post.
         </p>
         <p className="text-muted-foreground">
-          Settings includes Delete All Data, which deletes your collection from
-          all your devices, takes down every case you have displayed in the
-          Gallery, and clears your blocked and hidden lists.
+          Settings includes Delete All Data, which deletes your collection and
+          wish list from all your devices, takes down every case you have
+          displayed in the Gallery, deletes the heart records you created,
+          removes your notification subscription, and clears your blocked and
+          hidden lists.
         </p>
         <p className="text-muted-foreground">
           Deleting the app removes its data from that device. Data synced
