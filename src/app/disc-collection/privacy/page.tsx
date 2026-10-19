@@ -21,7 +21,7 @@ export default function DiscCollectionPrivacyPage() {
       <div className="space-y-1">
         <H1>Privacy Policy</H1>
         <p className="text-sm text-muted-foreground">
-          Disc Collection — Last updated: October 8, 2026
+          Disc Collection — Last updated: October 18, 2026
         </p>
       </div>
 
@@ -32,9 +32,10 @@ export default function DiscCollectionPrivacyPage() {
         display a case in the Gallery. The short version: your collection is
         stored on your device and in your own iCloud account. There are no
         accounts, ads, analytics or third-party SDKs. The only thing anyone else
-        can see is a case you choose to put on display, and it is shown
-        anonymously. When you heart someone else&apos;s case, they are told only
-        that someone wants it, never who.
+        can see is a case you choose to put on display, shown under a collector
+        number, or a Collector Tag if you choose one. When you heart a case, or
+        mark one as yours, other people using the app can see that you want or
+        own it, under that same number or tag, never your real name.
       </p>
 
       <div className="space-y-2">
@@ -52,7 +53,9 @@ export default function DiscCollectionPrivacyPage() {
           titles, platforms and formats, release years, ratings, hours played,
           runtimes, directors, whether you finished or watched something, written
           reviews, your wish list (the title and platform or format of cases
-          you heart in the Gallery, and whether you have checked them off), and
+          you heart in the Gallery, and whether you have checked them off), the
+          cases you mark as owned in the Gallery while they wait to be
+          captured, and
           app settings such as sort order.
         </p>
         <p className="text-muted-foreground">
@@ -134,6 +137,10 @@ export default function DiscCollectionPrivacyPage() {
           others block a poster.
         </p>
         <p className="text-muted-foreground">
+          If you have chosen a Collector Tag, your posts show it in place of
+          your collector number (see Collector Tags below).
+        </p>
+        <p className="text-muted-foreground">
           Displaying a case requires being signed in to iCloud. Browsing the
           Gallery does not. Hearting a case works without iCloud, but then it
           only adds the case to your wish list on that device, and its poster
@@ -147,24 +154,59 @@ export default function DiscCollectionPrivacyPage() {
       </div>
 
       <div className="space-y-2">
-        <H2>Hearts &amp; Your Wish List</H2>
+        <H2>Collector Tags</H2>
+        <p className="text-muted-foreground">
+          A Collector Tag is an optional name you choose in Settings, such as
+          &ldquo;#retro_rhea&rdquo;. Without one, you appear as your collector
+          number. A tag is public: anyone using the app sees it in place of your
+          collector number on the cases you display, in reactions, and on your
+          shelf. Please don&apos;t use your real name or anything that
+          identifies you.
+        </p>
+        <p className="text-muted-foreground">
+          Choosing a tag stores two records in CloudKit&apos;s public database:
+          one named for your account, holding your tag, when you last chose one
+          and whether you have used your free change; and one named for the tag
+          itself, which reserves it for you and holds the opaque identifier of
+          your iCloud account. Like every CloudKit record, both also carry that
+          identifier. Neither contains an email address or other contact
+          information.
+        </p>
+        <p className="text-muted-foreground">
+          Before a tag is saved, the app checks it on your device against its
+          rules and a list of blocked words. Tags can be reported, and the
+          developer may reset any tag that is reported or that breaks the rules
+          of the App Store. Removing your tag frees it for anyone to choose.
+        </p>
+      </div>
+
+      <div className="space-y-2">
+        <H2>Hearts, Owning &amp; Your Wish List</H2>
         <p className="text-muted-foreground">
           When you heart a case in the Gallery, its title and platform or format
-          are added to your wish list, which is private to your iCloud account.
+          are added to your wish list. When you mark a case as one you own, or
+          check it off your wish list, it waits in your collection to be
+          captured. Both are private to your iCloud account.
         </p>
         <p className="text-muted-foreground">
           If you are signed in to iCloud, the app also stores a small record in
-          CloudKit&apos;s public database so the person who displayed the case
-          can be told it was hearted. The record contains a reference to the
-          post, the opaque identifier of the account that posted it, whether the
-          heart is still on, and, like every CloudKit record, the opaque
-          identifier of your iCloud account. It contains no name, email address
-          or other contact information.
+          CloudKit&apos;s public database for each case you heart or mark as
+          owned. A heart lets the person who displayed the case be told someone
+          wants it. Each record contains a reference to the post, the opaque
+          identifier of the account that posted it when known, whether it is
+          still on, and, like every CloudKit record, the opaque identifier of
+          your iCloud account. It contains no name, email address or other
+          contact information.
         </p>
         <p className="text-muted-foreground">
-          The app never shows who hearted a case, or how many people did. The
-          person who displayed it sees only that someone has it on their wish
-          list. Taking a heart back turns its record off.
+          These records are public. Anyone using the app can see, in a
+          case&apos;s reactions, which collectors want or own it, shown the
+          same way as their posts: their Collector Tag, such as
+          &ldquo;#retro_rhea&rdquo;, or otherwise their collector number, such
+          as &ldquo;Collector #4821&rdquo;. The app never shows a real name, and
+          never shows how many people want or own a case. Each person appears once per case: marking
+          a case as owned turns your heart for it off. Taking a heart or an own
+          back turns its record off.
         </p>
       </div>
 
@@ -188,7 +230,8 @@ export default function DiscCollectionPrivacyPage() {
         <H2>Reporting</H2>
         <p className="text-muted-foreground">
           When you report a post, the app stores a report containing a reference
-          to that post and the reason you chose. Reports are readable only by
+          to that post and the reason you chose, which can be the poster&apos;s
+          Collector Tag. Reports are readable only by
           the developer and are used solely to review content. If you are not
           signed in to iCloud, the app instead opens an email to the developer
           with the same information, which you can choose to send.
@@ -251,15 +294,17 @@ export default function DiscCollectionPrivacyPage() {
         <p className="text-muted-foreground">
           Settings includes Delete All Data, which deletes your collection and
           wish list from all your devices, takes down every case you have
-          displayed in the Gallery, deletes the heart records you created,
+          displayed in the Gallery, deletes the heart and own records you
+          created, deletes your Collector Tag records and frees your tag,
           removes your notification subscription, and clears your blocked and
           hidden lists.
         </p>
         <p className="text-muted-foreground">
           Deleting the app removes its data from that device. Data synced
           through iCloud can also be managed in your device&apos;s iCloud
-          settings. To take down Gallery posts, use Take Down or Delete All Data
-          before deleting the app, or contact me and I will remove them.
+          settings. To take down Gallery posts and free your Collector Tag, use
+          Take Down, Remove Collector Tag or Delete All Data before deleting the
+          app, or contact me and I will remove them.
         </p>
       </div>
 
@@ -267,8 +312,9 @@ export default function DiscCollectionPrivacyPage() {
         <H2>Children&apos;s Privacy</H2>
         <p className="text-muted-foreground">
           Disc Collection does not knowingly collect personal information from
-          anyone, including children under 13. Gallery posts contain no names or
-          contact details.
+          anyone, including children under 13. Gallery posts contain no real
+          names or contact details. A Collector Tag is a name you choose, and
+          shouldn&apos;t be your real one.
         </p>
       </div>
 

@@ -387,8 +387,8 @@ const CHAPTERS: Chapter[] = [
     sticker: true,
     art: { ...YOURS, front: "gallery.front", spine: "shelf.spine" },
     caption:
-      "See one you want? Heart it, and it goes on your wish list. Its owner hears only that someone wants it. Never who, never how many.",
-    sr: "The Gallery: everyone's cases, nobody's names, newest first. Heart a case to put it on your wish list. Its owner hears only that someone wants one of their cases.",
+      "Heart the ones you want, check the ones you own. See which collectors want or own a case, never how many, and tap one to see their shelf.",
+    sr: "The Gallery: everyone's cases, newest first, under a collector number or a Collector Tag they chose. Heart a case to put it on your wish list, or check it if you own it. See which collectors want or own a case, never a count, and tap one to see everything they have on display.",
   },
   {
     name: "Get it",
