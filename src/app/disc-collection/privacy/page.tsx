@@ -21,7 +21,7 @@ export default function DiscCollectionPrivacyPage() {
       <div className="space-y-1">
         <H1>Privacy Policy</H1>
         <p className="text-sm text-muted-foreground">
-          Disc Collection — Last updated: October 18, 2026
+          Disc Collection — Last updated: October 28, 2026
         </p>
       </div>
 
@@ -32,8 +32,9 @@ export default function DiscCollectionPrivacyPage() {
         display a case in the Gallery. The short version: your collection is
         stored on your device and in your own iCloud account. There are no
         accounts, ads, analytics or third-party SDKs. The only thing anyone else
-        can see is a case you choose to put on display, shown under a collector
-        number, or a Collector Tag if you choose one. When you heart a case, or
+        can see is a case you choose to put on display, with your score and
+        review unless you turn that off, shown under a collector number, or a
+        Collector Tag if you choose one. When you heart a case, or
         mark one as yours, other people using the app can see that you want or
         own it, under that same number or tag, never your real name.
       </p>
@@ -50,9 +51,10 @@ export default function DiscCollectionPrivacyPage() {
         <H2>What Data Disc Collection Uses</H2>
         <p className="text-muted-foreground">
           Disc Collection uses what you create in the app: photos of your cases,
-          titles, platforms and formats, release years, ratings, hours played,
-          runtimes, directors, whether you finished or watched something, written
-          reviews, your wish list (the title and platform or format of cases
+          titles, platforms and formats, release years, scores out of 10, hours
+          played, runtimes, directors, whether you finished or watched
+          something, written reviews and whether a displayed review contains
+          spoilers, your wish list (the title and platform or format of cases
           you heart in the Gallery, and whether you have checked them off), the
           cases you mark as owned in the Gallery while they wait to be
           captured, and
@@ -123,13 +125,22 @@ export default function DiscCollectionPrivacyPage() {
           which is stored in CloudKit&apos;s public database and can be seen by
           anyone using the app: the case&apos;s photos (at a reduced
           resolution), a rendered picture of the 3D case, its title, kind,
-          platform or format, release year, rating, hours played or runtime,
-          director, whether it is finished or watched, and its number in your
-          collection.
+          platform or format, release year, hours played or runtime, director,
+          whether it is finished or watched, and its number in your collection.
         </p>
         <p className="text-muted-foreground">
-          Your written review is never published. No name, email address or
-          other contact information is published either. Like every CloudKit
+          Your review, meaning your score and anything you have written, is
+          published with the case unless you turn off Display Review when you
+          display it. You can also mark a review as containing spoilers, which
+          hides its words until someone taps to show them. Before a review is
+          published, the app checks it on your device against a list of blocked
+          words, and it can&apos;t include links, email addresses, phone numbers
+          or @handles. A post shows the case as it was when you displayed it:
+          later changes, including to your review, reach it when you choose
+          Update Display.
+        </p>
+        <p className="text-muted-foreground">
+          No name, email address or other contact information is published. Like every CloudKit
           record, a post carries an opaque identifier for the iCloud account
           that created it. This identifier does not reveal who you are. The app
           uses it to show a number such as &ldquo;Collector #4821&rdquo; so the
@@ -141,8 +152,15 @@ export default function DiscCollectionPrivacyPage() {
           your collector number (see Collector Tags below).
         </p>
         <p className="text-muted-foreground">
-          Displaying a case requires being signed in to iCloud. Browsing the
-          Gallery does not. Hearting a case works without iCloud, but then it
+          Search looks through the Gallery by title. The words you type are sent
+          to CloudKit to find matching posts, the same way browsing the Gallery
+          asks it for posts. The app keeps recent searches in memory for a
+          couple of minutes and never saves them, and the developer does not
+          receive them. Your own collection is searched on your device.
+        </p>
+        <p className="text-muted-foreground">
+          Displaying a case requires being signed in to iCloud. Browsing and
+          searching the Gallery do not. Hearting a case works without iCloud, but then it
           only adds the case to your wish list on that device, and its poster
           is not told.
         </p>
@@ -231,7 +249,7 @@ export default function DiscCollectionPrivacyPage() {
         <p className="text-muted-foreground">
           When you report a post, the app stores a report containing a reference
           to that post and the reason you chose, which can be the poster&apos;s
-          Collector Tag. Reports are readable only by
+          Collector Tag or their review. Reports are readable only by
           the developer and are used solely to review content. If you are not
           signed in to iCloud, the app instead opens an email to the developer
           with the same information, which you can choose to send.
@@ -313,7 +331,8 @@ export default function DiscCollectionPrivacyPage() {
         <p className="text-muted-foreground">
           Disc Collection does not knowingly collect personal information from
           anyone, including children under 13. Gallery posts contain no real
-          names or contact details. A Collector Tag is a name you choose, and
+          names or contact details, and reviews can&apos;t include links, email
+          addresses or phone numbers. A Collector Tag is a name you choose, and
           shouldn&apos;t be your real one.
         </p>
       </div>

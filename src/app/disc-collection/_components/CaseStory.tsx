@@ -188,12 +188,12 @@ const ART: Record<string, React.ReactNode> = {
       <p className="text-[25px] font-bold leading-[1.04] tracking-[-0.02em]">
         Everyone&apos;s cases.
         <br />
-        <span className="opacity-45">Nobody&apos;s names.</span>
+        <span className="opacity-45">Nobody&apos;s counts.</span>
       </p>
       <p className="text-[13px] leading-snug">One gallery, newest first.</p>
       <div className="flex-1" />
       <div className="w-[58%]">
-        <Small dim>No usernames, no follows, no like counts.</Small>
+        <Small dim>No follows, no like counts, no algorithm.</Small>
       </div>
     </div>
   ),
@@ -211,7 +211,7 @@ const ART: Record<string, React.ReactNode> = {
         <li>■ Turn it, open it, take the disc out</li>
         <li>■ Two photos, read on your phone</li>
         <li>■ A private log in your own iCloud</li>
-        <li>■ A gallery with no names, no counts</li>
+        <li>■ A gallery with no follows, no counts</li>
         <li>■ Widgets for your Home Screen</li>
       </ul>
       <div className="flex-1" />
@@ -377,8 +377,8 @@ const CHAPTERS: Chapter[] = [
     art: { ...YOURS, spine: "shelf.spine" },
     header: ["Your whole shelf.", "Without pulling a single case off it."],
     caption:
-      "Ratings, hours played, finished or watched, and a review in your own words. Numbered as you add them, synced through your own iCloud.",
-    sr: "Your whole shelf, without pulling a case off it. A private log: ratings, hours played, finished or watched, a review in your own words, every case numbered as you add it.",
+      "A score out of 10, hours played, finished or watched, and a review in your own words. Numbered as you add them, synced through your own iCloud.",
+    sr: "Your whole shelf, without pulling a case off it. A private log: a score out of 10, hours played, finished or watched, a review in your own words, every case numbered as you add it.",
   },
   {
     name: "Gallery",
@@ -387,8 +387,8 @@ const CHAPTERS: Chapter[] = [
     sticker: true,
     art: { ...YOURS, front: "gallery.front", spine: "shelf.spine" },
     caption:
-      "Heart the ones you want, check the ones you own. See which collectors want or own a case, never how many, and tap one to see their shelf.",
-    sr: "The Gallery: everyone's cases, newest first, under a collector number or a Collector Tag they chose. Heart a case to put it on your wish list, or check it if you own it. See which collectors want or own a case, never a count, and tap one to see everything they have on display.",
+      "Show your score and review with your copy, spoilers hidden. Search every copy of a game by title. Heart the ones you want, check the ones you own, and tap a collector to see their shelf.",
+    sr: "The Gallery: everyone's cases, newest first, under a collector number or a Collector Tag they chose, with their score and review if they share it, spoilers hidden until tapped. Search finds every copy on display by title. Heart a case to put it on your wish list, or check it if you own it. See which collectors want or own a case, never a count, and tap one to see everything they have on display.",
   },
   {
     name: "Get it",
@@ -403,12 +403,12 @@ const CHAPTERS: Chapter[] = [
 /** On the spines beside yours, in the shelf chapter: what the log keeps. */
 const SHELF: { print: string; plastic: PlasticKey; h: number }[] = [
   { print: "CASE #1", plastic: "dvd", h: 1.1 },
-  { print: "★★★★★", plastic: "xbox360", h: 1 },
+  { print: "10 / 10", plastic: "xbox360", h: 1 },
   { print: "41 HRS", plastic: "wii", h: 1 },
   { print: "FINISHED", plastic: "xboxSeries", h: 1 },
   { print: "", plastic: "ps5", h: 1 },
   { print: "WATCHED", plastic: "bluRay", h: 1.12 },
-  { print: "★★★★☆", plastic: "ps3", h: 1 },
+  { print: "8 / 10", plastic: "ps3", h: 1 },
   { print: "1999", plastic: "dvd", h: 1.1 },
   { print: "CASE #214", plastic: "wiiU", h: 1 },
 ];

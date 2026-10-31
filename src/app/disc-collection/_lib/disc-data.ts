@@ -23,6 +23,8 @@ export const GAME_CASES: CaseFamily[] = [
   { name: "Wii U", plastic: "#1DACD6" },
   { name: "Wii", plastic: "#EDEDED" },
   { name: "GameCube", plastic: "#0B0B0B" },
+  { name: "Nintendo Switch 2", plastic: "#D9262E" },
+  { name: "Nintendo Switch", plastic: "#e6edf5", translucent: true },
   { name: "PC", plastic: "#0B0B0B" },
 ];
 
@@ -38,7 +40,7 @@ export const STACK = [
   ["VisionKit", "The document camera that finds a case's corners"],
   ["Vision + Core Image", "Reading the print, and flattening photos to millimeter layouts"],
   ["SwiftData", "The collection, on the device"],
-  ["CloudKit", "Private sync, the public Gallery, and heart notifications with no server of my own"],
+  ["CloudKit", "Private sync, the public Gallery and its search, and heart notifications with no server of my own"],
   ["SensitiveContentAnalysis", "An on-device check before a photo goes public"],
   ["WidgetKit", "Your shelf on the Home Screen: covers, spines or open cases"],
   ["SwiftUI", "Everything else, with Liquid Glass"],
