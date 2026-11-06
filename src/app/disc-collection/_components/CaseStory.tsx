@@ -212,6 +212,7 @@ const ART: Record<string, React.ReactNode> = {
         <li>■ Two photos, read on your phone</li>
         <li>■ A private log in your own iCloud</li>
         <li>■ A gallery with no follows, no counts</li>
+        <li>■ Every case on display, A to Z</li>
         <li>■ Widgets for your Home Screen</li>
       </ul>
       <div className="flex-1" />
@@ -387,8 +388,8 @@ const CHAPTERS: Chapter[] = [
     sticker: true,
     art: { ...YOURS, front: "gallery.front", spine: "shelf.spine" },
     caption:
-      "Show your score and review with your copy, spoilers hidden. Search every copy of a game by title. Heart the ones you want, check the ones you own, and tap a collector to see their shelf.",
-    sr: "The Gallery: everyone's cases, newest first, under a collector number or a Collector Tag they chose, with their score and review if they share it, spoilers hidden until tapped. Search finds every copy on display by title. Heart a case to put it on your wish list, or check it if you own it. See which collectors want or own a case, never a count, and tap one to see everything they have on display.",
+      "Show your score and review with your copy, spoilers hidden. Search every copy of a game by title, or browse them all in Stacks, spine by spine, A to Z. Heart the ones you want, check the ones you own, and tap a collector to see their shelf.",
+    sr: "The Gallery: everyone's cases, newest first, under a collector number or a Collector Tag they chose, with their score and review if they share it, spoilers hidden until tapped. Search finds every copy on display by title, and Stacks shelves every case on display as spines, A to Z. Heart a case to put it on your wish list, or check it if you own it. See which collectors want or own a case, never a count, and tap one to see everything they have on display.",
   },
   {
     name: "Get it",

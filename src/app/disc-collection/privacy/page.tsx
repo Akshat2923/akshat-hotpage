@@ -21,7 +21,7 @@ export default function DiscCollectionPrivacyPage() {
       <div className="space-y-1">
         <H1>Privacy Policy</H1>
         <p className="text-sm text-muted-foreground">
-          Disc Collection — Last updated: October 28, 2026
+          Disc Collection — Last updated: November 5, 2026
         </p>
       </div>
 
@@ -87,7 +87,9 @@ export default function DiscCollectionPrivacyPage() {
         <p className="text-muted-foreground">
           To fill in a case&apos;s details for you, Disc Collection uses
           Apple&apos;s Vision framework to read the text printed on your photos,
-          such as the title on the spine or the year in the copyright line. This
+          such as the title on the spine or the year in the copyright line. On
+          devices with Apple Intelligence turned on, Apple&apos;s on-device
+          language model also looks at that text to work out the title. This
           happens entirely on your device. Nothing is looked up in an online
           database, and the results are only suggestions you can edit.
         </p>
@@ -124,7 +126,7 @@ export default function DiscCollectionPrivacyPage() {
           When you display a case, the following is published to the Gallery,
           which is stored in CloudKit&apos;s public database and can be seen by
           anyone using the app: the case&apos;s photos (at a reduced
-          resolution), a rendered picture of the 3D case, its title, kind,
+          resolution), rendered pictures of the 3D case and of its spine, its title, kind,
           platform or format, release year, hours played or runtime, director,
           whether it is finished or watched, and its number in your collection.
         </p>
@@ -134,8 +136,11 @@ export default function DiscCollectionPrivacyPage() {
           display it. You can also mark a review as containing spoilers, which
           hides its words until someone taps to show them. Before a review is
           published, the app checks it on your device against a list of blocked
-          words, and it can&apos;t include links, email addresses, phone numbers
-          or @handles. A post shows the case as it was when you displayed it:
+          words and, on devices with Apple Intelligence turned on, with
+          Apple&apos;s on-device language model, to hold back harassment, hate,
+          sexual content, self-harm and selling. Your review isn&apos;t sent
+          anywhere for this check. A published review can&apos;t include links,
+          email addresses, phone numbers or @handles. A post shows the case as it was when you displayed it:
           later changes, including to your review, reach it when you choose
           Update Display.
         </p>
@@ -150,6 +155,13 @@ export default function DiscCollectionPrivacyPage() {
         <p className="text-muted-foreground">
           If you have chosen a Collector Tag, your posts show it in place of
           your collector number (see Collector Tags below).
+        </p>
+        <p className="text-muted-foreground">
+          Every displayed case also appears in Stacks, a shelf of everything on
+          display filed A to Z by title. For that, a post also carries its title
+          in the form it&apos;s filed under, such as &ldquo;DARK KNIGHT,
+          THE&rdquo;, and the letter it&apos;s filed by. Nothing in Stacks is
+          beyond what a post already shows.
         </p>
         <p className="text-muted-foreground">
           Search looks through the Gallery by title. The words you type are sent
@@ -167,7 +179,10 @@ export default function DiscCollectionPrivacyPage() {
         <p className="text-muted-foreground">
           Because Gallery posts are public, the developer can see them, and may
           remove any post that is reported or that breaks the rules of the App
-          Store.
+          Store. The developer may also add or update a post&apos;s spine
+          picture and A to Z filing, made from that post&apos;s own photos and
+          title, so that posts made with older versions of the app appear in
+          Stacks. Nothing else about a post is changed.
         </p>
       </div>
 
